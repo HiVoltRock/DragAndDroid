@@ -9,7 +9,7 @@
             id="DragAndDroid.commands.category">
       </category>
       <command
-            name="Sample Command"
+            name="Launch Editor"
             categoryId="DragAndDroid.commands.category"
             id="DragAndDroid.commands.sampleCommand">
       </command>
@@ -35,7 +35,7 @@
       <menuContribution
             locationURI="menu:org.eclipse.ui.main.menu?after=additions">
          <menu
-               label="Sample Menu"
+               label="Drag And Drop"
                mnemonic="M"
                id="DragAndDroid.menus.sampleMenu">
             <command
