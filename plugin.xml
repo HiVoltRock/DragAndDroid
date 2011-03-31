@@ -35,7 +35,7 @@
       <menuContribution
             locationURI="menu:org.eclipse.ui.main.menu?after=additions">
          <menu
-               label="Drag And Drop"
+               label="Drag And Droid"
                mnemonic="M"
                id="DragAndDroid.menus.sampleMenu">
             <command
