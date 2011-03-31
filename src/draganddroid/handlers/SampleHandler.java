@@ -1,6 +1,7 @@
 package draganddroid.handlers;
 
 import javax.swing.JFrame;
+import draganddroid.Editor;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -14,10 +15,13 @@ import org.eclipse.ui.handlers.HandlerUtil;
  * @see org.eclipse.core.commands.AbstractHandler
  */
 public class SampleHandler extends AbstractHandler {
+	Editor E;
+	
 	/**
 	 * The constructor.
 	 */
 	public SampleHandler() {
+		E = new Editor();
 	}
 
 	/**
@@ -27,12 +31,7 @@ public class SampleHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 
-		JFrame f = new JFrame("Drag And Droid");
-		
-		f.setSize(480, 800);
-		
-		f.pack();
-		f.setVisible(true);
+		E.Open();
 		
 		return null;
 	}
