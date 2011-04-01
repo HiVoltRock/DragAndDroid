@@ -12,8 +12,14 @@ public class Editor {
 		
 		f.setSize(480, 800);
 		
+		AJPanel frame = new AJPanel();
+        frame.pack();
+        frame.setVisible(true);
+		
 		f.pack();
 		f.setVisible(true);
+		
+		
 	}
 
 }
