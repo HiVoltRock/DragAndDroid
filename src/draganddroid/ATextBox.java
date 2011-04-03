@@ -2,7 +2,7 @@ package draganddroid;
 
 import java.awt.Graphics;
 
-public class ATextBox extends ArduinoElement {
+public class ATextBox extends AndroidElement {
 
 	public ATextBox() {
 		

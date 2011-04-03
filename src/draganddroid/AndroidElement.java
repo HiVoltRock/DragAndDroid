@@ -3,11 +3,11 @@ package draganddroid;
 import java.awt.Frame;
 import java.awt.Graphics;
 
-public abstract class ArduinoElement {
+public abstract class AndroidElement {
 	int height, width; 
 	Frame parent;
 	
-	public ArduinoElement()
+	public AndroidElement()
 	{
 		
 	}
@@ -15,4 +15,4 @@ public abstract class ArduinoElement {
 	public abstract void draw(Graphics g);
 	
 	
-    }
+}

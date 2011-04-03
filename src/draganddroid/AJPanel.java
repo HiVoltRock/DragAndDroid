@@ -1,12 +1,20 @@
 package draganddroid;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*; 
+import java.awt.BorderLayout;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JToolBar;
 
 public class AJPanel extends JFrame {
 
-    public AJPanel() {
+	private static final long serialVersionUID = 1L;
+
+	public AJPanel() {
         super("ToolBar");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ImageIcon image1 = new ImageIcon("InsertPicHere");

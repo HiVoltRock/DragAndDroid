@@ -2,7 +2,7 @@ package draganddroid;
 
 import java.awt.Graphics;
 
-public class AButton extends ArduinoElement {
+public class AButton extends AndroidElement {
 	
 	public AButton(){
 		

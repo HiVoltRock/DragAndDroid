@@ -54,9 +54,7 @@ public class Editor {
 		toolbox.setVisible(true);
 		
 		f.pack();
-		f.setVisible(true);
-		
-		
+		f.setVisible(true);		
 	}
 	
 	/*.. Here is das canvas this is where all the drawing will
@@ -64,6 +62,8 @@ public class Editor {
 	 */
 	
 	class OurCanvas extends Canvas {
+
+		private static final long serialVersionUID = 1L;
 
 		OurCanvas() {
 			super();

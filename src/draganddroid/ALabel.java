@@ -2,7 +2,7 @@ package draganddroid;
 
 import java.awt.Graphics;
 
-public class ALabel extends ArduinoElement {
+public class ALabel extends AndroidElement {
 
 	public ALabel() {
 		
