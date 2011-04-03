@@ -12,5 +12,11 @@ public class AButton extends AndroidElement {
 	public void draw(Graphics g) {
 		
 	}
+
+	@Override
+	public String outputElement() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 		
 }

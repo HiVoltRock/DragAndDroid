@@ -5,6 +5,7 @@ import java.awt.Graphics;
 
 public abstract class AndroidElement {
 	int height, width; 
+	String caption;
 	Frame parent;
 	
 	public AndroidElement()
@@ -14,5 +15,6 @@ public abstract class AndroidElement {
 	
 	public abstract void draw(Graphics g);
 	
+	public abstract String outputElement();
 	
 }

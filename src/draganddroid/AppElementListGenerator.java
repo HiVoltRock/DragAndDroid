@@ -12,7 +12,7 @@ import java.util.Vector;
  * The file will be passed to the android part and that will, parse this file
  * and create those specified elements 
  * 
- * @author Anthony
+ * @author Anthony Favia
  *
  */
 public class AppElementListGenerator {
@@ -29,7 +29,7 @@ public class AppElementListGenerator {
 			PrintWriter out = new PrintWriter(new FileWriter("elementlist.txt"));
 
 			for ( int i = 0; i < elements.size(); i++ ) {
-				// print element info in here using out.println
+				out.println(elements.elementAt(i).outputElement());
 			}
 		
 			out.close();

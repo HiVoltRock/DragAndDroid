@@ -14,4 +14,10 @@ public class ATextBox extends AndroidElement {
 		
 	}
 
+	@Override
+	public String outputElement() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
