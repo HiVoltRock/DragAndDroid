@@ -85,11 +85,9 @@ public class Editor {
 		// Prevents flicker
 		@Override
 		public void update(Graphics g) {
-
 			Image on = createImage(getWidth(), getHeight());
 			print(on.getGraphics());
 			g.drawImage(on, 0, 0, this);
-
 		}
 
 		// paints all of our data
@@ -98,6 +96,7 @@ public class Editor {
 			for ( int i = 0; i < e.elements.size(); i++ ) {
 				e.elements.elementAt(i).draw(g);
 			}
+			this.repaint();
 		}
 
 	}

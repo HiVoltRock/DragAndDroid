@@ -4,8 +4,11 @@ import java.awt.Graphics;
 
 public class AButton extends AndroidElement {
 	
-	public AButton(){
-		
+	public AButton(int x, int y){
+		super.x = x;
+		super.y = y;
+		super.height = 20;
+		super.width = 50;
 	}
 	
 	@Override
@@ -15,8 +18,13 @@ public class AButton extends AndroidElement {
 
 	@Override
 	public String outputElement() {
-		// TODO Auto-generated method stub
-		return null;
+		String output = "";
+		
+		output += "AButton\n";
+		output += super.x + " " + super.y + " " + super.height + " " + super.width + "\n";
+		
+		
+		return output;
 	}
 		
 }

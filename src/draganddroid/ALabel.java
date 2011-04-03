@@ -16,8 +16,13 @@ public class ALabel extends AndroidElement {
 
 	@Override
 	public String outputElement() {
-		// TODO Auto-generated method stub
-		return null;
+		String output = "";
+		
+		output += "ALabel\n";
+		output += super.x + " " + super.y + " " + super.height + " " + super.width + "\n";
+		
+		
+		return output;
 	}
 
 }

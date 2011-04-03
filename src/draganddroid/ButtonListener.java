@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Random;
 
 public class ButtonListener extends MouseAdapter implements ActionListener{
 
@@ -22,9 +23,10 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		Random r = new Random();
 		if(e.getActionCommand().equals("AddButton")){
 			task = addbutton;
-			editor.elements.add(new AButton());
+			editor.elements.add(new AButton(r.nextInt(400), r.nextInt(600)));
 			System.out.println("Add button");
 		}
 		else if(e.getActionCommand().equals("AddLabel")){
