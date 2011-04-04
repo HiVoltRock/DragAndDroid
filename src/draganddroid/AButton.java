@@ -15,6 +15,7 @@ public class AButton extends AndroidElement {
 	@Override
 	public void draw(Graphics g) {
 		g.drawRect(x, y, 100, 50);
+		g.drawString(name, x+10, y+20);
 	}
 
 	@Override

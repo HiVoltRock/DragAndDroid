@@ -39,6 +39,7 @@ public class Editor {
 		JButton AddButton = new JButton("AddButton");
 		JButton AddTextbox = new JButton("AddTextbox");
 		JButton AddLabel = new JButton("AddLabel");
+		JButton Generate = new JButton("Generate");
 		
 		
 		//Das Tool Box Container
@@ -47,12 +48,14 @@ public class Editor {
 		contentpane.add(AddButton);
 		contentpane.add(AddTextbox);
 		contentpane.add(AddLabel);
+		contentpane.add(Generate);
 		
 		//Das Button Listeners
 		ButtonListener bclicked = new ButtonListener(this);
 		AddButton.addActionListener(bclicked);
 		AddTextbox.addActionListener(bclicked);
 		AddLabel.addActionListener(bclicked);
+		Generate.addActionListener(bclicked);
 		
 		//Das Mouse Listeners
 		c.addMouseListener(bclicked);

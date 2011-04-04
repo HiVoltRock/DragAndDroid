@@ -26,7 +26,7 @@ public class AppElementListGenerator {
 	public void GenerateElementList()
 	{
 		try {
-			PrintWriter out = new PrintWriter(new FileWriter("elementlist.txt"));
+			PrintWriter out = new PrintWriter(new FileWriter("\\elementlist.txt"), true);
 
 			for ( int i = 0; i < elements.size(); i++ ) {
 				out.println(elements.elementAt(i).outputElement());

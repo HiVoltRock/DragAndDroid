@@ -4,14 +4,18 @@ import java.awt.Graphics;
 
 public class ATextBox extends AndroidElement {
 
-	public ATextBox(String name) {
+	public ATextBox(String name, int x, int y) {
 		super.name = name;
+		super.x = x;
+		super.y = y;
+		super.height = 20;
+		super.width = 50;
 	}
 	
 	@Override
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
-		
+		g.drawRect(x, y, 100, 50);
+		g.drawString(name, x+10, y+20);
 	}
 
 	@Override
