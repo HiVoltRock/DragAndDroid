@@ -13,6 +13,8 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 	int task = 0;
 	
 	int addbutton = 1;
+	int addlabel = 2;
+	int addtextbox = 3;
 	
 	//Constructor
 	public ButtonListener(Editor e){
@@ -25,16 +27,15 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 		Random r = new Random();
 		if(e.getActionCommand().equals("AddButton")){
 			task = addbutton;
-			editor.elements.add(new AButton("Button" +r.nextInt(10), r.nextInt(400), r.nextInt(600)));
 			System.out.println("Add button");
 		}
 		else if(e.getActionCommand().equals("AddLabel")){
-			task = addbutton;
+			task = addlabel;
 			editor.elements.add(new ALabel("Label" +r.nextInt(10)));
 			System.out.println("Add label");
 		}
 		else if(e.getActionCommand().equals("AddTextbox")){
-			task = addbutton;
+			task = addtextbox;
 			editor.elements.add(new ATextBox("Text Box" +r.nextInt(10)));
 			System.out.println("Add text box");
 		}
@@ -44,7 +45,7 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 	 @Override
 	    public void mouseClicked(MouseEvent k){
 	        if(task == addbutton){
-	            System.out.println("mouseclicked");
+	            editor.elements.add(new AButton("Button",k.getX(),k.getY()));
 	        }
 	       
 	    }
