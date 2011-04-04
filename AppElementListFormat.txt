@@ -1,12 +1,15 @@
 <element type>
+<name>
 <x> <y> <height> <width>
 <caption>
 
 <element type>
+<name>
 <x> <y> <height> <width>
 <caption>
 
 <element type>
+<name>
 <x> <y> <height> <width>
 <caption>
 

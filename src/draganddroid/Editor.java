@@ -59,7 +59,7 @@ public class Editor {
 	    c.addMouseMotionListener(bclicked);
 		
 		//Das Tool Box Properties
-		toolbox.setSize(50,200);
+		toolbox.setSize(100,200);
 		toolbox.setLocation(500, 0);
 		toolbox.setVisible(true);
 		

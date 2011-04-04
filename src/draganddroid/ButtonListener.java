@@ -25,17 +25,17 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 		Random r = new Random();
 		if(e.getActionCommand().equals("AddButton")){
 			task = addbutton;
-			editor.elements.add(new AButton(r.nextInt(400), r.nextInt(600)));
+			editor.elements.add(new AButton("Button" +r.nextInt(10), r.nextInt(400), r.nextInt(600)));
 			System.out.println("Add button");
 		}
 		else if(e.getActionCommand().equals("AddLabel")){
 			task = addbutton;
-			editor.elements.add(new ALabel());
+			editor.elements.add(new ALabel("Label" +r.nextInt(10)));
 			System.out.println("Add label");
 		}
 		else if(e.getActionCommand().equals("AddTextbox")){
 			task = addbutton;
-			editor.elements.add(new ATextBox());
+			editor.elements.add(new ATextBox("Text Box" +r.nextInt(10)));
 			System.out.println("Add text box");
 		}
 		
