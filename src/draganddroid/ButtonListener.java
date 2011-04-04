@@ -19,7 +19,6 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 		this.editor = e;
 		
 	}
-
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -49,6 +48,5 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 	        }
 	       
 	    }
-
 }
  

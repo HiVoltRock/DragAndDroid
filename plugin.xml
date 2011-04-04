@@ -51,7 +51,7 @@
                id="DragAndDroid.toolbars.sampleToolbar">
             <command
                   commandId="DragAndDroid.commands.sampleCommand"
-                  icon="icons/sample.gif"
+                  icon="icons/logo.gif"
                   tooltip="Launch Drag And Droid Editor"
                   id="DragAndDroid.toolbars.sampleCommand">
             </command>

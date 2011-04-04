@@ -3,9 +3,7 @@ package draganddroid;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Graphics;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -45,7 +43,7 @@ public class Editor {
 		
 		//Das Tool Box Container
 		Container contentpane = toolbox.getContentPane();
-		contentpane.setLayout(new GridLayout(8,2));
+		contentpane.setLayout(new GridLayout(4,2));
 		contentpane.add(AddButton);
 		contentpane.add(AddTextbox);
 		contentpane.add(AddLabel);
@@ -61,44 +59,11 @@ public class Editor {
 	    c.addMouseMotionListener(bclicked);
 		
 		//Das Tool Box Properties
-		toolbox.setSize(150,400);
+		toolbox.setSize(50,200);
+		toolbox.setLocation(500, 0);
 		toolbox.setVisible(true);
 		
 		f.pack();
 		f.setVisible(true);		
 	}
-	
-	/*.. Here is das canvas this is where all the drawing will
-	 * take place NAH MEAN
-	 */
-	
-	class OurCanvas extends Canvas {
-
-		private static final long serialVersionUID = 1L;
-		Editor e;
-		
-		OurCanvas(Editor e) {
-			super();
-			this.e = e;
-		}
-
-		// Prevents flicker
-		@Override
-		public void update(Graphics g) {
-			Image on = createImage(getWidth(), getHeight());
-			print(on.getGraphics());
-			g.drawImage(on, 0, 0, this);
-		}
-
-		// paints all of our data
-		@Override
-		public void paint(Graphics g) {
-			for ( int i = 0; i < e.elements.size(); i++ ) {
-				e.elements.elementAt(i).draw(g);
-			}
-			this.repaint();
-		}
-
-	}
-
 }

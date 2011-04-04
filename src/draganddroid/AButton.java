@@ -22,7 +22,7 @@ public class AButton extends AndroidElement {
 		
 		output += "AButton\n";
 		output += super.x + " " + super.y + " " + super.height + " " + super.width + "\n";
-		
+		output += super.caption + "\n";
 		
 		return output;
 	}

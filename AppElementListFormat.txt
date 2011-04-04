@@ -1,0 +1,16 @@
+<element type>
+<x> <y> <height> <width>
+<caption>
+
+<element type>
+<x> <y> <height> <width>
+<caption>
+
+<element type>
+<x> <y> <height> <width>
+<caption>
+
+.
+.
+.
+.
