@@ -24,16 +24,28 @@ public class SaxXMLParser extends DefaultHandler {
     Element tempElement;
     
     Vector<Element> elementList;
+    boolean pName;
+    boolean pX;
+    boolean pCaption;
+    boolean pY;
+    boolean pHeight;
+    boolean pWidth;
     
     public SaxXMLParser(String filename, Vector<Element> el) {
         this.filename = filename;
         elementList = el;
     }
     
-    public Vector<Element> parseDocument() {
+    public void parseDocument() {
         //get a factory
         SAXParserFactory spf = SAXParserFactory.newInstance();
         try {
+            pName = false;
+            pX = false;
+            pCaption = false;
+            pY = false;
+            pHeight = false;
+            pWidth = false;
             //get a new instance of parser
             SAXParser sp = spf.newSAXParser();
             //parse the file and also register this class for call backs
@@ -46,26 +58,58 @@ public class SaxXMLParser extends DefaultHandler {
         } catch (IOException ie) {
             ie.printStackTrace();
         }
-        return elementList;
     }
     
     //Event Handlers
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        tempVal = "";
+        /*
+    	tempVal = "";
+    	*/
         if (qName.equalsIgnoreCase("Element")) {
             tempElement = new Element();
             tempElement.setType(attributes.getValue("type"));
-        }
+        } else if (qName.equalsIgnoreCase("name")) {
+            pName = true;
+        } else if (qName.equalsIgnoreCase("x")) {
+            pX = true;
+        } else if (qName.equalsIgnoreCase("y")) {
+            pY = true;
+	    } else if (qName.equalsIgnoreCase("height")) {
+	        pHeight = true;
+	    } else if (qName.equalsIgnoreCase("width")) {
+	        pWidth = true;
+	    } else if (qName.equalsIgnoreCase("caption")) {
+	    	pCaption = true;
+	    }
     }
 
-    @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
-        tempVal = new String(ch, start, length);
+        //tempVal = new String(ch, start, length);
+    	if (pName) {
+            tempElement.setName(new String(ch, start, length));
+            pName = false;
+        } else if (pX) {
+            tempElement.setX(Integer.parseInt(new String(ch, start, length)));
+            pX = false;
+        } else if (pY) {
+            tempElement.setY(Integer.parseInt(new String(ch, start, length)));
+            pY = false;
+	    } else if (pHeight) {
+	        tempElement.setHeight(Integer.parseInt(new String(ch, start, length)));
+	        pHeight = false;
+	    } else if (pWidth) {
+	        tempElement.setWidth(Integer.parseInt(new String(ch, start, length)));
+	        pWidth = false;
+	    } else if (pCaption) {
+	    	tempElement.setName(new String(ch, start, length));
+	    	pCaption = false;
+	    }
     }
 
-    @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
 
+    	elementList.add(tempElement);
+    	/*
         if (qName.equalsIgnoreCase("Element")) {
             //add it to the list
             elementList.add(tempElement);
@@ -83,6 +127,6 @@ public class SaxXMLParser extends DefaultHandler {
 	    } else if (qName.equalsIgnoreCase("caption")) {
 	    	tempElement.setName(tempVal);
 	    }
-
+	    */
     }
 }

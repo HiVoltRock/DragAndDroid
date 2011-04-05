@@ -1,6 +1,7 @@
 package draganddroid;
 
 import java.awt.Canvas;
+import testing.test;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
@@ -9,9 +10,11 @@ import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+
 public class Editor {
 	
 	Vector<AndroidElement> elements;
+	JFrame f;
 	
 	public Editor() {
 		elements = new Vector<AndroidElement>();
@@ -19,7 +22,7 @@ public class Editor {
 	
 	public void Open()
 	{
-		JFrame f = new JFrame("Drag And Droid");
+		f = new JFrame("Drag And Droid");
 		f.setSize(480, 800);
 		Canvas c = new OurCanvas(this);
 		c.setBackground(Color.WHITE);
@@ -68,5 +71,8 @@ public class Editor {
 		
 		f.pack();
 		f.setVisible(true);		
+		
+		test t = new test();
+		t.testXMLParser(); 
 	}
 }

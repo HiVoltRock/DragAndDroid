@@ -29,7 +29,7 @@ public class AppElementListGenerator {
         try {
         	BufferedWriter out = new BufferedWriter(new FileWriter(Constants.filename));
 
-            out.write("<?xml version='1.0' encoding='UTF-8'>\n");
+            out.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
             out.write("<ElementList>\n");
             
             for (int i = 0; i < elements.size(); i++) {

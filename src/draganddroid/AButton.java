@@ -21,7 +21,7 @@ public class AButton extends AndroidElement {
 	@Override
 	public String outputElementXML() {
 		String output = "";
-		output += "\t<Element type='AButton'>\n";
+		output += "\t<Element type=\"AButton\">\n";
 		output += "\t\t<name>" + super.name + "</name>\n";
 		output += "\t\t<x>" + super.x + "</x>\n";
 		output += "\t\t<y>" + super.y + "</y>\n";

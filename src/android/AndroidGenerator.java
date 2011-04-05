@@ -12,7 +12,7 @@ import global.Constants;
  */
 public class AndroidGenerator {
 
-	Vector<Element> applicationElements;
+	public Vector<Element> applicationElements;
 	SaxXMLParser parser;
 	
 	public AndroidGenerator() {
@@ -22,7 +22,7 @@ public class AndroidGenerator {
 	
 	public void GenerateAndroidCode() {
 		//first populate application elements by parsing XML file
-		applicationElements = parser.parseDocument();
+		parser.parseDocument();
 		
 		// do interpretations and calulations for things like 
 		// above, behind, etc..
