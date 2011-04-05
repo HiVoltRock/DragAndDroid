@@ -1,9 +1,10 @@
 package draganddroid;
 
-import java.io.FileWriter;
 import global.Constants;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Vector;
 
 /**
@@ -26,16 +27,16 @@ public class AppElementListGenerator {
 
     public void GenerateElementList() {
         try {
-            PrintWriter out = new PrintWriter(new FileWriter(Constants.filename), true);
+        	BufferedWriter out = new BufferedWriter(new FileWriter(Constants.filename));
 
-            out.println("<?xml version='1.0' encoding='UTF-8' ?>");
-            out.println("<ElementList>");
+            out.write("<?xml version='1.0' encoding='UTF-8'>\n");
+            out.write("<ElementList>\n");
             
             for (int i = 0; i < elements.size(); i++) {
-                out.println(elements.elementAt(i).outputElementXML());
+                out.write(elements.elementAt(i).outputElementXML());
             }
                
-            out.println("</ElementList>");
+            out.write("</ElementList>\n");
             out.close();
         } catch (IOException e) {
             e.printStackTrace();
