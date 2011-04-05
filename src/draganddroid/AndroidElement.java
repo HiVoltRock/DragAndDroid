@@ -16,6 +16,6 @@ public abstract class AndroidElement {
 	
 	public abstract void draw(Graphics g);
 	
-	public abstract String outputElement();
+	public abstract String outputElementXML();
 	
 }

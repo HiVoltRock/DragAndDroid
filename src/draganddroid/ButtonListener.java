@@ -40,7 +40,7 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 			task = generate;
 			System.out.println("generate");
 			AppElementListGenerator generator = new AppElementListGenerator(editor.elements);
-        	//generator.GenerateElementList();
+        	generator.GenerateElementList();
 		}
 	}
 	

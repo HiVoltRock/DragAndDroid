@@ -19,15 +19,16 @@ public class ATextBox extends AndroidElement {
 	}
 
 	@Override
-	public String outputElement() {
+	public String outputElementXML() {
 		String output = "";
-		
-		output += "ATextBox\n";
-		output += super.name + "\n";
-		output += super.x + " " + super.y + " " + super.height + " " + super.width + "\n";
-		output += super.caption + "\n";		
-		
+		output += "\t<Element type='ATextBox'>\n";
+		output += "\t\t<name>" + super.name + "</name>\n";
+		output += "\t\t<x>" + super.x + "</x>\n";
+		output += "\t\t<y>" + super.y + "</y>\n";
+		output += "\t\t<height>" + super.height + "</height>\n";
+		output += "\t\t<width>" + super.width + "</width>\n";
+		output += "\t\t<caption>" + super.caption + "</caption>\n";
+		output += "\t</Element>\n";
 		return output;
 	}
-
 }

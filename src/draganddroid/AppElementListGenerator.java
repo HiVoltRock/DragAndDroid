@@ -17,25 +17,28 @@ import java.util.Vector;
  */
 public class AppElementListGenerator {
 
-	Vector<AndroidElement> elements;
-	
-	public AppElementListGenerator(Vector<AndroidElement> elements) {
-		this.elements = elements;
-	}
-	
-	public void GenerateElementList()
-	{
-		try {
-			PrintWriter out = new PrintWriter(new FileWriter("\\elementlist.txt"), true);
+    Vector<AndroidElement> elements;
 
-			for ( int i = 0; i < elements.size(); i++ ) {
-				out.println(elements.elementAt(i).outputElement());
-			}
-		
-			out.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+    public AppElementListGenerator(Vector<AndroidElement> elements) {
+        this.elements = elements;
+    }
+
+    public void GenerateElementList() {
+        try {
+            PrintWriter out = new PrintWriter(new FileWriter("elementlist.xml"), true);
+
+            out.println("<?xml version='1.0' encoding='UTF-8' ?>");
+            out.println("<ElementList>");
+            
+            for (int i = 0; i < elements.size(); i++) {
+                out.println(elements.elementAt(i).outputElementXML());
+            }
+               
+            out.println("</ElementList>");
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 	
 }
