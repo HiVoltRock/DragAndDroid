@@ -1,7 +1,7 @@
 package android;
 
 import java.util.Vector;
-
+import global.Constants;
 
 /**
  * This is the class where the xml file will call to be parsed,
@@ -17,7 +17,7 @@ public class AndroidGenerator {
 	
 	public AndroidGenerator() {
 		applicationElements = new Vector<Element>();
-		parser = new SaxXMLParser("elementlist.xml", applicationElements);
+		parser = new SaxXMLParser(Constants.filename, applicationElements);
 	}
 	
 	public void GenerateAndroidCode() {

@@ -1,6 +1,7 @@
 package draganddroid;
 
 import java.io.FileWriter;
+import global.Constants;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Vector;
@@ -25,7 +26,7 @@ public class AppElementListGenerator {
 
     public void GenerateElementList() {
         try {
-            PrintWriter out = new PrintWriter(new FileWriter("elementlist.xml"), true);
+            PrintWriter out = new PrintWriter(new FileWriter(Constants.filename), true);
 
             out.println("<?xml version='1.0' encoding='UTF-8' ?>");
             out.println("<ElementList>");
