@@ -9,6 +9,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 
 
@@ -83,7 +84,8 @@ public class SaxXMLParser extends DefaultHandler {
 	    	pCaption = true;
 	    }
     }
-
+    
+    @Override
     public void characters(char ch[], int start, int length)
     	throws SAXException {
         //tempVal = new String(ch, start, length);
@@ -108,8 +110,9 @@ public class SaxXMLParser extends DefaultHandler {
 	    }
     }
 
+    @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-
+    	
     	elementList.add(tempElement);
     	/*
         if (qName.equalsIgnoreCase("Element")) {
@@ -130,5 +133,23 @@ public class SaxXMLParser extends DefaultHandler {
 	    	tempElement.setName(tempVal);
 	    }
 	    */
+    }
+    // Issue a warning
+    public void warning(SAXParseException exception) {
+        System.err.println("WARNING: line " + exception.getLineNumber() + ": "+
+                           exception.getMessage());
+    }
+
+    // Report a parsing error
+    public void error(SAXParseException exception) {
+        System.err.println("ERROR: line " + exception.getLineNumber() + ": " +
+                           exception.getMessage());
+    }
+
+    // Report a non-recoverable error and exit
+    public void fatalError(SAXParseException exception) throws SAXException {
+        System.err.println("FATAL: line " + exception.getLineNumber() + ": " +
+                           exception.getMessage());
+        throw(exception);
     }
 }
