@@ -61,7 +61,8 @@ public class SaxXMLParser extends DefaultHandler {
     }
     
     //Event Handlers
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+    public void startElement(String uri, String localName, String qName, Attributes attributes)
+            throws SAXException {
         /*
     	tempVal = "";
     	*/
@@ -83,7 +84,8 @@ public class SaxXMLParser extends DefaultHandler {
 	    }
     }
 
-    public void characters(char[] ch, int start, int length) throws SAXException {
+    public void characters(char ch[], int start, int length)
+    	throws SAXException {
         //tempVal = new String(ch, start, length);
     	if (pName) {
             tempElement.setName(new String(ch, start, length));

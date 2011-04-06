@@ -3,6 +3,7 @@ package draganddroid;
 import global.Constants;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Vector;
@@ -27,7 +28,8 @@ public class AppElementListGenerator {
 
     public void GenerateElementList() {
         try {
-        	BufferedWriter out = new BufferedWriter(new FileWriter(Constants.filename));
+        	File file = new File(Constants.filename);
+        	BufferedWriter out = new BufferedWriter(new FileWriter(file));
 
             out.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
             out.write("<ElementList>\n");
@@ -38,6 +40,8 @@ public class AppElementListGenerator {
                
             out.write("</ElementList>\n");
             out.close();
+            System.out.println("file loc -> " + file.getAbsolutePath());
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
