@@ -6,9 +6,12 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.io.File;
+import java.io.IOException;
 import java.util.Vector;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
 import testing.test;
@@ -28,6 +31,7 @@ public class Editor {
 	Vector<AndroidElement> elements;
 	JFrame f;
 	boolean firstOpen;
+	String rootDir; //root directory of the desired Android app
 	
 	public Editor() {
 		elements = new Vector<AndroidElement>();
@@ -81,7 +85,16 @@ public class Editor {
 		}
 		else //first open
 		{
-			//TODO: Ask user for the directory of their Android project
+			final JFileChooser fc = new JFileChooser();
+			fc.setDialogTitle("Please Select root directory of Android project");
+			fc.setCurrentDirectory(new java.io.File("."));
+			fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); //we only want the user to select a directory
+			fc.setAcceptAllFileFilterUsed(false);
+			fc.showOpenDialog(null);
+			
+			this.rootDir = fc.getSelectedFile().toString();
+			System.out.println("Directory: " + rootDir);
+			firstOpen = false;
 		}
 			
 		f.pack();
