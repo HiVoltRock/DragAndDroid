@@ -1,6 +1,14 @@
 package global;
 
 public class Constants {
-	public static final String filename = "elementList.xml";//"c:\\Users\\Anthony\\Desktop\\elementList.xml";//"/../../../data/elementList.xml";
-		//"c:\\Users\\Anthony\\Desktop\\elementList.xml";
+	public static final String filename = "elementList.xml";
+	
+	public static final int AButtonWidth = 100;
+	public static final int AButtonHeight = 50;
+	
+	public static final int ALabelWidth = 100;
+	public static final int ALabelHeight = 50;
+	
+	public static final int ATextBoxWidth = 100;
+	public static final int ATextBoxHeight = 50;
 }

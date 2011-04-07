@@ -14,6 +14,9 @@ import org.xml.sax.helpers.DefaultHandler;
 
 
 /**
+ *Parse the xml file created by the editor
+ *and create a list of Elements to be added
+ *to the actual android application
  *
  * @author Anthony Favia
  */

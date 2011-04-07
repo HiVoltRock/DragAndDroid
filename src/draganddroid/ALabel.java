@@ -1,5 +1,7 @@
 package draganddroid;
 
+import global.Constants;
+
 import java.awt.Graphics;
 
 public class ALabel extends AndroidElement {
@@ -14,7 +16,7 @@ public class ALabel extends AndroidElement {
 	
 	@Override
 	public void draw(Graphics g) {
-		g.drawRect(x, y, 100, 50);
+		g.drawRect(x, y, Constants.ALabelWidth, Constants.ALabelHeight);
 		g.drawString(name, x+10, y+20);	
 	}
 

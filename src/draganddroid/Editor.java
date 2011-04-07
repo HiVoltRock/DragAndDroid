@@ -1,7 +1,8 @@
 package draganddroid;
 
+import global.Constants;
+
 import java.awt.Canvas;
-import testing.test;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
@@ -10,14 +11,19 @@ import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import testing.test;
+import android.Element;
+import android.SaxXMLParser;
 
 public class Editor {
 	
 	Vector<AndroidElement> elements;
 	JFrame f;
+	boolean firstOpen;
 	
 	public Editor() {
 		elements = new Vector<AndroidElement>();
+		firstOpen = true;
 	}
 	
 	public void Open()
@@ -29,21 +35,12 @@ public class Editor {
 		c.setSize(480,800);
 		f.add(c);
 		
-		//Editor E = new Editor();
-		
-		/*
-		AJPanel frame = new AJPanel();
-        frame.pack();
-        frame.setVisible(true);
-		*/
-		
 		//Das Tool Box
 		JFrame toolbox = new JFrame("ToolBox");
 		JButton AddButton = new JButton("AddButton");
 		JButton AddTextbox = new JButton("AddTextbox");
 		JButton AddLabel = new JButton("AddLabel");
-		JButton Generate = new JButton("Generate");
-		
+		JButton Generate = new JButton("Generate");	
 		
 		//Das Tool Box Container
 		Container contentpane = toolbox.getContentPane();
@@ -69,10 +66,30 @@ public class Editor {
 		toolbox.setLocation(500, 0);
 		toolbox.setVisible(true);
 		
+		// get any new elements from xml that were added manually
+		if (!firstOpen) CheckForNewElements();
+			
 		f.pack();
 		f.setVisible(true);		
 		
 		test t = new test();
 		t.testXMLParser(); 
+	}
+
+	/**
+	 * when editor gets launched a second time, check for any new additions to 
+	 * xml file, as in any new elements.
+	 * 
+	 * still needs to be completed
+	 */
+	private void CheckForNewElements() {
+		firstOpen = false;
+		
+		Vector<Element> e = new Vector<Element>();
+		
+		SaxXMLParser parser = new SaxXMLParser(Constants.filename, e);
+		
+		parser.parseDocument();
+		
 	}
 }

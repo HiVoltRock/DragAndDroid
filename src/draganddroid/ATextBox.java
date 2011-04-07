@@ -1,5 +1,7 @@
 package draganddroid;
 
+import global.Constants;
+
 import java.awt.Graphics;
 
 public class ATextBox extends AndroidElement {
@@ -14,7 +16,7 @@ public class ATextBox extends AndroidElement {
 	
 	@Override
 	public void draw(Graphics g) {
-		g.drawRect(x, y, 100, 50);
+		g.drawRect(x, y, Constants.ATextBoxWidth, Constants.ATextBoxHeight);
 		g.drawString(name, x+10, y+20);
 	}
 
