@@ -7,12 +7,12 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.io.File;
-import java.io.IOException;
 import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import testing.test;
 import android.Element;
@@ -32,6 +32,7 @@ public class Editor {
 	JFrame f;
 	boolean firstOpen;
 	String rootDir; //root directory of the desired Android app
+	String xmlDir;  //directory of main.xml in the Android app
 	
 	public Editor() {
 		elements = new Vector<AndroidElement>();
@@ -85,16 +86,27 @@ public class Editor {
 		}
 		else //first open
 		{
-			final JFileChooser fc = new JFileChooser();
-			fc.setDialogTitle("Please Select root directory of Android project");
-			fc.setCurrentDirectory(new java.io.File("."));
-			fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); //we only want the user to select a directory
-			fc.setAcceptAllFileFilterUsed(false);
-			fc.showOpenDialog(null);
+			do
+			{
+				//create file chooser to get root directory of Android app
+				final JFileChooser fc = new JFileChooser();
+				fc.setDialogTitle("Please Select root directory of Android project");
+				fc.setCurrentDirectory(new java.io.File("."));
+				fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); //we only want the user to select a directory
+				fc.setAcceptAllFileFilterUsed(false); //we don't want to accept any file
+				fc.showOpenDialog(null);
+				
+				this.rootDir = fc.getSelectedFile().toString();
+				System.out.println("Directory: " + rootDir);
+				firstOpen = false;
+				
+				//checking to make sure we're in the right directory!
+				File xmlFile = new File(rootDir + "/res/layout/main.xml");
+			}
+			while(!xmlExists(rootDir)); //making sure the user selected a valid directory and we can find any necessary files
+										//and re-prompting if they should select again
+
 			
-			this.rootDir = fc.getSelectedFile().toString();
-			System.out.println("Directory: " + rootDir);
-			firstOpen = false;
 		}
 			
 		f.pack();
@@ -119,5 +131,25 @@ public class Editor {
 		
 		parser.parseDocument();
 		
+	}
+	
+	private boolean xmlExists(String root)
+	{
+		//checking to make sure we're in the right directory!
+		File xmlFile = new File(rootDir + "/res/layout/main.xml");
+		
+		if(xmlFile.exists())
+		{
+			this.xmlDir = rootDir + "/res/layout/main.xml";
+			firstOpen = false;
+			return true;
+			
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(f, "We can't seem to find your Android files. Are you in the right directory?");
+		}
+		
+		return false;
 	}
 }
