@@ -2,6 +2,7 @@ package draganddroid;
 
 import global.Constants;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class AButton extends AndroidElement {
@@ -16,8 +17,11 @@ public class AButton extends AndroidElement {
 	
 	@Override
 	public void draw(Graphics g) {
-		g.drawRect(x, y, Constants.AButtonWidth, Constants.AButtonHeight);
+		g.setColor(Color.LIGHT_GRAY);
+		g.fillRect(x, y, Constants.AButtonWidth, Constants.AButtonHeight);
+		g.setColor(Color.BLACK);
 		g.drawString(name, x+10, y+20);
+		
 	}
 
 	@Override

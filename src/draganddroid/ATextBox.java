@@ -2,6 +2,7 @@ package draganddroid;
 
 import global.Constants;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class ATextBox extends AndroidElement {
@@ -16,7 +17,9 @@ public class ATextBox extends AndroidElement {
 	
 	@Override
 	public void draw(Graphics g) {
-		g.drawRect(x, y, Constants.ATextBoxWidth, Constants.ATextBoxHeight);
+		g.setColor(new Color(217,163,151));
+		g.fillRect(x, y, Constants.ATextBoxWidth, Constants.ATextBoxHeight);
+		g.setColor(Color.BLACK);
 		g.drawString(name, x+10, y+20);
 	}
 

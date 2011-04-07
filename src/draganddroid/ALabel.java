@@ -2,6 +2,7 @@ package draganddroid;
 
 import global.Constants;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class ALabel extends AndroidElement {
@@ -16,7 +17,9 @@ public class ALabel extends AndroidElement {
 	
 	@Override
 	public void draw(Graphics g) {
-		g.drawRect(x, y, Constants.ALabelWidth, Constants.ALabelHeight);
+		g.setColor(new Color(157,211,207));
+		g.fillRect(x, y, Constants.ALabelWidth, Constants.ALabelHeight);
+		g.setColor(Color.BLACK);
 		g.drawString(name, x+10, y+20);	
 	}
 

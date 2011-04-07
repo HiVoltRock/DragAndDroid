@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JOptionPane;
+
 public class ButtonListener extends MouseAdapter implements ActionListener{
 
 	Editor editor;// = new Editor();
@@ -26,19 +28,15 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("AddButton")){
 			task = addbutton;
-			System.out.println("Add button");
 		}
 		else if(e.getActionCommand().equals("AddLabel")){
 			task = addlabel;
-			System.out.println("Add label");
 		}
 		else if(e.getActionCommand().equals("AddTextbox")){
 			task = addtextbox;
-			System.out.println("Add text box");
 		}
 		else if(e.getActionCommand().equals("Generate")){
 			task = generate;
-			System.out.println("generate");
 			AppElementListGenerator generator = new AppElementListGenerator(editor.elements);
         	generator.GenerateElementList();
 		}
@@ -47,13 +45,25 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 	 @Override
     public void mouseClicked(MouseEvent k){
         if(task == addbutton){
-            editor.elements.add(new AButton("Button",k.getX(),k.getY()));
+        	String name = JOptionPane.showInputDialog(null,
+        			  "What is the name of the button?",
+        			  "Enter th ename of the button",
+        			  JOptionPane.QUESTION_MESSAGE);
+            editor.elements.add(new AButton(name,k.getX(),k.getY()));
         }
         else if(task == addlabel){
-            editor.elements.add(new ALabel("Label",k.getX(),k.getY()));
+        	String name = JOptionPane.showInputDialog(null,
+      			  "What is the name of the label?",
+      			  "Enter th ename of the label",
+      			  JOptionPane.QUESTION_MESSAGE);
+            editor.elements.add(new ALabel(name,k.getX(),k.getY()));
         }
         else if(task == addtextbox){
-            editor.elements.add(new ATextBox("Text Box",k.getX(),k.getY()));
+        	String name = JOptionPane.showInputDialog(null,
+      			  "What is the name of the text box?",
+      			  "Enter th ename of the text box",
+      			  JOptionPane.QUESTION_MESSAGE);
+            editor.elements.add(new ATextBox(name,k.getX(),k.getY()));
         }	       
     }
 }

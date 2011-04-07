@@ -28,11 +28,11 @@ public class Editor {
 	
 	public void Open()
 	{
-		f = new JFrame("Drag And Droid");
+		f = new JFrame("Drag And Droid Editor");
 		f.setSize(480, 800);
 		Canvas c = new OurCanvas(this);
 		c.setBackground(Color.WHITE);
-		c.setSize(480,800);
+		c.setSize(Constants.EditorWidth, Constants.EditorHeight);
 		f.add(c);
 		
 		//Das Tool Box
