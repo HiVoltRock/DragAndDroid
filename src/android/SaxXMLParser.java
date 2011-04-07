@@ -17,7 +17,7 @@ import org.xml.sax.helpers.DefaultHandler;
  *
  * @author Anthony Favia
  */
-public class SaxXMLParser extends DefaultHandler {
+public class SaxXMLParser {
 
     private String tempVal;
     String filename;
@@ -33,6 +33,7 @@ public class SaxXMLParser extends DefaultHandler {
     boolean pWidth;
     
     public SaxXMLParser(String filename, Vector<Element> el) {
+    	super();
         this.filename = filename;
         elementList = el;
     }
@@ -49,8 +50,10 @@ public class SaxXMLParser extends DefaultHandler {
             pWidth = false;
             //get a new instance of parser
             SAXParser sp = spf.newSAXParser();
+            
+            DefaultHandler dh = new DefaultHandler();
             //parse the file and also register this class for call backs
-            sp.parse(filename, this);
+            sp.parse(filename, dh);
 
         } catch (SAXException se) {
             se.printStackTrace();
@@ -85,7 +88,6 @@ public class SaxXMLParser extends DefaultHandler {
 	    }
     }
     
-    @Override
     public void characters(char ch[], int start, int length)
     	throws SAXException {
         //tempVal = new String(ch, start, length);
@@ -110,7 +112,6 @@ public class SaxXMLParser extends DefaultHandler {
 	    }
     }
 
-    @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
     	
     	elementList.add(tempElement);
