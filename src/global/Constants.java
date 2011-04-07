@@ -1,5 +1,13 @@
 package global;
 
+/**
+ * All global constant values should be
+ * placed in the class so that any changes can be made 
+ * more easily
+ *  
+ * @author afavia.student
+ *
+ */
 public class Constants {
 	public static final String filename = "elementList.xml";
 	

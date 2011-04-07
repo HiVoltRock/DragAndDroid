@@ -22,7 +22,6 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 public class SaxXMLParser extends DefaultHandler {
 
-    private String tempVal;
     String filename;
     
     Element tempElement;
@@ -53,7 +52,6 @@ public class SaxXMLParser extends DefaultHandler {
             //get a new instance of parser
             SAXParser sp = spf.newSAXParser();
             
-            //DefaultHandler dh = new DefaultHandler();
             //parse the file and also register this class for call backs
             sp.parse(filename, this);
 
@@ -70,9 +68,6 @@ public class SaxXMLParser extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes)
             throws SAXException {
-        /*
-    	tempVal = "";
-    	*/
     	System.out.println("STARTELEMENT");
         if (qName.equalsIgnoreCase("Element")) {
             tempElement = new Element();
@@ -116,28 +111,9 @@ public class SaxXMLParser extends DefaultHandler {
 	    }
     }
 
-    public void endElement(String uri, String localName, String qName) throws SAXException {
-    	
+    public void endElement(String uri, String localName, String qName) 
+    	throws SAXException {
     	elementList.add(tempElement);
-    	/*
-        if (qName.equalsIgnoreCase("Element")) {
-            //add it to the list
-            elementList.add(tempElement);
-
-        } else if (qName.equalsIgnoreCase("name")) {
-            tempElement.setName(tempVal);
-        } else if (qName.equalsIgnoreCase("x")) {
-            tempElement.setX(Integer.parseInt(tempVal));
-        } else if (qName.equalsIgnoreCase("y")) {
-            tempElement.setY(Integer.parseInt(tempVal));
-	    } else if (qName.equalsIgnoreCase("height")) {
-	        tempElement.setHeight(Integer.parseInt(tempVal));
-	    } else if (qName.equalsIgnoreCase("width")) {
-	        tempElement.setWidth(Integer.parseInt(tempVal));
-	    } else if (qName.equalsIgnoreCase("caption")) {
-	    	tempElement.setName(tempVal);
-	    }
-	    */
     }
     // Issue a warning
     public void warning(SAXParseException exception) {

@@ -22,7 +22,7 @@ public class test {
 		for ( int i = 0; i < a.applicationElements.size(); i++ )
 		{
 			System.out.println(a.applicationElements.elementAt(i).getType() + " " +
-					a.applicationElements.elementAt(i).getCaption());
+					a.applicationElements.elementAt(i).getX());
 		}	
 	}
 }

@@ -15,6 +15,14 @@ import testing.test;
 import android.Element;
 import android.SaxXMLParser;
 
+/**
+ * launched when plugin menu button or Launch Editor 
+ * is clicked. Launches frame where user can edit
+ * desired android app elements 
+ * 
+ * @author afavia.student
+ *
+ */
 public class Editor {
 	
 	Vector<AndroidElement> elements;
