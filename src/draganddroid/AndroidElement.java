@@ -18,4 +18,6 @@ public abstract class AndroidElement {
 	
 	public abstract String outputElementXML();
 	
+	public abstract boolean isInside(int x, int y);
+	
 }

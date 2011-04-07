@@ -9,7 +9,8 @@ import javax.swing.JOptionPane;
 
 public class ButtonListener extends MouseAdapter implements ActionListener{
 
-	Editor editor;// = new Editor();
+	Editor editor;
+	
 	//The following variables control which button is active
 	int task = 0;
 	

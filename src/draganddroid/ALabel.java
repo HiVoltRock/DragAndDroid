@@ -37,4 +37,16 @@ public class ALabel extends AndroidElement {
 		return output;
 	}
 
+	@Override
+	public boolean isInside(int x, int y) {
+		for ( int i = this.x; i < this.x+width; i++ ) {
+			for ( int j = this.y; j < this.y + height; j++ ) {
+				if ( x == i && y == j ) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 }
