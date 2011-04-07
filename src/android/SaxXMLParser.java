@@ -72,7 +72,14 @@ public class SaxXMLParser extends DefaultHandler {
         if (qName.equalsIgnoreCase("Element")) {
             tempElement = new Element();
             tempElement.setType(attributes.getValue("type"));
-        } else if (qName.equalsIgnoreCase("name")) {
+            tempElement.setType(attributes.getValue("name"));
+            tempElement.setType(attributes.getValue("x"));
+            tempElement.setType(attributes.getValue("y"));
+            tempElement.setType(attributes.getValue("height"));
+            tempElement.setType(attributes.getValue("width"));
+            tempElement.setType(attributes.getValue("caption"));
+        }
+        /*else if (qName.equalsIgnoreCase("name")) {
             pName = true;
         } else if (qName.equalsIgnoreCase("x")) {
             pX = true;
@@ -85,11 +92,13 @@ public class SaxXMLParser extends DefaultHandler {
 	    } else if (qName.equalsIgnoreCase("caption")) {
 	    	pCaption = true;
 	    }
+	    */
     }
     
     public void characters(char ch[], int start, int length)
     	throws SAXException {
         //tempVal = new String(ch, start, length);
+    	/*
     	if (pName) {
             tempElement.setName(new String(ch, start, length));
             pName = false;
@@ -109,6 +118,7 @@ public class SaxXMLParser extends DefaultHandler {
 	    	tempElement.setName(new String(ch, start, length));
 	    	pCaption = false;
 	    }
+	    */
     }
 
     public void endElement(String uri, String localName, String qName) 

@@ -27,13 +27,13 @@ public class AButton extends AndroidElement {
 	@Override
 	public String outputElementXML() {
 		String output = "";
-		output += "\t<Element type=\"AButton\">\n";
-		output += "\t\t<name>" + super.name + "</name>\n";
-		output += "\t\t<x>" + super.x + "</x>\n";
-		output += "\t\t<y>" + super.y + "</y>\n";
-		output += "\t\t<height>" + super.height + "</height>\n";
-		output += "\t\t<width>" + super.width + "</width>\n";
-		output += "\t\t<caption>" + super.caption + "</caption>\n";
+		output += "\t<Element type=\"AButton\" ";
+		output += "\"name\"=" + super.name + " ";
+		output += "\"x\"=" + super.x + " ";
+		output += "\"y\"=" + super.y + " ";
+		output += "\"height\"=" + super.height + " ";
+		output += "\"width\"=" + super.width + " ";
+		output += "\"caption\"=" + super.caption + ">\n";
 		output += "\t</Element>\n";
 		return output;
 	}
