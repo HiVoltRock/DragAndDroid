@@ -75,7 +75,14 @@ public class Editor {
 		toolbox.setVisible(true);
 		
 		// get any new elements from xml that were added manually
-		if (!firstOpen) CheckForNewElements();
+		if (!firstOpen) 
+		{
+			CheckForNewElements();
+		}
+		else //first open
+		{
+			//TODO: Ask user for the directory of their Android project
+		}
 			
 		f.pack();
 		f.setVisible(true);		
