@@ -11,8 +11,8 @@ public class ATextBox extends AndroidElement {
 		super.name = name;
 		super.x = x;
 		super.y = y;
-		super.height = 20;
-		super.width = 50;
+		super.height = Constants.ATextBoxWidth;
+		super.width = Constants.ATextBoxHeight;
 	}
 	
 	@Override
