@@ -2,7 +2,7 @@ package android;
 
 import java.io.IOException;
 import java.util.Vector;
-import java.util.jar.Attributes;
+import org.xml.sax.Attributes;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -20,7 +20,7 @@ import org.xml.sax.helpers.DefaultHandler;
  *
  * @author Anthony Favia
  */
-public class SaxXMLParser {
+public class SaxXMLParser extends DefaultHandler {
 
     private String tempVal;
     String filename;
@@ -36,7 +36,6 @@ public class SaxXMLParser {
     boolean pWidth;
     
     public SaxXMLParser(String filename, Vector<Element> el) {
-    	super();
         this.filename = filename;
         elementList = el;
     }
@@ -54,9 +53,9 @@ public class SaxXMLParser {
             //get a new instance of parser
             SAXParser sp = spf.newSAXParser();
             
-            DefaultHandler dh = new DefaultHandler();
+            //DefaultHandler dh = new DefaultHandler();
             //parse the file and also register this class for call backs
-            sp.parse(filename, dh);
+            sp.parse(filename, this);
 
         } catch (SAXException se) {
             se.printStackTrace();
@@ -68,11 +67,13 @@ public class SaxXMLParser {
     }
     
     //Event Handlers
+    @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes)
             throws SAXException {
         /*
     	tempVal = "";
     	*/
+    	System.out.println("STARTELEMENT");
         if (qName.equalsIgnoreCase("Element")) {
             tempElement = new Element();
             tempElement.setType(attributes.getValue("type"));
