@@ -10,6 +10,10 @@ import javax.swing.JOptionPane;
 public class ButtonListener extends MouseAdapter implements ActionListener{
 
 	Editor editor;
+                OurCanvas ourcanvasref;
+	
+	int x,y; //some coordinates to use
+	int currentItemDragged;
 	
 	//The following variables control which button is active
 	int task = 0;
@@ -67,5 +71,48 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
             editor.elements.add(new ATextBox(name,k.getX(),k.getY()));
         }	       
     }
+	 /*..
+	  * The mouse gets pressed anywhere on the screen this function then loops
+	  * through our list of elements to find a match. It stores the x and y
+	  * relative to the mouse click in the x and y coordinates and stores the
+	  * element index in currentItemDragged
+	  */
+	 @Override
+	 public void mousePressed(MouseEvent k){
+		 for(int i = 0; i<editor.elements.size(); i++){
+			 if(editor.elements.elementAt(i).isInside(k.getX(), k.getY())){
+				 x = editor.elements.elementAt(i).getX();
+				 y = editor.elements.elementAt(i).getY();
+				 currentItemDragged = i;
+				 
+			 }
+		 }
+	 }
+	 
+	 /*..
+	  * This function gets called when the mouse is pressed and dragged. It uses
+	  * the currentItemDragged index to simply move the coordinates of the said index.
+	  * I added the setX and setY functions to our AndroidElement class for this
+	  * functionality. Every change in x or y passes the new x and y and also repaints
+	  * the canvas.
+	  */
+	 @Override
+	 public void mouseDragged(MouseEvent k){
+		 editor.elements.elementAt(currentItemDragged).setX(k.getX());
+		 editor.elements.elementAt(currentItemDragged).setY(k.getY());
+		 ourcanvasref.repaint();
+		 
+	 }
+	 
+	 /*..
+	  * We set the currentItemDragged to -1, this way if the user presses
+	  * and clicks off the button it doesn't spontaneously move the previously
+	  * dragged button. Repaint is also needed to be safe.
+	  */
+	 @Override
+	 public void mouseReleased(MouseEvent k){
+		 currentItemDragged = -1;
+		 ourcanvasref.repaint();
+	 }
 }
  
