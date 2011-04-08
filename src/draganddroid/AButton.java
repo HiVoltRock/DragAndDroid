@@ -48,5 +48,29 @@ public class AButton extends AndroidElement {
 			}
 		}
 		return false;
-	}	
+	}
+
+	@Override
+	public int getX() {
+		// TODO Auto-generated method stub
+		return this.x;
+	}
+
+	@Override
+	public int getY() {
+		// TODO Auto-generated method stub
+		return this.y;
+	}
+
+	@Override
+	public void setX(int x) {
+		super.x = x;
+		
+	}
+
+	@Override
+	public void setY(int y) {
+		super.y = y;
+		
+	}
 }
