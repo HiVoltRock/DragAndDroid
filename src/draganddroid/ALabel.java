@@ -27,12 +27,12 @@ public class ALabel extends AndroidElement {
 	public String outputElementXML() {
 		String output = "";
 		output += "\t<Element type=\"ALebel\" ";
-		output += "\"name\"=" + super.name + " ";
-		output += "\"x\"=" + super.x + " ";
-		output += "\"y\"=" + super.y + " ";
-		output += "\"height\"=" + super.height + " ";
-		output += "\"width\"=" + super.width + " ";
-		output += "\"caption\"=" + super.caption + ">\n";
+		output += "name=\"" + super.name + "\" ";
+		output += "x=\"" + super.x + "\" ";
+		output += "y=\"" + super.y + "\" ";
+		output += "height=\"" + super.height + "\" ";
+		output += "width=\"" + super.width + "\" ";
+		output += "caption=\"" + super.caption + "\">\n";
 		output += "\t</Element>\n";
 		return output;
 	}

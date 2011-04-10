@@ -28,12 +28,12 @@ public class AButton extends AndroidElement {
 	public String outputElementXML() {
 		String output = "";
 		output += "\t<Element type=\"AButton\" ";
-		output += "\"name\"=" + super.name + " ";
-		output += "\"x\"=" + super.x + " ";
-		output += "\"y\"=" + super.y + " ";
-		output += "\"height\"=" + super.height + " ";
-		output += "\"width\"=" + super.width + " ";
-		output += "\"caption\"=" + super.caption + ">\n";
+		output += "name=\"" + super.name + "\" ";
+		output += "x=\"" + super.x + "\" ";
+		output += "y=\"" + super.y + "\" ";
+		output += "height=\"" + super.height + "\" ";
+		output += "width=\"" + super.width + "\" ";
+		output += "caption=\"" + super.caption + "\">\n";
 		output += "\t</Element>\n";
 		return output;
 	}
