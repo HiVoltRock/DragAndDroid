@@ -28,7 +28,13 @@ public class AppElementListGenerator {
 
     public void GenerateElementList() {
         try {
-        	File file = new File(Constants.filename);
+        	//File file = new File(Constants.filename);
+        	File file = File.createTempFile(Constants.filenamePrefix, Constants.filenameSuffix);
+        	file.deleteOnExit();
+        	//Constants.filename = file.getName();
+        	Constants.filename = file.getAbsolutePath();
+        	
+        	System.out.println(file.getName());
         	BufferedWriter out = new BufferedWriter(new FileWriter(file));
 
             out.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");

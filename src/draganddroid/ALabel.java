@@ -26,7 +26,7 @@ public class ALabel extends AndroidElement {
 	@Override
 	public String outputElementXML() {
 		String output = "";
-		output += "\t<Element type=\"ALebel\" ";
+		output += "\t<Element type=\"ALabel\" ";
 		output += "name=\"" + super.name + "\" ";
 		output += "x=\"" + super.x + "\" ";
 		output += "y=\"" + super.y + "\" ";

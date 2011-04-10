@@ -30,5 +30,4 @@ class OurCanvas extends Canvas {
 		}
 		this.repaint();
 	}
-
 }

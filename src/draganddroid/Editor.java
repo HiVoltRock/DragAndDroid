@@ -51,6 +51,7 @@ public class Editor {
 			// put check in method so that it can be easily commented out 
 			// during testing
 			//CheckForAndroidApp();	
+			firstOpen = false;
 		}
 		
 		f = new JFrame("Drag And Droid Editor");
@@ -95,8 +96,8 @@ public class Editor {
 		f.pack();
 		f.setVisible(true);		
 		
-		test t = new test();
-		t.testXMLParser(); 
+		//test t = new test();
+		//t.testXMLParser(); 
 	}
 
 	/**
@@ -106,13 +107,15 @@ public class Editor {
 	 * still needs to be completed
 	 */
 	private void CheckForNewElements() {
-		
+		System.out.println("Checking for new elements");
 		Vector<Element> e = new Vector<Element>();
 		
 		SaxXMLParser parser = new SaxXMLParser(Constants.filename, e);
 		
 		parser.parseDocument();
 		
+		test t = new test();
+		t.testXMLParser(); 
 	}
 	
 	private void CheckForAndroidApp() {
