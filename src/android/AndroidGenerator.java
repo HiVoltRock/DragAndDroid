@@ -42,5 +42,8 @@ public class AndroidGenerator
 		
 		// generate appropriate android code
 		
+		
+		//re-update xml - ANTHONY
+		
 	}
 }
