@@ -12,7 +12,9 @@ import android.AndroidGenerator;
 public class ButtonListener extends MouseAdapter implements ActionListener{
 
 	Editor editor;
-                OurCanvas ourcanvasref;
+    OurCanvas ourcanvasref;
+	AppElementListGenerator generator;
+	AndroidGenerator andGen;
 	
 	int x,y; //some coordinates to use
 	int currentItemDragged;
@@ -28,6 +30,8 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 	//Constructor
 	public ButtonListener(Editor e){
 		this.editor = e;
+		generator = new AppElementListGenerator(this.editor.elements);
+		andGen = new AndroidGenerator();
 		
 	}
 	
@@ -44,8 +48,7 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 		}
 		else if(e.getActionCommand().equals("Generate")){
 			task = generate;
-			AppElementListGenerator generator = new AppElementListGenerator(editor.elements);
-			AndroidGenerator andGen = new AndroidGenerator();
+
         	
 			//generates the temp xml file
 			generator.GenerateElementList();
