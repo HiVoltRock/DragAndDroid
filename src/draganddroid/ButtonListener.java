@@ -49,16 +49,12 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 		}
 		else if(e.getActionCommand().equals("Generate")){
 			task = generate;
-
-			
+		
 			//generates the temp xml file
 			generator.GenerateElementList();
-			/*
+			
 			//generates the main.xml file in /res/layout
         	andGen.GenerateAndroidCode();
-        	*/
-			test t = new test();
-			t.testXMLParser();
 		}
 	}
 	
@@ -67,21 +63,21 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
         if(task == addbutton){
         	String name = JOptionPane.showInputDialog(null,
         			  "What is the name of the button?",
-        			  "Enter th ename of the button",
+        			  "Enter the name of the button",
         			  JOptionPane.QUESTION_MESSAGE);
             editor.elements.add(new AButton(name,k.getX(),k.getY()));
         }
         else if(task == addlabel){
         	String name = JOptionPane.showInputDialog(null,
       			  "What is the name of the label?",
-      			  "Enter th ename of the label",
+      			  "Enter the name of the label",
       			  JOptionPane.QUESTION_MESSAGE);
             editor.elements.add(new ALabel(name,k.getX(),k.getY()));
         }
         else if(task == addtextbox){
         	String name = JOptionPane.showInputDialog(null,
       			  "What is the name of the text box?",
-      			  "Enter th ename of the text box",
+      			  "Enter the name of the text box",
       			  JOptionPane.QUESTION_MESSAGE);
             editor.elements.add(new ATextBox(name,k.getX(),k.getY()));
         }	       
