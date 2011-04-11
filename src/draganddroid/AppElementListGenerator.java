@@ -29,11 +29,7 @@ public class AppElementListGenerator {
     public void GenerateElementList() 
     {
         try {
-        	//File file = new File(Constants.filename);
-        	File file = File.createTempFile(Constants.filenamePrefix, Constants.filenameSuffix);
-        	file.deleteOnExit();
-        	//Constants.filename = file.getName();
-        	Constants.filename = file.getAbsolutePath();
+        	File file = new File(Constants.filename);
         	
         	System.out.println(file.getName());
         	BufferedWriter out = new BufferedWriter(new FileWriter(file));

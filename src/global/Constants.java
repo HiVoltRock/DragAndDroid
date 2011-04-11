@@ -9,9 +9,7 @@ package global;
  *
  */
 public class Constants {
-	public static String filename = "";
-	public static final String filenamePrefix = "elementList";
-	public static final String filenameSuffix = ".xml";
+	public static final String filename = "elementList.xml";
 	
 	public static final int AButtonWidth = 100;
 	public static final int AButtonHeight = 50;
