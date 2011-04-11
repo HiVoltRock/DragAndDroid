@@ -11,13 +11,15 @@ import android.AndroidGenerator;
  */
 public class test {
 
+	String xml = "main.xml";
+	
 	public test() {
 		
 	}
 	
 	public void testXMLParser() {
 		AndroidGenerator a = new AndroidGenerator();
-		a.GenerateAndroidCode();
+		a.GenerateAndroidCode(xml);
 		for ( int i = 0; i < a.applicationElements.size(); i++ )
 		{
 			System.out.println(a.applicationElements.elementAt(i).getType() + " " +

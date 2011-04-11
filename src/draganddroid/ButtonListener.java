@@ -52,7 +52,7 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 			generator.GenerateElementList();
 			
 			//generates the main.xml file in /res/layout
-        	andGen.GenerateAndroidCode();
+        	andGen.GenerateAndroidCode(editor.xmlDir);
 		}
 	}
 	

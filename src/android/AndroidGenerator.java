@@ -25,7 +25,7 @@ public class AndroidGenerator
 		parser = new SaxXMLParserForAndroid(Constants.filename, applicationElements);
 	}
 	
-	public void GenerateAndroidCode() 
+	public void GenerateAndroidCode(String xmlDir) 
 	{
 		//first populate application elements by parsing XML file
 		parser.parseDocument();
@@ -44,7 +44,15 @@ public class AndroidGenerator
 		
 		
 		// generate appropriate android code
-		
+		xml = new File(xmlDir);
+		if(xml.canWrite())
+		{
+			System.out.println("We can write to the xml file directly");
+		}
+		else
+		{
+			System.out.println("We can not write to the xml file directly");
+		}
 		
 		
 		//re-update xml - ANTHONY
