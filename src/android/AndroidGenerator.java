@@ -1,7 +1,9 @@
 package android;
 
-import java.util.Vector;
 import global.Constants;
+
+import java.io.File;
+import java.util.Vector;
 
 /**
  * 
@@ -16,6 +18,7 @@ public class AndroidGenerator
 
 	public Vector<Element> applicationElements;
 	SaxXMLParser parser;
+	File xml;
 	
 	public AndroidGenerator() {
 		applicationElements = new Vector<Element>();
@@ -43,7 +46,14 @@ public class AndroidGenerator
 		// generate appropriate android code
 		
 		
+		
 		//re-update xml - ANTHONY
 		
 	}
+	
+	public void getMainXml()
+	{
+		
+	}
+	
 }
