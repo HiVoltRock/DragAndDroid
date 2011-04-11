@@ -109,10 +109,14 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 	  */
 	 @Override
 	 public void mouseDragged(MouseEvent k){
+		 try{
+			 
+		 if(currentItemDragged != -1){
 		 editor.elements.elementAt(currentItemDragged).setX(k.getX());
 		 editor.elements.elementAt(currentItemDragged).setY(k.getY());
 		 ourcanvasref.repaint();
-		 
+		 }
+		 }catch(NullPointerException e){}
 	 }
 	 
 	 /*..
@@ -122,8 +126,10 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 	  */
 	 @Override
 	 public void mouseReleased(MouseEvent k){
+		 try{
 		 currentItemDragged = -1;
 		 ourcanvasref.repaint();
+		 } catch (NullPointerException e){}
 	 }
 }
  
