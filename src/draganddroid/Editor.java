@@ -14,10 +14,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import testing.test;
-import android.Element;
-import android.SaxXMLParser;
-
 /**
  * launched when plugin menu button or Launch Editor 
  * is clicked. Launches frame where user can edit
@@ -103,19 +99,11 @@ public class Editor {
 	/**
 	 * when editor gets launched a second time, check for any new additions to 
 	 * xml file, as in any new elements.
-	 * 
-	 * still needs to be completed
 	 */
 	private void CheckForNewElements() {
-		System.out.println("Checking for new elements");
-		Vector<Element> e = new Vector<Element>();
-		
-		SaxXMLParser parser = new SaxXMLParser(Constants.filename, e);
-		
+		System.out.println("Checking for new elements");		
+		SaxXMLParserForEditor parser = new SaxXMLParserForEditor(Constants.filename, elements);	
 		parser.parseDocument();
-		
-		test t = new test();
-		t.testXMLParser(); 
 	}
 	
 	private void CheckForAndroidApp() {

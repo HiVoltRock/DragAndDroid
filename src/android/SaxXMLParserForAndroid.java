@@ -20,7 +20,7 @@ import org.xml.sax.helpers.DefaultHandler;
  *
  * @author Anthony Favia
  */
-public class SaxXMLParser extends DefaultHandler {
+public class SaxXMLParserForAndroid extends DefaultHandler {
 
     String filename;
     
@@ -28,7 +28,7 @@ public class SaxXMLParser extends DefaultHandler {
     
     Vector<Element> elementList;
     
-    public SaxXMLParser(String filename, Vector<Element> el) {
+    public SaxXMLParserForAndroid(String filename, Vector<Element> el) {
         this.filename = filename;
         elementList = el;
     }

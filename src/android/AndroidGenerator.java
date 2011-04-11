@@ -17,12 +17,12 @@ public class AndroidGenerator
 {
 
 	public Vector<Element> applicationElements;
-	SaxXMLParser parser;
+	SaxXMLParserForAndroid parser;
 	File xml;
 	
 	public AndroidGenerator() {
 		applicationElements = new Vector<Element>();
-		parser = new SaxXMLParser(Constants.filename, applicationElements);
+		parser = new SaxXMLParserForAndroid(Constants.filename, applicationElements);
 	}
 	
 	public void GenerateAndroidCode() 

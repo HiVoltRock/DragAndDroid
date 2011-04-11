@@ -6,8 +6,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JOptionPane;
-
-import testing.test;
 import android.AndroidGenerator;
 
 public class ButtonListener extends MouseAdapter implements ActionListener{
