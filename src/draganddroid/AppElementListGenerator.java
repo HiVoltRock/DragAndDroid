@@ -20,13 +20,14 @@ import java.util.Vector;
  */
 public class AppElementListGenerator {
 
-    Vector<AndroidElement> elements;
+    public Vector<AndroidElement> elements;
 
     public AppElementListGenerator(Vector<AndroidElement> elements) {
         this.elements = elements;
     }
 
-    public void GenerateElementList() {
+    public void GenerateElementList() 
+    {
         try {
         	//File file = new File(Constants.filename);
         	File file = File.createTempFile(Constants.filenamePrefix, Constants.filenameSuffix);

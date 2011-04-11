@@ -9,18 +9,22 @@ public class Element {
 		
 	}
 
+	//type of element used. e.g., button, text box, etc
 	public void setType(String type) {
 		this.type = type;
 	}
 
+	//type of element used. e.g., button, text box, etc
 	public String getType() {
 		return type;
 	}
 
+	//identified by Android "id", the name in the program
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	//identified by Android "id", the name in the program
 	public String getName() {
 		return name;
 	}
@@ -40,10 +44,12 @@ public class Element {
 		return y;
 	}
 
+	//in-app viewable lable, e.g., text on a button, text beside a checkbox.
 	public void setCaption(String caption) {
 		this.caption = caption;
 	}
 
+	//in-app viewable lable, e.g., text on a button, text beside a checkbox.
 	public String getCaption() {
 		return caption;
 	}

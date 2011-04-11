@@ -7,6 +7,8 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JOptionPane;
 
+import android.AndroidGenerator;
+
 public class ButtonListener extends MouseAdapter implements ActionListener{
 
 	Editor editor;
@@ -43,7 +45,13 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 		else if(e.getActionCommand().equals("Generate")){
 			task = generate;
 			AppElementListGenerator generator = new AppElementListGenerator(editor.elements);
-        	generator.GenerateElementList();
+			AndroidGenerator andGen = new AndroidGenerator();
+        	
+			//generates the temp xml file
+			generator.GenerateElementList();
+			
+			//generates the main.xml file in /res/layout
+        	andGen.GenerateAndroidCode();
 		}
 	}
 	
