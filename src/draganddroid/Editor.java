@@ -35,6 +35,10 @@ public class Editor {
 		firstOpen = true;
 	}
 	
+	/**
+	 * opens Editor canvas so user can drag and drop 
+	 * android elements to "phone" 
+	 */
 	public void Open()
 	{
 		// get any new elements from xml that were added manually
