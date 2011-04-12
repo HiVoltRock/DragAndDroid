@@ -46,7 +46,7 @@ public class Editor {
 		{
 			// put check in method so that it can be easily commented out 
 			// during testing
-			//CheckForAndroidApp();	
+			CheckForAndroidApp();	
 			firstOpen = false;
 		}
 		
