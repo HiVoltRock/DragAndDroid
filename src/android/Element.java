@@ -101,4 +101,20 @@ public class Element {
 		return width;
 	}
 	
+	/**
+	 * returns xml string representing this 
+	 * particular element
+	 */
+	public String outputElementXML() {
+		String out = "";
+		out += "\t<Element type=\"" + type + "\" ";
+		out += "name=\"" + name + "\" ";
+		out += "x=\"" + x + "\" ";
+		out += "y=\"" + y + "\" ";
+		out += "height=\"" + height + "\" ";
+		out += "width=\"" + width + "\" ";
+		out += "caption=\"" + caption + "\">\n";
+		out += "\t</Element>\n";
+		return out;
+	}	
 }
