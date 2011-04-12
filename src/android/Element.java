@@ -1,6 +1,6 @@
 package android;
 
-public class Element {
+public class Element implements Comparable<Element>{
 
 	private String type, name, caption;
 	private int x, y, width, height, left, right, top, bottom; 
@@ -116,5 +116,11 @@ public class Element {
 		out += "caption=\"" + caption + "\">\n";
 		out += "\t</Element>\n";
 		return out;
+	}
+
+	@Override
+	public int compareTo(Element arg0) {
+		// TODO Auto-generated method stub
+		return 0;
 	}	
 }

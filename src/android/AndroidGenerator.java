@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Vector;
 
 import draganddroid.ElementSortX;
+import draganddroid.ElementSortY;
 
 /**
  * 
@@ -55,6 +56,8 @@ public class AndroidGenerator
 		xml = new File(xmlDir);
 		if(xml.exists())
 		{
+			System.out.println("XML File exists");
+			
 			/** (more for my not losing my place if I have to start and pickup later than for anyone else)
 			 * Use a duplicate list so we can delete once placed to make any future sorts needed faster
 			 * Basic layout algorithm:
@@ -68,6 +71,18 @@ public class AndroidGenerator
 			 * 		then it's a realistically unusable UI decision and it should be changed
 			 * 5) Pick the next y
 			 */
+			
+			Vector<Element> copy = new Vector<Element>(applicationElements);
+			
+			copy = sortElements("x", copy);
+			
+			System.out.println("Sorted copy Vector: ");
+			for ( int i = 0; i < copy.size(); i++ )
+			{
+				System.out.println(applicationElements.elementAt(i).getName() + " " +
+						applicationElements.elementAt(i).getX() + " " +
+						applicationElements.elementAt(i).getY());
+			}
 			
 			
 		}
@@ -89,6 +104,7 @@ public class AndroidGenerator
 		
 	}
 	/**
+	 * Method for sorting our Vector when we need it for generating the Android main.xml file
 	 * 
 	 * @param key the paramater by which you want to sort. e.g., "x", "y", etc
 	 * @param elements the Vector<Element> you wish sorted
@@ -98,15 +114,23 @@ public class AndroidGenerator
 	{
 		if(key.equals("x"))
 		{
-			//Collections.sort(elements, new ElementSortX());
+			Collections.sort(elements, new ElementSortX());
+			
+			System.out.println("Sorted copy INSIDE sortElements: ");
+			for ( int i = 0; i < elements.size(); i++ )
+			{
+				System.out.println(applicationElements.elementAt(i).getName() + " " +
+						applicationElements.elementAt(i).getX() + " " +
+						applicationElements.elementAt(i).getY());
+			}
 		}
 		else if(key.equals("y"))
 		{
-			//Collections.sort(elements, new ElementSortY());
+			Collections.sort(elements, new ElementSortY());
 		}
 		else
 		{
-			System.out.println("You didn't sort by a valid parameter. Valid parameters are 'x', 'y'");
+			System.out.println("You didn't select a valid parameter to sort. Valid parameters are 'x', 'y'");
 		}
 		
 		return elements;
