@@ -8,11 +8,11 @@ import java.awt.Graphics;
 public class AButton extends AndroidElement {
 	
 	public AButton(String name, int x, int y){
-		super.name = name;
-		super.x = x;
-		super.y = y;
-		super.height = Constants.AButtonWidth;
-		super.width =  Constants.AButtonHeight;
+		this.name = name;
+		this.x = x;
+		this.y = y;
+		this.height = Constants.AButtonWidth;
+		this.width =  Constants.AButtonHeight;
 	}
 	
 	@Override
@@ -28,20 +28,20 @@ public class AButton extends AndroidElement {
 	public String outputElementXML() {
 		String output = "";
 		output += "\t<Element type=\"AButton\" ";
-		output += "name=\"" + super.name + "\" ";
-		output += "x=\"" + super.x + "\" ";
-		output += "y=\"" + super.y + "\" ";
-		output += "height=\"" + super.height + "\" ";
-		output += "width=\"" + super.width + "\" ";
-		output += "caption=\"" + super.caption + "\">\n";
+		output += "name=\"" + this.name + "\" ";
+		output += "x=\"" + this.x + "\" ";
+		output += "y=\"" + this.y + "\" ";
+		output += "height=\"" + this.height + "\" ";
+		output += "width=\"" + this.width + "\" ";
+		output += "caption=\"" + this.caption + "\">\n";
 		output += "\t</Element>\n";
 		return output;
 	}
 
 	@Override
 	public boolean isInside(int x, int y) {
-		for ( int i = this.x; i < this.x+width; i++ ) {
-			for ( int j = this.y; j < this.y + height; j++ ) {
+		for ( int i = this.x; i < this.x+this.width; i++ ) {
+			for ( int j = this.y; j < this.y + this.height; j++ ) {
 				if ( x == i && y == j ) {
 					return true;
 				}
@@ -52,25 +52,21 @@ public class AButton extends AndroidElement {
 
 	@Override
 	public int getX() {
-		// TODO Auto-generated method stub
 		return this.x;
 	}
 
 	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
 		return this.y;
 	}
 
 	@Override
 	public void setX(int x) {
-		super.x = x;
-		
+		this.x = x;
 	}
 
 	@Override
 	public void setY(int y) {
-		super.y = y;
-		
+		this.y = y;	
 	}
 }

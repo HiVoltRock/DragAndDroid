@@ -2,10 +2,16 @@ package draganddroid;
 
 import global.Constants;
 
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.awt.Menu;
+import java.awt.MenuBar;
+import java.awt.MenuItem;
+import java.awt.MenuShortcut;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.File;
 import java.util.Vector;
 
@@ -22,7 +28,7 @@ import javax.swing.JOptionPane;
  * @author afavia.student
  *
  */
-public class Editor {
+public class Editor implements WindowListener {
 	
 	Vector<AndroidElement> elements;
 	JFrame f;
@@ -55,11 +61,33 @@ public class Editor {
 		}
 		
 		f = new JFrame("Drag And Droid Editor");
-		f.setSize(480, 800);
-		Canvas c = new OurCanvas(this);
+		OurCanvas c = new OurCanvas(this);
 		c.setBackground(Color.WHITE);
 		c.setSize(Constants.EditorWidth, Constants.EditorHeight);
-		f.add(c);
+		MenuBar menu = new MenuBar();
+		Menu file = new Menu("File");
+		Menu tools = new Menu("Tools");
+		
+		MenuItem New = new MenuItem("New");
+		MenuItem miGenerate = new MenuItem("Generate");
+		MenuItem Button = new MenuItem("Button");
+		MenuItem Label = new MenuItem("Label");
+		MenuItem TextBox = new MenuItem("TextBox");
+		
+		New.addActionListener(new MenuResponder(this, f, c));
+		miGenerate.addActionListener(new MenuResponder(this, f, c));
+		Button.addActionListener(new MenuResponder(this, f, c));
+		Label.addActionListener(new MenuResponder(this, f, c));
+		TextBox.addActionListener(new MenuResponder(this, f, c));	
+		
+		New.setShortcut(new MenuShortcut(KeyEvent.VK_N));
+		miGenerate.setShortcut(new MenuShortcut(KeyEvent.VK_G));
+		
+		file.add(New);
+		file.add(miGenerate);
+		tools.add(Button);
+		tools.add(Label);
+		tools.add(TextBox);		
 		
 		//Das Tool Box
 		JFrame toolbox = new JFrame("ToolBox");
@@ -92,6 +120,11 @@ public class Editor {
 		toolbox.setLocation(500, 0);
 		toolbox.setVisible(true);
 			
+		menu.add(file);
+		menu.add(tools);
+		f.setMenuBar(menu);
+		
+		f.add(c);
 			
 		f.pack();
 		f.setVisible(true);		
@@ -151,4 +184,25 @@ public class Editor {
 		
 		return false;
 	}
+
+	@Override
+	public void windowActivated(WindowEvent e) {}
+
+	@Override
+	public void windowClosed(WindowEvent e) {}
+
+	@Override
+	public void windowClosing(WindowEvent e) {}
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) {}
+
+	@Override
+	public void windowIconified(WindowEvent e) {}
+
+	@Override
+	public void windowOpened(WindowEvent e) {}
 }
