@@ -23,9 +23,14 @@ public class AndroidGenerator
 	SaxXMLParserForAndroid parser;
 	File xml;
 	
+	public int originalElementCt;
+	
+	ElementXMLUpdator updator;
+	
 	public AndroidGenerator() {
 		applicationElements = new Vector<Element>();
 		parser = new SaxXMLParserForAndroid(Constants.filename, applicationElements);
+		updator = new ElementXMLUpdator();
 	}
 	
 	public void GenerateAndroidCode(String xmlDir) 
@@ -44,7 +49,7 @@ public class AndroidGenerator
 					applicationElements.elementAt(i).getHeight() + " " +
 					applicationElements.elementAt(i).getWidth());
 		}
-		
+		originalElementCt = applicationElements.size();
 		
 		// generate appropriate android code
 		xml = new File(xmlDir);
@@ -75,6 +80,12 @@ public class AndroidGenerator
 		
 		
 		//re-update xml - ANTHONY
+		// if any new elements added to elements, update XML
+		if ( applicationElements.size() != originalElementCt ) {
+			for ( int i = originalElementCt-1; i < applicationElements.size(); i++ ) {
+				updator.UpdateXMLFile( applicationElements.elementAt(i) );
+			}
+		}
 		
 	}
 	/**
