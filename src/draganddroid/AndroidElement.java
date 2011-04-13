@@ -43,5 +43,13 @@ public abstract class AndroidElement{
 	public abstract int getY();
 	public abstract void setX(int x);
 	public abstract void setY(int y);
+	public abstract void setLeft(String left);
+	public abstract String getLeft();
+	public abstract void setRight(String right);
+	public abstract String getRight();
+	public abstract void setAbove(String above);
+	public abstract String getAbove();
+	public abstract void setBelow(String below);
+	public abstract String getBelow();
 	
 }

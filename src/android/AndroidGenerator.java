@@ -4,6 +4,8 @@ import global.Constants;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.Vector;
@@ -73,13 +75,38 @@ public class AndroidGenerator
 		{
 			System.out.println("XML File exists");
 			PrintWriter pw = new PrintWriter(xml);
+			sortElements("x", elements);
+			
+			//erase the contents of the file so far so we can build from scratch
+			FileOutputStream eraser = new FileOutputStream(xml);
+			byte b[] = new byte[0];
+			eraser.write(b);
+			eraser.close();
+			
+			//print the top non-element related lines of the Android file
+			pw.println("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+			pw.println("<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"");
+			pw.println("\tandroid:layout_width=\"fill_parent\"");
+			pw.println("\tandroid:layout_height=\"fill_parent\">");
+			
+			
+			pw.println("</RelativeLayout>");
+			pw.close();
 			
 			
 		} 
-		catch (FileNotFoundException e) 
+		catch (FileNotFoundException fnfe) 
 		{
 			System.out.println("The file wasn't found when dealing with the PrintWriter. AndroidGenerator.java.\nAre you in the right directory?");
-			e.printStackTrace();
+			fnfe.printStackTrace();
+		}
+		catch(SecurityException se)
+		{
+			System.out.println("It seems you don't have write access to this file. Printwriter. AndroidGenerator.java");
+			se.printStackTrace();
+		} catch (IOException ioe) {
+			System.out.println("I/O Problem. FileOutputStream and/or byte array. AndroidGenerator.java");
+			ioe.printStackTrace();
 		}
 		
 		

@@ -68,4 +68,52 @@ public class ATextBox extends AndroidElement {
 	public void setY(int y) {
 		this.y = y;	
 	}
+
+	@Override
+	public String getAbove() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getBelow() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getLeft() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getRight() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setAbove(String above) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setBelow(String below) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setLeft(String left) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setRight(String right) {
+		// TODO Auto-generated method stub
+		
+	}
 }
