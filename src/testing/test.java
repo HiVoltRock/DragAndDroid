@@ -20,14 +20,14 @@ public class test {
 	public void testXMLParser() {
 		AndroidGenerator a = new AndroidGenerator();
 		a.GenerateAndroidCode(xml);
-		for ( int i = 0; i < a.applicationElements.size(); i++ )
+		for ( int i = 0; i < a.elements.size(); i++ )
 		{
-			System.out.println(a.applicationElements.elementAt(i).getType() + " " +
-					a.applicationElements.elementAt(i).getX() + " " +
-					a.applicationElements.elementAt(i).getY() + " " +
-					a.applicationElements.elementAt(i).getName() + " " +
-					a.applicationElements.elementAt(i).getHeight() + " " +
-					a.applicationElements.elementAt(i).getWidth());
+			System.out.println(a.elements.elementAt(i).getType() + " " +
+					a.elements.elementAt(i).getX() + " " +
+					a.elements.elementAt(i).getY() + " " +
+					a.elements.elementAt(i).getName() + " " +
+					a.elements.elementAt(i).getHeight() + " " +
+					a.elements.elementAt(i).getWidth());
 		}	
 	}
 }

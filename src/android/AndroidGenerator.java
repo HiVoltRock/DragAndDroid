@@ -3,6 +3,8 @@ package android;
 import global.Constants;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.Vector;
 
@@ -19,8 +21,8 @@ import draganddroid.ElementSortY;
  */
 public class AndroidGenerator 
 {
-
-	public Vector<Element> applicationElements;
+	//renamed "applicationElements" to "elements" because it's WAY shorter
+	public Vector<Element> elements;
 	SaxXMLParserForAndroid parser;
 	File xml;
 	
@@ -29,8 +31,8 @@ public class AndroidGenerator
 	ElementXMLUpdator updator;
 	
 	public AndroidGenerator() {
-		applicationElements = new Vector<Element>();
-		parser = new SaxXMLParserForAndroid(Constants.filename, applicationElements);
+		elements = new Vector<Element>();
+		parser = new SaxXMLParserForAndroid(Constants.filename, elements);
 		updator = new ElementXMLUpdator();
 	}
 	
@@ -39,66 +41,53 @@ public class AndroidGenerator
 		//first populate application elements by parsing XML file
 		parser.parseDocument();
 		
-		System.out.println("Number of elements: " + applicationElements.size());
+		System.out.println("Number of elements: " + elements.size());
 		System.out.println("Generated Android code. Elements: ");
-		for ( int i = 0; i < applicationElements.size(); i++ )
+		for ( int i = 0; i < elements.size(); i++ )
 		{
-			System.out.println(applicationElements.elementAt(i).getType() + " " +
-					applicationElements.elementAt(i).getX() + " " +
-					applicationElements.elementAt(i).getY() + " " +
-					applicationElements.elementAt(i).getName() + " " +
-					applicationElements.elementAt(i).getHeight() + " " +
-					applicationElements.elementAt(i).getWidth());
+			System.out.println(elements.elementAt(i).getType() + " " +
+					elements.elementAt(i).getX() + " " +
+					elements.elementAt(i).getY() + " " +
+					elements.elementAt(i).getName() + " " +
+					elements.elementAt(i).getHeight() + " " +
+					elements.elementAt(i).getWidth());
 		}
-		originalElementCt = applicationElements.size();
+		originalElementCt = elements.size();
 		
 		// generate appropriate android code
 		xml = new File(xmlDir);
-		if(xml.exists())
+		/** (more for my not losing my place if I have to start and pickup later than for anyone else)
+		 * Use a duplicate list so we can delete once placed to make any future sorts needed faster
+		 * Basic layout algorithm:
+		 * 1) Sort by y-coordinate
+		 * 2) Place smallest y at the top
+		 * 3) If x-coords don't conflict, place x in order left-to-right smallest-X -> largest X
+		 * 		It may be necessary to select Xs in a RANGE. That is, if smallest X has a height 50, search within a height range
+		 * 		of plus or minus 25 from that corresponding y to make sure things aren't missed in transcription
+		 * 4) If there is a conflict (which there shouldn't be if user has ANY common sense), tell the user their elements overlap and they
+		 * 		need to move one or more elements...? Seems like a cop-out, but that's genuinely the case. If coordinates overlap at all
+		 * 		then it's a realistically unusable UI decision and it should be changed
+		 * 5) Pick the next y
+		 */
+		try 
 		{
 			System.out.println("XML File exists");
-			
-			/** (more for my not losing my place if I have to start and pickup later than for anyone else)
-			 * Use a duplicate list so we can delete once placed to make any future sorts needed faster
-			 * Basic layout algorithm:
-			 * 1) Sort by y-coordinate
-			 * 2) Place smallest y at the top
-			 * 3) If x-coords don't conflict, place x in order left-to-right smallest-X -> largest X
-			 * 		It may be necessary to select Xs in a RANGE. That is, if smallest X has a height 50, search within a height range
-			 * 		of plus or minus 25 from that corresponding y to make sure things aren't missed in transcription
-			 * 4) If there is a conflict (which there shouldn't be if user has ANY common sense), tell the user their elements overlap and they
-			 * 		need to move one or more elements...? Seems like a cop-out, but that's genuinely the case. If coordinates overlap at all
-			 * 		then it's a realistically unusable UI decision and it should be changed
-			 * 5) Pick the next y
-			 */
-			
-			Vector<Element> copy = new Vector<Element>(applicationElements);
-			
-			copy = sortElements("x", copy);
-			
-			System.out.println("Sorted copy Vector: ");
-			for ( int i = 0; i < copy.size(); i++ )
-			{
-				System.out.println(applicationElements.elementAt(i).getName() + " " +
-						applicationElements.elementAt(i).getX() + " " +
-						applicationElements.elementAt(i).getY());
-			}
+			PrintWriter pw = new PrintWriter(xml);
 			
 			
-		}
-		else
+		} 
+		catch (FileNotFoundException e) 
 		{
-			System.out.println("The main.xml file for the Android project selected can't be found + \n" +
-					"Is it a valid Android project directory? \n" +
-					"Is it the root directory?");
+			System.out.println("The file wasn't found when dealing with the PrintWriter. AndroidGenerator.java.\nAre you in the right directory?");
+			e.printStackTrace();
 		}
 		
 		
 		//re-update xml - ANTHONY
 		// if any new elements added to elements, update XML
-		if ( applicationElements.size() != originalElementCt ) {
-			for ( int i = originalElementCt-1; i < applicationElements.size(); i++ ) {
-				updator.UpdateXMLFile( applicationElements.elementAt(i) );
+		if ( elements.size() != originalElementCt ) {
+			for ( int i = originalElementCt-1; i < elements.size(); i++ ) {
+				updator.UpdateXMLFile( elements.elementAt(i) );
 			}
 		}
 		
@@ -115,14 +104,6 @@ public class AndroidGenerator
 		if(key.equals("x"))
 		{
 			Collections.sort(elements, new ElementSortX());
-			
-			System.out.println("Sorted copy INSIDE sortElements: ");
-			for ( int i = 0; i < elements.size(); i++ )
-			{
-				System.out.println(applicationElements.elementAt(i).getName() + " " +
-						applicationElements.elementAt(i).getX() + " " +
-						applicationElements.elementAt(i).getY());
-			}
 		}
 		else if(key.equals("y"))
 		{
