@@ -16,11 +16,6 @@ public abstract class AndroidElement{
 	
 	OurCanvas parent;
 	
-	public AndroidElement()
-	{
-		
-	}
-	
 	/**
 	 * draws particular android element on canvas
 	 * @param g
