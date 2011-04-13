@@ -2,13 +2,11 @@ package draganddroid;
 
 import java.util.Comparator;
 
-import android.Element;
-
-public class ElementSortY implements Comparator<Element>
+public class ElementSortY implements Comparator<AndroidElement>
 {
 
 	@Override
-	public int compare(Element element1, Element element2 ) 
+	public int compare(AndroidElement element1, AndroidElement element2 ) 
 	{
 		return element1.getY() - element2.getY();
 	}

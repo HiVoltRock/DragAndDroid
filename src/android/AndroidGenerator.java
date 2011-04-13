@@ -10,8 +10,10 @@ import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.Vector;
 
+import draganddroid.AndroidElement;
 import draganddroid.ElementSortX;
 import draganddroid.ElementSortY;
+import draganddroid.SaxXMLParser;
 
 /**
  * 
@@ -24,8 +26,8 @@ import draganddroid.ElementSortY;
 public class AndroidGenerator 
 {
 	//renamed "applicationElements" to "elements" because it's WAY shorter
-	public Vector<Element> elements;
-	SaxXMLParserForAndroid parser;
+	public Vector<AndroidElement> elements;
+	SaxXMLParser parser;
 	File xml;
 	
 	public int originalElementCt;
@@ -33,8 +35,8 @@ public class AndroidGenerator
 	ElementXMLUpdator updator;
 	
 	public AndroidGenerator() {
-		elements = new Vector<Element>();
-		parser = new SaxXMLParserForAndroid(Constants.filename, elements);
+		elements = new Vector<AndroidElement>();
+		parser = new SaxXMLParser(Constants.filename, elements);
 		updator = new ElementXMLUpdator();
 	}
 	
@@ -47,10 +49,9 @@ public class AndroidGenerator
 		System.out.println("Generated Android code. Elements: ");
 		for ( int i = 0; i < elements.size(); i++ )
 		{
-			System.out.println(elements.elementAt(i).getType() + " " +
+			System.out.println(elements.elementAt(i).getName() + " " +
 					elements.elementAt(i).getX() + " " +
 					elements.elementAt(i).getY() + " " +
-					elements.elementAt(i).getName() + " " +
 					elements.elementAt(i).getHeight() + " " +
 					elements.elementAt(i).getWidth());
 		}
@@ -132,7 +133,7 @@ public class AndroidGenerator
 	 * @param elements the Vector<Element> you wish sorted
 	 * @return the sorted Vector<Element>
 	 */
-	public Vector<Element> sortElements(String key, Vector<Element> elements)
+	public Vector<AndroidElement> sortElements(String key, Vector<AndroidElement> elements)
 	{
 		if(key.equals("x"))
 		{

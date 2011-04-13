@@ -1,4 +1,4 @@
-package android;
+package draganddroid;
 
 import java.io.IOException;
 import java.util.Vector;
@@ -12,23 +12,21 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 
-
 /**
- *Parse the xml file created by the editor
- *and create a list of Elements to be added
- *to the actual android application
+ * parses xml file and checks for new additions
+ * by the new android generator
+ * 
+ * @author Anthony
  *
- * @author Anthony Favia
  */
-public class SaxXMLParserForAndroid extends DefaultHandler {
-
-    String filename;
+public class SaxXMLParser extends DefaultHandler {
+String filename;
     
-    Element tempElement;
+	AndroidElement tempElement;
     
-    Vector<Element> elementList;
+    Vector<AndroidElement> elementList;
     
-    public SaxXMLParserForAndroid(String filename, Vector<Element> el) {
+    public SaxXMLParser(String filename, Vector<AndroidElement> el) {
         this.filename = filename;
         elementList = el;
     }
@@ -58,24 +56,29 @@ public class SaxXMLParserForAndroid extends DefaultHandler {
     public void startElement(String uri, String localName, String qName, Attributes attributes)
             throws SAXException {
         if (qName.equalsIgnoreCase("Element")) {
-            tempElement = new Element();
-            tempElement.setType(attributes.getValue("type"));
+            if ( attributes.getValue("type").equals("AButton") ) {
+            	tempElement = new AButton();
+            }
+            else if ( attributes.getValue("type").equals("ALabel") ) {
+            	tempElement = new ALabel();
+            }
+            else if ( attributes.getValue("type").equals("ATextBox") ) {
+            	tempElement = new ATextBox();
+            }
             tempElement.setName(attributes.getValue("name"));
             tempElement.setX(Integer.parseInt(attributes.getValue("x")));
             tempElement.setY(Integer.parseInt(attributes.getValue("y")));
-            tempElement.setHeight(Integer.parseInt(attributes.getValue("height")));
-            tempElement.setWidth(Integer.parseInt(attributes.getValue("width")));
-            tempElement.setCaption(attributes.getValue("caption"));
+            tempElement.caption = attributes.getValue("caption");
             elementList.add(tempElement);
         }
     }
     
     public void characters(char ch[], int start, int length)
-    	throws SAXException {
+     throws SAXException {
     }
 
-    public void endElement(String uri, String localName, String qName) 
-    	throws SAXException {	
+    public void endElement(String uri, String localName, String qName)
+     throws SAXException {
     }
     // Issue a warning
     public void warning(SAXParseException exception) {

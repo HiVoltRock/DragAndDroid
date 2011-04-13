@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import draganddroid.AndroidElement;
+
 /**
  * updates xml file with any new elements added 
  * during android code generation
@@ -20,7 +22,7 @@ public class ElementXMLUpdator {
 		
 	}
 	
-	public void UpdateXMLFile(Element element) {
+	public void UpdateXMLFile(AndroidElement element) {
 		try {
         	File file = new File(Constants.filename);
         	

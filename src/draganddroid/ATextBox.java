@@ -7,12 +7,14 @@ import java.awt.Graphics;
 
 public class ATextBox extends AndroidElement {
 
+	public ATextBox(){};
+	
 	public ATextBox(String name, int x, int y) {
-		this.name = name;
+		this.setName(name);
 		this.x = x;
 		this.y = y;
-		this.height = Constants.ATextBoxWidth;
-		this.width = Constants.ATextBoxHeight;
+		this.setHeight(Constants.ATextBoxWidth);
+		this.setWidth(Constants.ATextBoxHeight);
 	}
 	
 	@Override
@@ -20,18 +22,18 @@ public class ATextBox extends AndroidElement {
 		g.setColor(new Color(217,163,151));
 		g.fillRect(x, y, Constants.ATextBoxWidth, Constants.ATextBoxHeight);
 		g.setColor(Color.BLACK);
-		g.drawString(name, x+10, y+20);
+		g.drawString(getName(), x+10, y+20);
 	}
 
 	@Override
 	public String outputElementXML() {
 		String output = "";
 		output += "\t<Element type=\"ATextBox\" ";
-		output += "name=\"" + this.name + "\" ";
+		output += "name=\"" + this.getName() + "\" ";
 		output += "x=\"" + this.x + "\" ";
 		output += "y=\"" + this.y + "\" ";
-		output += "height=\"" + this.height + "\" ";
-		output += "width=\"" + this.width + "\" ";
+		output += "height=\"" + this.getHeight() + "\" ";
+		output += "width=\"" + this.getWidth() + "\" ";
 		output += "caption=\"" + this.caption + "\">\n";
 		output += "\t</Element>\n";
 		return output;
@@ -39,8 +41,8 @@ public class ATextBox extends AndroidElement {
 
 	@Override
 	public boolean isInside(int x, int y) {
-		for ( int i = this.x; i < this.x+width; i++ ) {
-			for ( int j = this.y; j < this.y + height; j++ ) {
+		for ( int i = this.x; i < this.x+getWidth(); i++ ) {
+			for ( int j = this.y; j < this.y + getHeight(); j++ ) {
 				if ( x == i && y == j ) {
 					return true;
 				}
@@ -116,4 +118,32 @@ public class ATextBox extends AndroidElement {
 		// TODO Auto-generated method stub
 		
 	}
+	public String getType() {
+		return "ATextBox";
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
 }

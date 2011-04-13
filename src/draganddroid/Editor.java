@@ -139,7 +139,7 @@ public class Editor implements WindowListener {
 	 */
 	private void CheckForNewElements() {
 		System.out.println("Checking for new elements");		
-		SaxXMLParserForEditor parser = new SaxXMLParserForEditor(Constants.filename, elements);	
+		SaxXMLParser parser = new SaxXMLParser(Constants.filename, elements);	
 		parser.parseDocument();
 	}
 	
