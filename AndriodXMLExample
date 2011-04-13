@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" <-Here is the linaerLayout, there are others to start with
+<!-- Layout using LinearLayout CAN be altered to suit the process better -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
               android:layout_width="fill_parent" 
               android:layout_height="fill_parent" 
               android:orientation="vertical" >
-    <TextView android:id="@+id/text"                  <-Text example
+<!-- TextFieldExample -->
+    <TextView android:id="@+id/text"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="Hello, I am a TextView" />
-    <Button android:id="@+id/button"                  <-Button example
+<!-- Button Example -->
+    <Button android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hello, I am a Button" />
