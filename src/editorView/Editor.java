@@ -82,21 +82,25 @@ public class Editor extends JFrame implements WindowListener {
 		MenuItem Button = new MenuItem("Button");
 		MenuItem Label = new MenuItem("Label");
 		MenuItem TextBox = new MenuItem("TextBox");
+		MenuItem ElementProperties = new MenuItem("ElementProperties");
 		
 		New.addActionListener(new MenuResponder(this, this, c));
 		miGenerate.addActionListener(new MenuResponder(this, this, c));
 		Button.addActionListener(new MenuResponder(this, this, c));
 		Label.addActionListener(new MenuResponder(this, this, c));
 		TextBox.addActionListener(new MenuResponder(this, this, c));	
+		ElementProperties.addActionListener(new MenuResponder(this, this, c));
 		
 		New.setShortcut(new MenuShortcut(KeyEvent.VK_N));
 		miGenerate.setShortcut(new MenuShortcut(KeyEvent.VK_G));
+		ElementProperties.setShortcut(new MenuShortcut(KeyEvent.VK_P));
 		
 		file.add(New);
 		file.add(miGenerate);
 		tools.add(Button);
 		tools.add(Label);
-		tools.add(TextBox);		
+		tools.add(TextBox);	
+		tools.add(ElementProperties);
 		
 		//Das Tool Box
 		JFrame toolbox = new JFrame("ToolBox");
@@ -220,4 +224,12 @@ public class Editor extends JFrame implements WindowListener {
 
 	@Override
 	public void windowOpened(WindowEvent e) {}
+
+	public String[] getElementNames() {
+		String[] names = new String[elements.size()];
+		for ( int i = 0; i < elements.size(); i++ ) {
+			names[i] = elements.elementAt(i).getName();
+		}
+		return names;
+	}
 }
