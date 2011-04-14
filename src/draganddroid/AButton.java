@@ -8,10 +8,10 @@ import java.io.PrintWriter;
 
 public class AButton extends AndroidElement {
 	
-	public String left;
-	public String right;
-	public String above;
-	public String below;
+	public String left = "";
+	public String right = "";
+	public String above = "";
+	public String below = "";
 	
 	public AButton(){};
 	
@@ -126,6 +126,25 @@ public class AButton extends AndroidElement {
 		pw.println("\t\tandroid:layout_height=\"wrap_content\"");
 		pw.println("\t\tandroid:text=\"" + getName() + "\"");
 		
+		if(!left.equals(""))
+		{
+			pw.println("\t\tandroid:layout_toLeftOf=\"@id/" + left + "\"");
+		}
+		
+		if(!right.equals(""))
+		{
+			pw.println("\t\tandroid:layout_toRightOf=\"@id/" + right + "\"");
+		}
+		
+		if(!below.equals(""))
+		{
+			pw.println("\t\tandroid:layout_below=\"@id/" + below + "\"");
+		}
+		
+		if(!above.equals(""))
+		{
+			pw.println("android:layout_above=\"@id/" + above + "\"");
+		}
 		pw.println("\t/>");
 	}
 	

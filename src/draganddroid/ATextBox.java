@@ -8,6 +8,11 @@ import java.io.PrintWriter;
 
 public class ATextBox extends AndroidElement {
 
+	public String left = "";
+	public String right = "";
+	public String above = "";
+	public String below = "";
+	
 	public ATextBox(){};
 	
 	public ATextBox(String name, int x, int y) {
@@ -52,7 +57,7 @@ public class ATextBox extends AndroidElement {
 		return false;
 	}
 
-     @Override
+	@Override
 	public int getX() {
 		return this.x;
 	}
@@ -64,60 +69,52 @@ public class ATextBox extends AndroidElement {
 
 	@Override
 	public void setX(int x) {
-		this.x = x;	
+		this.x = x;
 	}
 
 	@Override
 	public void setY(int y) {
 		this.y = y;	
 	}
-
-	@Override
-	public String getAbove() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public void setLeft(String left)
+	{
+		this.left = left;
 	}
-
-	@Override
-	public String getBelow() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public String getLeft()
+	{
+		return left;
 	}
-
-	@Override
-	public String getLeft() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public void setRight(String right)
+	{
+		this.right = right;
 	}
-
-	@Override
-	public String getRight() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public String getRight()
+	{
+		return right;
 	}
-
-	@Override
-	public void setAbove(String above) {
-		// TODO Auto-generated method stub
-		
+	
+	public void setAbove(String above)
+	{
+		this.above = above;
 	}
-
-	@Override
-	public void setBelow(String below) {
-		// TODO Auto-generated method stub
-		
+	
+	public String getAbove()
+	{
+		return above;
 	}
-
-	@Override
-	public void setLeft(String left) {
-		// TODO Auto-generated method stub
-		
+	
+	public void setBelow(String below)
+	{
+		this.below = below;
 	}
-
-	@Override
-	public void setRight(String right) {
-		// TODO Auto-generated method stub
-		
+	
+	public String getBelow()
+	{
+		return below;
 	}
 	public String getType() {
 		return "ATextBox";
@@ -156,7 +153,26 @@ public class ATextBox extends AndroidElement {
 		pw.println("\t\tandroid:layout_height=\"wrap_content\"");
 		pw.println("\t\tandroid:background=\"@android:drawable/editbox_background\"");
 		pw.println("\t\tandroid:text=\"" + "\"");
-		//pw.println("\t\tandroid:inputType=\"TYPE_CLASS_TEXT\"");
+		
+		if(!left.equals(""))
+		{
+			pw.println("\t\tandroid:layout_toLeftOf=\"@id/" + left + "\"");
+		}
+		
+		if(!right.equals(""))
+		{
+			pw.println("\t\tandroid:layout_toRightOf=\"@id/" + right + "\"");
+		}
+		
+		if(!below.equals(""))
+		{
+			pw.println("\t\tandroid:layout_below=\"@id/" + below + "\"");
+		}
+		
+		if(!above.equals(""))
+		{
+			pw.println("android:layout_above=\"@id/" + above + "\"");
+		}
 		
 		pw.println("\t/>");
 		
