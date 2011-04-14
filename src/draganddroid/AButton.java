@@ -8,17 +8,19 @@ import java.io.PrintWriter;
 
 public class AButton extends AndroidElement {
 	
-	public String left;
-	public String right;
-	public String above;
-	public String below;
+	public String left = "";
+	public String right = "";
+	public String above = "";
+	public String below = "";
+	
+	public AButton(){};
 	
 	public AButton(String name, int x, int y){
-		this.name = name;
+		this.setName(name);
 		this.x = x;
 		this.y = y;
-		this.height = Constants.AButtonWidth;
-		this.width =  Constants.AButtonHeight;
+		this.setHeight(Constants.AButtonWidth);
+		this.setWidth(Constants.AButtonHeight);
 	}
 	
 	@Override
@@ -26,7 +28,7 @@ public class AButton extends AndroidElement {
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(x, y, Constants.AButtonWidth, Constants.AButtonHeight);
 		g.setColor(Color.BLACK);
-		g.drawString(name, x+10, y+20);
+		g.drawString(getName(), x+10, y+20);
 		
 	}
 
@@ -34,11 +36,11 @@ public class AButton extends AndroidElement {
 	public String outputElementXML() {
 		String output = "";
 		output += "\t<Element type=\"AButton\" ";
-		output += "name=\"" + this.name + "\" ";
+		output += "name=\"" + this.getName() + "\" ";
 		output += "x=\"" + this.x + "\" ";
 		output += "y=\"" + this.y + "\" ";
-		output += "height=\"" + this.height + "\" ";
-		output += "width=\"" + this.width + "\" ";
+		output += "height=\"" + this.getHeight() + "\" ";
+		output += "width=\"" + this.getWidth() + "\" ";
 		output += "caption=\"" + this.caption + "\">\n";
 		output += "\t</Element>\n";
 		return output;
@@ -46,8 +48,8 @@ public class AButton extends AndroidElement {
 
 	@Override
 	public boolean isInside(int x, int y) {
-		for ( int i = this.x; i < this.x+this.width; i++ ) {
-			for ( int j = this.y; j < this.y + this.height; j++ ) {
+		for ( int i = this.x; i < this.x+this.getWidth(); i++ ) {
+			for ( int j = this.y; j < this.y + this.getHeight(); j++ ) {
 				if ( x == i && y == j ) {
 					return true;
 				}
@@ -118,11 +120,58 @@ public class AButton extends AndroidElement {
 	
 	public void printAndroidXml(PrintWriter pw)
 	{
-		pw.println("<Button");
-		pw.println("\t\tandroid:id=\"@+id/" + name + "\"");
-		pw.println("android:layout_width=\"wrap_content\"");
-		pw.println("android:layout_height=\"wrap_content\"");
+		pw.println("\t<Button");
+		pw.println("\t\tandroid:id=\"@+id/" + getName() + "\"");
+		pw.println("\t\tandroid:layout_width=\"wrap_content\"");
+		pw.println("\t\tandroid:layout_height=\"wrap_content\"");
+		pw.println("\t\tandroid:text=\"" + getName() + "\"");
 		
-		pw.println("/>");
+		if(!left.equals(""))
+		{
+			pw.println("\t\tandroid:layout_toLeftOf=\"@id/" + left + "\"");
+		}
+		
+		if(!right.equals(""))
+		{
+			pw.println("\t\tandroid:layout_toRightOf=\"@id/" + right + "\"");
+		}
+		
+		if(!below.equals(""))
+		{
+			pw.println("\t\tandroid:layout_below=\"@id/" + below + "\"");
+		}
+		
+		if(!above.equals(""))
+		{
+			pw.println("android:layout_above=\"@id/" + above + "\"");
+		}
+		pw.println("\t/>");
+	}
+	
+	public String getType() {
+		return "AButton";
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getWidth() {
+		return width;
 	}
 }

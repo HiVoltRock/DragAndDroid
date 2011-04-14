@@ -1,6 +1,7 @@
 package draganddroid;
 
 import java.awt.Graphics;
+import java.io.PrintWriter;
 
 /**
  * Represents an android element drawn on 
@@ -10,7 +11,9 @@ import java.awt.Graphics;
  *
  */
 public abstract class AndroidElement{
-	int height, width, x, y; 
+	int x, y;
+	int width;
+	int height; 
 	String caption;	
 	String name;
 	
@@ -46,5 +49,15 @@ public abstract class AndroidElement{
 	public abstract String getAbove();
 	public abstract void setBelow(String below);
 	public abstract String getBelow();
+	public abstract String getName();
+	public abstract int getHeight();
+	public abstract int getWidth();
+	public abstract void setName(String name);
+	public abstract void setHeight(int height);
+	public abstract void setWidth(int width);
+	
+	
+	public abstract String getType();
+	public abstract void printAndroidXml(PrintWriter pw);
 	
 }

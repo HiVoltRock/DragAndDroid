@@ -4,15 +4,23 @@ import global.Constants;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.PrintWriter;
 
 public class ATextBox extends AndroidElement {
 
+	public String left = "";
+	public String right = "";
+	public String above = "";
+	public String below = "";
+	
+	public ATextBox(){};
+	
 	public ATextBox(String name, int x, int y) {
-		this.name = name;
+		this.setName(name);
 		this.x = x;
 		this.y = y;
-		this.height = Constants.ATextBoxWidth;
-		this.width = Constants.ATextBoxHeight;
+		this.setHeight(Constants.ATextBoxWidth);
+		this.setWidth(Constants.ATextBoxHeight);
 	}
 	
 	@Override
@@ -20,18 +28,18 @@ public class ATextBox extends AndroidElement {
 		g.setColor(new Color(217,163,151));
 		g.fillRect(x, y, Constants.ATextBoxWidth, Constants.ATextBoxHeight);
 		g.setColor(Color.BLACK);
-		g.drawString(name, x+10, y+20);
+		g.drawString(getName(), x+10, y+20);
 	}
 
 	@Override
 	public String outputElementXML() {
 		String output = "";
 		output += "\t<Element type=\"ATextBox\" ";
-		output += "name=\"" + this.name + "\" ";
+		output += "name=\"" + this.getName() + "\" ";
 		output += "x=\"" + this.x + "\" ";
 		output += "y=\"" + this.y + "\" ";
-		output += "height=\"" + this.height + "\" ";
-		output += "width=\"" + this.width + "\" ";
+		output += "height=\"" + this.getHeight() + "\" ";
+		output += "width=\"" + this.getWidth() + "\" ";
 		output += "caption=\"" + this.caption + "\">\n";
 		output += "\t</Element>\n";
 		return output;
@@ -39,8 +47,8 @@ public class ATextBox extends AndroidElement {
 
 	@Override
 	public boolean isInside(int x, int y) {
-		for ( int i = this.x; i < this.x+width; i++ ) {
-			for ( int j = this.y; j < this.y + height; j++ ) {
+		for ( int i = this.x; i < this.x+getWidth(); i++ ) {
+			for ( int j = this.y; j < this.y + getHeight(); j++ ) {
 				if ( x == i && y == j ) {
 					return true;
 				}
@@ -49,7 +57,7 @@ public class ATextBox extends AndroidElement {
 		return false;
 	}
 
-     @Override
+	@Override
 	public int getX() {
 		return this.x;
 	}
@@ -61,59 +69,113 @@ public class ATextBox extends AndroidElement {
 
 	@Override
 	public void setX(int x) {
-		this.x = x;	
+		this.x = x;
 	}
 
 	@Override
 	public void setY(int y) {
 		this.y = y;	
 	}
+	
+	public void setLeft(String left)
+	{
+		this.left = left;
+	}
+	
+	public String getLeft()
+	{
+		return left;
+	}
+	
+	public void setRight(String right)
+	{
+		this.right = right;
+	}
+	
+	public String getRight()
+	{
+		return right;
+	}
+	
+	public void setAbove(String above)
+	{
+		this.above = above;
+	}
+	
+	public String getAbove()
+	{
+		return above;
+	}
+	
+	public void setBelow(String below)
+	{
+		this.below = below;
+	}
+	
+	public String getBelow()
+	{
+		return below;
+	}
+	public String getType() {
+		return "ATextBox";
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
 
-	@Override
-	public String getAbove() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getName() {
+		return name;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getWidth() {
+		return width;
 	}
 
 	@Override
-	public String getBelow() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getLeft() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getRight() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setAbove(String above) {
-		// TODO Auto-generated method stub
+	public void printAndroidXml(PrintWriter pw) 
+	{
+		pw.println("\t<EditText");
+		pw.println("\t\tandroid:id=\"@+id/" + getName() + "\"");
+		pw.println("\t\tandroid:layout_width=\"fill_parent\"");
+		pw.println("\t\tandroid:layout_height=\"wrap_content\"");
+		pw.println("\t\tandroid:background=\"@android:drawable/editbox_background\"");
+		pw.println("\t\tandroid:text=\"" + "\"");
+		
+		if(!left.equals(""))
+		{
+			pw.println("\t\tandroid:layout_toLeftOf=\"@id/" + left + "\"");
+		}
+		
+		if(!right.equals(""))
+		{
+			pw.println("\t\tandroid:layout_toRightOf=\"@id/" + right + "\"");
+		}
+		
+		if(!below.equals(""))
+		{
+			pw.println("\t\tandroid:layout_below=\"@id/" + below + "\"");
+		}
+		
+		if(!above.equals(""))
+		{
+			pw.println("android:layout_above=\"@id/" + above + "\"");
+		}
+		
+		pw.println("\t/>");
 		
 	}
 
-	@Override
-	public void setBelow(String below) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setLeft(String left) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setRight(String right) {
-		// TODO Auto-generated method stub
-		
-	}
 }
