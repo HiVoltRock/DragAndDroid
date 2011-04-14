@@ -5,6 +5,7 @@ import global.Constants;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Vector;
@@ -35,6 +36,11 @@ public class AppElementListGenerator {
         	System.out.println(file.getName());
         	BufferedWriter out = new BufferedWriter(new FileWriter(file));
 
+        	FileOutputStream eraser = new FileOutputStream(Constants.filename);
+			byte b[] = new byte[0];
+			eraser.write(b);
+			eraser.close();
+			
             out.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
             out.write("<ElementList>\n");
             

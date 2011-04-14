@@ -1,8 +1,5 @@
 package editorView;
 
-import element.AndroidElement;
-import global.Constants;
-
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
@@ -14,6 +11,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -22,6 +22,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import xml.SaxXMLParser;
+import element.AndroidElement;
+import global.Constants;
 
 /**
  * launched when plugin menu button or Launch Editor 
@@ -52,8 +54,9 @@ public class Editor extends JFrame implements WindowListener {
 	/**
 	 * opens Editor canvas so user can drag and drop 
 	 * android elements to "phone" 
+	 * @throws IOException 
 	 */
-	public void Open()
+	public void Open() throws IOException
 	{
 		// get any new elements from xml that were added manually
 		if (!firstOpen) 
@@ -66,6 +69,12 @@ public class Editor extends JFrame implements WindowListener {
 			// during testing
 			CheckForAndroidApp();	
 			firstOpen = false;
+			if ( new File(Constants.filename).exists() ) {
+				FileOutputStream eraser = new FileOutputStream(Constants.filename);
+				byte b[] = new byte[0];
+				eraser.write(b);
+				eraser.close();
+			}
 		}
 		
 		//f = new JFrame("Drag And Droid Editor");
@@ -156,8 +165,7 @@ public class Editor extends JFrame implements WindowListener {
 	 * when editor gets launched a second time, check for any new additions to 
 	 * xml file, as in any new elements.
 	 */
-	private void CheckForNewElements() {
-		System.out.println("Checking for new elements");		
+	private void CheckForNewElements() {	
 		SaxXMLParser parser = new SaxXMLParser(Constants.filename, elements);	
 		parser.parseDocument();
 	}

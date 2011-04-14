@@ -51,7 +51,7 @@ public class MenuResponder implements ActionListener {
 			                    parent,
 			                    "Choose the element\n"
 			                    + "that you would like to edit",
-			                    "Customized Dialog",
+			                    "Edit Properties",
 			                    JOptionPane.PLAIN_MESSAGE,
 			                    null,
 			                    possibilities,
