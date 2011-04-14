@@ -78,6 +78,9 @@ public class AndroidGenerator
 			PrintWriter pw = new PrintWriter(xml);
 			sortElements("x", elements);
 			
+			//place appropriate tags for the elements so they display correctly in the AVD or on a phone
+			//setAttributes(elements);
+			
 			//erase the contents of the file so far so we can build from scratch
 			FileOutputStream eraser = new FileOutputStream(xml);
 			byte b[] = new byte[0];
@@ -146,6 +149,68 @@ public class AndroidGenerator
 		else
 		{
 			System.out.println("You didn't select a valid parameter to sort. Valid parameters are 'x', 'y'");
+		}
+		
+		return elements;
+	}
+	
+	public Vector<AndroidElement> setAttributes(Vector<AndroidElement> elements)
+	{
+		int basex;	//the element's x coordinate
+		int upperx;	//upper-bound for checking elements
+		int lowerx;	//lower bound for checking elements
+		
+		int basey;
+		int uppery;
+		int lowery;
+		
+		//we'll need to reference next and previous elements, so we can't use a for each
+		for(int i = 0; i < elements.size(); i++)
+		{
+			//since text boxes fill the whole horizontal line, as long as it's not the first item we can set its "below" feature
+			if(i != 0 && elements.elementAt(i).getType().equals("ATextBox"))
+			{
+				elements.elementAt(i).setBelow(elements.elementAt(i-1).getName());
+				
+				//there are no left and right...so move on
+				continue;
+			}
+			
+			//it shouldn't matter if upper or lower go above or below the screen resolution. We're setting relative positioning anyway
+			basex = elements.elementAt(i).getX();
+			upperx = basex + 15;
+			lowerx = basex - 15;
+			
+			basey = elements.elementAt(i).getY();
+			uppery = basey + 15;
+			lowery = basey - 15;
+			
+			//after we establish upper and lower bounds (because users will never get the alignment perfect, 
+			//we see if the elements are in a horizontal row. If they are, determine left and right. 
+			for(int j = i+1; j < elements.size(); j++)
+			{
+				//lowery < element[i].getY < uppery
+				//If these are true we KNOW they're in a line. Need to have left and right set 
+				if(elements.elementAt(j).getY() < uppery && elements.elementAt(j).getY() > lowery)
+				{
+					//textBoxes fill the whole horizontal line on the screen. Skip those for setLeft and setRight
+					if(elements.elementAt(j).getType().equals("ATextBox"))
+					{
+						continue;
+					}
+					//If element j has a greater x than element i, then j is to the right of i
+					if(elements.elementAt(j).getX() > elements.elementAt(i).getX())
+					{
+						elements.elementAt(j).setRight(elements.elementAt(i).getName());
+					}
+					//likewise if i has a greater x than j, i is to the right of j
+					else
+					{
+						elements.elementAt(i).setRight(elements.elementAt(j).getName());
+					}
+					
+				}
+			}
 		}
 		
 		return elements;
