@@ -1,6 +1,7 @@
 package draganddroid;
 
 import java.awt.Graphics;
+import java.io.PrintWriter;
 
 /**
  * Represents an android element drawn on 
@@ -57,5 +58,6 @@ public abstract class AndroidElement{
 	
 	
 	public abstract String getType();
+	public abstract void printAndroidXml(PrintWriter pw);
 	
 }

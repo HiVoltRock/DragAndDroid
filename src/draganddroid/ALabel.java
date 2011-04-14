@@ -4,6 +4,7 @@ import global.Constants;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.PrintWriter;
 
 public class ALabel extends AndroidElement {
 
@@ -143,6 +144,23 @@ public class ALabel extends AndroidElement {
 
 	public int getWidth() {
 		return width;
+	}
+	@Override
+	/**
+	 * Serious problem: It seems like we have a problem adding Strings in general (comment added here because this happened to be where
+	 * I was when I noticed it). I entered the string "For the love of God, work" for a label and I got an array index out of bounds exception.
+	 * TODO: fix that crap
+	 */
+	public void printAndroidXml(PrintWriter pw) 
+	{
+		pw.println("\t<TextView");
+		pw.println("\t\tandroid:id=\"@+id/" + getName() + "\"");
+		pw.println("\t\tandroid:layout_width=\"fill_parent\"");
+		pw.println("\t\tandroid:layout_height=\"wrap_content\"");
+		pw.println("\t\tandroid:text=\"" + getName() + "\"");
+		
+		pw.println("\t/>");
+		
 	}
 
 }

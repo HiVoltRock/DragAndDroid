@@ -90,12 +90,12 @@ public class AndroidGenerator
 			pw.println("\tandroid:layout_width=\"fill_parent\"");
 			pw.println("\tandroid:layout_height=\"fill_parent\">");
 			
-			/*
+			
 			for(AndroidElement e : elements)
 			{
-				
+				e.printAndroidXml(pw);
 			}
-			*/
+			
 			
 			pw.println("</RelativeLayout>");
 			pw.close();

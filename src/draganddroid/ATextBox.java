@@ -4,6 +4,7 @@ import global.Constants;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.PrintWriter;
 
 public class ATextBox extends AndroidElement {
 
@@ -144,6 +145,21 @@ public class ATextBox extends AndroidElement {
 
 	public int getWidth() {
 		return width;
+	}
+
+	@Override
+	public void printAndroidXml(PrintWriter pw) 
+	{
+		pw.println("\t<EditText");
+		pw.println("\t\tandroid:id=\"@+id/" + getName() + "\"");
+		pw.println("\t\tandroid:layout_width=\"fill_parent\"");
+		pw.println("\t\tandroid:layout_height=\"wrap_content\"");
+		pw.println("\t\tandroid:background=\"@android:drawable/editbox_background\"");
+		pw.println("\t\tandroid:text=\"" + "\"");
+		//pw.println("\t\tandroid:inputType=\"TYPE_CLASS_TEXT\"");
+		
+		pw.println("\t/>");
+		
 	}
 
 }

@@ -120,12 +120,13 @@ public class AButton extends AndroidElement {
 	
 	public void printAndroidXml(PrintWriter pw)
 	{
-		pw.println("<Button");
+		pw.println("\t<Button");
 		pw.println("\t\tandroid:id=\"@+id/" + getName() + "\"");
-		pw.println("android:layout_width=\"wrap_content\"");
-		pw.println("android:layout_height=\"wrap_content\"");
+		pw.println("\t\tandroid:layout_width=\"wrap_content\"");
+		pw.println("\t\tandroid:layout_height=\"wrap_content\"");
+		pw.println("\t\tandroid:text=\"" + getName() + "\"");
 		
-		pw.println("/>");
+		pw.println("\t/>");
 	}
 	
 	public String getType() {
