@@ -28,10 +28,15 @@ import javax.swing.JOptionPane;
  * @author afavia.student
  *
  */
-public class Editor implements WindowListener {
+public class Editor extends JFrame implements WindowListener {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	Vector<AndroidElement> elements;
-	JFrame f;
+	//JFrame f;
 	boolean firstOpen;
 	String rootDir; //root directory of the desired Android app
 	String xmlDir;  //directory of main.xml in the Android app
@@ -60,7 +65,8 @@ public class Editor implements WindowListener {
 			firstOpen = false;
 		}
 		
-		f = new JFrame("Drag And Droid Editor");
+		//f = new JFrame("Drag And Droid Editor");
+		this.setTitle("Drag And Droid Editor");
 		OurCanvas c = new OurCanvas(this);
 		c.setBackground(Color.WHITE);
 		c.setSize(Constants.EditorWidth, Constants.EditorHeight);
@@ -74,11 +80,11 @@ public class Editor implements WindowListener {
 		MenuItem Label = new MenuItem("Label");
 		MenuItem TextBox = new MenuItem("TextBox");
 		
-		New.addActionListener(new MenuResponder(this, f, c));
-		miGenerate.addActionListener(new MenuResponder(this, f, c));
-		Button.addActionListener(new MenuResponder(this, f, c));
-		Label.addActionListener(new MenuResponder(this, f, c));
-		TextBox.addActionListener(new MenuResponder(this, f, c));	
+		New.addActionListener(new MenuResponder(this, this, c));
+		miGenerate.addActionListener(new MenuResponder(this, this, c));
+		Button.addActionListener(new MenuResponder(this, this, c));
+		Label.addActionListener(new MenuResponder(this, this, c));
+		TextBox.addActionListener(new MenuResponder(this, this, c));	
 		
 		New.setShortcut(new MenuShortcut(KeyEvent.VK_N));
 		miGenerate.setShortcut(new MenuShortcut(KeyEvent.VK_G));
@@ -122,13 +128,19 @@ public class Editor implements WindowListener {
 			
 		menu.add(file);
 		menu.add(tools);
+		/*
 		f.setMenuBar(menu);
 		
 		f.add(c);
 			
 		f.pack();
 		f.setVisible(true);		
-		
+		*/
+		this.setMenuBar(menu);
+		this.add(c);
+			
+		this.pack();
+		this.setVisible(true);	
 		//test t = new test();
 		//t.testXMLParser(); 
 	}
@@ -179,7 +191,7 @@ public class Editor implements WindowListener {
 		}
 		else
 		{
-			JOptionPane.showMessageDialog(f, "We can't seem to find your Android files. Are you in the right directory?");
+			JOptionPane.showMessageDialog(this, "We can't seem to find your Android files. Are you in the right directory?");
 		}
 		
 		return false;
