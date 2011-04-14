@@ -13,9 +13,11 @@ import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import element.AButton;
+import element.AEvent;
 import element.ALabel;
 import element.ATextBox;
 import element.AndroidElement;
+import global.EventType;
 
 /**
  * parses xml file and checks for new additions
@@ -28,12 +30,15 @@ public class SaxXMLParser extends DefaultHandler {
 String filename;
     
 	AndroidElement tempElement;
+	AEvent tempEvent;
     
     Vector<AndroidElement> elementList;
+    public Vector<AEvent> eventsList;
     
     public SaxXMLParser(String filename, Vector<AndroidElement> el) {
         this.filename = filename;
         elementList = el;
+        this.eventsList = new Vector<AEvent>();
     }
     
     public void parseDocument() {
@@ -75,6 +80,17 @@ String filename;
             tempElement.setY(Integer.parseInt(attributes.getValue("y")));
             tempElement.setCaption(attributes.getValue("caption"));
             elementList.add(tempElement);
+        }
+        else if (qName.equalsIgnoreCase("Event")) {
+        	String type = attributes.getValue("type");
+        	String name = attributes.getValue("name");
+        	
+        	if ( attributes.getValue("event").equals("ONCLICK") )
+        	{	
+        		tempEvent = new AEvent(type, name, EventType.ONCLICK);
+        	}
+        	
+        	eventsList.add(tempEvent);
         }
     }
     

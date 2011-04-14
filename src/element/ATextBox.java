@@ -1,10 +1,12 @@
 package element;
 
 import global.Constants;
+import global.EventType;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.io.PrintWriter;
+import java.util.Vector;
 
 public class ATextBox extends AndroidElement {
 
@@ -177,5 +179,14 @@ public class ATextBox extends AndroidElement {
 		pw.println("\t/>");
 		
 	}
-
+	
+	@Override
+	public void addEvent(EventType e) {
+		this.elementEventList.add(e);
+	}
+	
+	@Override
+	public Vector<EventType> getEvents() {
+		return this.elementEventList;
+	}
 }
