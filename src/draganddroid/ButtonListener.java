@@ -33,11 +33,12 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 		this.editor = e;
 		generator = new AppElementListGenerator(this.editor.elements);
 		andGen = new AndroidGenerator();
-		
+		currentItemDragged = -1;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		currentElementName="";
 		if(e.getActionCommand().equals("AddButton")){
 			task = addbutton;
 			currentElementName = JOptionPane.showInputDialog(null,
@@ -67,6 +68,9 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 			
 			//generates the main.xml file in /res/layout
         	andGen.GenerateAndroidCode(editor.xmlDir);
+		}
+		if ( currentElementName == null) {
+			task = 0;
 		}
 	}
 	
