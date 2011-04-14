@@ -1,4 +1,4 @@
-package draganddroid;
+package element;
 
 import global.Constants;
 
@@ -41,7 +41,7 @@ public class AButton extends AndroidElement {
 		output += "y=\"" + this.y + "\" ";
 		output += "height=\"" + this.getHeight() + "\" ";
 		output += "width=\"" + this.getWidth() + "\" ";
-		output += "caption=\"" + this.caption + "\">\n";
+		output += "caption=\"" + this.getCaption() + "\">\n";
 		output += "\t</Element>\n";
 		return output;
 	}

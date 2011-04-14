@@ -1,9 +1,13 @@
-package draganddroid;
+package editorView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+
+import xml.AppElementListGenerator;
+
+
 
 import android.AndroidGenerator;
 

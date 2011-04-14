@@ -1,16 +1,21 @@
-package draganddroid;
+package xml;
 
 import java.io.IOException;
 import java.util.Vector;
-import org.xml.sax.Attributes;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
+
+import element.AButton;
+import element.ALabel;
+import element.ATextBox;
+import element.AndroidElement;
 
 /**
  * parses xml file and checks for new additions
@@ -68,7 +73,7 @@ String filename;
             tempElement.setName(attributes.getValue("name"));
             tempElement.setX(Integer.parseInt(attributes.getValue("x")));
             tempElement.setY(Integer.parseInt(attributes.getValue("y")));
-            tempElement.caption = attributes.getValue("caption");
+            tempElement.setCaption(attributes.getValue("caption"));
             elementList.add(tempElement);
         }
     }

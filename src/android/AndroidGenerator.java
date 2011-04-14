@@ -10,10 +10,12 @@ import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.Vector;
 
-import draganddroid.AndroidElement;
+import xml.ElementXMLUpdator;
+import xml.SaxXMLParser;
+
 import draganddroid.ElementSortX;
 import draganddroid.ElementSortY;
-import draganddroid.SaxXMLParser;
+import element.AndroidElement;
 
 /**
  * 

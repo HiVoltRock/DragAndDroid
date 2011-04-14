@@ -1,4 +1,4 @@
-package draganddroid;
+package element;
 
 import global.Constants;
 
@@ -6,41 +6,40 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.io.PrintWriter;
 
-public class ATextBox extends AndroidElement {
+public class ALabel extends AndroidElement {
 
 	public String left = "";
 	public String right = "";
 	public String above = "";
 	public String below = "";
 	
-	public ATextBox(){};
-	
-	public ATextBox(String name, int x, int y) {
+	public ALabel(){};
+	public ALabel(String name, int x, int y) {
 		this.setName(name);
 		this.x = x;
 		this.y = y;
-		this.setHeight(Constants.ATextBoxWidth);
-		this.setWidth(Constants.ATextBoxHeight);
+		this.setHeight(Constants.ALabelWidth);
+		this.setWidth(Constants.ALabelHeight);
 	}
 	
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(new Color(217,163,151));
-		g.fillRect(x, y, Constants.ATextBoxWidth, Constants.ATextBoxHeight);
+		g.setColor(new Color(157,211,207));
+		g.fillRect(x, y, Constants.ALabelWidth, Constants.ALabelHeight);
 		g.setColor(Color.BLACK);
-		g.drawString(getName(), x+10, y+20);
+		g.drawString(getName(), x+10, y+20);	
 	}
 
 	@Override
 	public String outputElementXML() {
 		String output = "";
-		output += "\t<Element type=\"ATextBox\" ";
+		output += "\t<Element type=\"ALabel\" ";
 		output += "name=\"" + this.getName() + "\" ";
 		output += "x=\"" + this.x + "\" ";
 		output += "y=\"" + this.y + "\" ";
 		output += "height=\"" + this.getHeight() + "\" ";
 		output += "width=\"" + this.getWidth() + "\" ";
-		output += "caption=\"" + this.caption + "\">\n";
+		output += "caption=\"" + this.getCaption() + "\">\n";
 		output += "\t</Element>\n";
 		return output;
 	}
@@ -116,8 +115,10 @@ public class ATextBox extends AndroidElement {
 	{
 		return below;
 	}
+	
+
 	public String getType() {
-		return "ATextBox";
+		return "ALabel";
 	}
 	
 	public void setName(String name) {
@@ -143,21 +144,19 @@ public class ATextBox extends AndroidElement {
 	public int getWidth() {
 		return width;
 	}
-
 	@Override
+	/**
+	 * Serious problem: It seems like we have a problem adding Strings in general (comment added here because this happened to be where
+	 * I was when I noticed it). I entered the string "For the love of God, work" for a label and I got an array index out of bounds exception.
+	 * TODO: fix that crap
+	 */
 	public void printAndroidXml(PrintWriter pw) 
 	{
-		pw.println("\t<EditText");
+		pw.println("\t<TextView");
 		pw.println("\t\tandroid:id=\"@+id/" + getName() + "\"");
 		pw.println("\t\tandroid:layout_width=\"fill_parent\"");
 		pw.println("\t\tandroid:layout_height=\"wrap_content\"");
-		pw.println("\t\tandroid:background=\"@android:drawable/editbox_background\"");
-		pw.println("\t\tandroid:text=\"" + "\"");
-		
-		if(!left.equals(""))
-		{
-			pw.println("\t\tandroid:layout_toLeftOf=\"@id/" + left + "\"");
-		}
+		pw.println("\t\tandroid:text=\"" + getName() + "\"");
 		
 		if(!right.equals(""))
 		{

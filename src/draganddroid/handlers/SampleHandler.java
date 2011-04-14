@@ -4,7 +4,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
-import draganddroid.Editor;
+import editorView.Editor;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.

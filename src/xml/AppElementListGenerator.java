@@ -1,5 +1,6 @@
-package draganddroid;
+package xml;
 
+import element.AndroidElement;
 import global.Constants;
 
 import java.io.BufferedWriter;

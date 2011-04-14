@@ -1,7 +1,9 @@
-package draganddroid;
+package element;
 
 import java.awt.Graphics;
 import java.io.PrintWriter;
+import draganddroid.*;
+import editorView.OurCanvas;
 
 /**
  * Represents an android element drawn on 
@@ -59,5 +61,13 @@ public abstract class AndroidElement{
 	
 	public abstract String getType();
 	public abstract void printAndroidXml(PrintWriter pw);
+
+	public void setCaption(String caption) {
+		this.caption = caption;
+	}
+
+	public String getCaption() {
+		return caption;
+	}
 	
 }

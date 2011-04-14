@@ -1,4 +1,4 @@
-package draganddroid;
+package editorView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,6 +6,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JOptionPane;
+
+import xml.AppElementListGenerator;
+
+
+import element.AButton;
+import element.ALabel;
+import element.ATextBox;
 import android.AndroidGenerator;
 
 public class ButtonListener extends MouseAdapter implements ActionListener{
