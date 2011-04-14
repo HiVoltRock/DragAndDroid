@@ -2,8 +2,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
+	<Button
+		android:id="@+id/button1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="button1"
+	/>
+	<TextView
+		android:id="@+id/name:"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="name:"
+	/>
 	<EditText
-		android:id="@+id/owowowo"
+		android:id="@+id/anthonyText"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:background="@android:drawable/editbox_background"
