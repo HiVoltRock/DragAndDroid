@@ -80,7 +80,7 @@ public class AndroidGenerator
 			sortElements("x", elements);
 			
 			//place appropriate tags for the elements so they display correctly in the AVD or on a phone
-			//setAttributes(elements);
+//			setAttributes(elements);
 			
 			//erase the contents of the file so far so we can build from scratch
 			FileOutputStream eraser = new FileOutputStream(xml);
@@ -93,7 +93,6 @@ public class AndroidGenerator
 			pw.println("<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"");
 			pw.println("\tandroid:layout_width=\"fill_parent\"");
 			pw.println("\tandroid:layout_height=\"fill_parent\">");
-			
 			
 			for(AndroidElement e : elements)
 			{
@@ -165,15 +164,17 @@ public class AndroidGenerator
 		for(int i = 0; i < elements.size(); i++)
 		{
 			//since text boxes fill the whole horizontal line, as long as it's not the first item we can set its "below" feature
-			if(i != 0 && elements.elementAt(i).getType().equals("ATextBox"))
+			if(elements.elementAt(i).getType().equals("ATextBox"))
 			{
-				elements.elementAt(i).setBelow(elements.elementAt(i-1).getName());
+				elements.elementAt(i+1).setBelow(elements.elementAt(i).getName());
+				
 				
 				//there are no left and right...so move on
 				continue;
 			}
 			
 			//it shouldn't matter if upper or lower go above or below the screen resolution. We're setting relative positioning anyway
+			// so negative numbers and such shouldn't matter. We'll see how true that is in testing...
 			basex = elements.elementAt(i).getX();
 			upperx = basex + 15;
 			lowerx = basex - 15;
