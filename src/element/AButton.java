@@ -27,11 +27,12 @@ public class AButton extends AndroidElement {
 	
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(Color.LIGHT_GRAY);
-		g.fillRect(x, y, Constants.AButtonWidth, Constants.AButtonHeight);
+		//g.setColor(Color.LIGHT_GRAY);
+		//g.fillRect(x, y, Constants.AButtonWidth, Constants.AButtonHeight);
+		Image img = new ImageIcon(this.getClass().getResource("/icons/button.png")).getImage();
+		g.drawImage(img, x, y, null);
 		g.setColor(Color.BLACK);
 		g.drawString(getName(), x+10, y+20);
-		
 	}
 
 	@Override
