@@ -50,6 +50,7 @@ public class AppElementListGenerator {
                 out.write(elements.elementAt(i).outputElementXML());
             }
             
+            
             Vector<AEvent> allEvents = getEventList();
             for ( AEvent ae : allEvents ) {
             	out.write("<Event type=\"" + ae.type + 
@@ -71,12 +72,14 @@ public class AppElementListGenerator {
     
     public Vector<AEvent> getEventList() {
     	Vector<AEvent> ae = new Vector<AEvent>();
+    	/*
     	for( AndroidElement e : elements ) {
     		for (EventType event : e.getEvents() )
     		{
     			ae.add(new AEvent(e.getType(), e.getName(), event));
     		}
     	}
+    	*/
     	return ae;
     }
 	
