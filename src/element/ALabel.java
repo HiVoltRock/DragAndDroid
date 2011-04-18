@@ -26,10 +26,12 @@ public class ALabel extends AndroidElement {
 	
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(new Color(157,211,207));
-		g.fillRect(x, y, Constants.ALabelWidth, Constants.ALabelHeight);
-		g.setColor(Color.BLACK);
-		g.drawString(getName(), x+10, y+20);	
+		//g.setColor(new Color(157,211,207));
+		//g.fillRect(x, y, Constants.ALabelWidth, Constants.ALabelHeight);
+		Image img = new ImageIcon(this.getClass().getResource("/icons/label.png")).getImage();
+		g.drawImage(img, x, y, null);
+		g.setColor(Color.WHITE);
+		g.drawString(getName(), x+10, y+20);
 	}
 
 	@Override
