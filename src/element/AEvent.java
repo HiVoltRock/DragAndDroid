@@ -12,4 +12,10 @@ public class AEvent {
 		this.name = name;
 		this.event = e;		
 	}
+	
+	public String toString() {
+		String s="";
+		s += type + " " + name + " " + event.toString();
+		return s;
+	}
 }

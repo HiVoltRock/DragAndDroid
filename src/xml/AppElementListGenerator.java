@@ -10,7 +10,6 @@ import java.util.Vector;
 import element.AEvent;
 import element.AndroidElement;
 import global.Constants;
-import global.EventType;
 
 /**
  * This class will generate a formatted file of all of the elements that
