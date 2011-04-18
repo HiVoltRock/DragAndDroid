@@ -80,7 +80,7 @@ public class Editor extends JFrame implements WindowListener {
 		//f = new JFrame("Drag And Droid Editor");
 		this.setTitle("Drag And Droid Editor");
 		OurCanvas c = new OurCanvas(this);
-		c.setBackground(Color.WHITE);
+		c.setBackground(Color.BLACK);
 		c.setSize(Constants.EditorWidth, Constants.EditorHeight);
 		MenuBar menu = new MenuBar();
 		Menu file = new Menu("File");
