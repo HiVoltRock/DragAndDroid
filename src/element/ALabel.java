@@ -1,12 +1,15 @@
 package element;
 
-import global.Constants;
-import global.EventType;
-
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.io.PrintWriter;
 import java.util.Vector;
+
+import javax.swing.ImageIcon;
+
+import global.Constants;
+import global.EventType;
 
 public class ALabel extends AndroidElement {
 
