@@ -1,4 +1,4 @@
-package android;
+package xml;
 
 import global.Constants;
 
@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import draganddroid.AndroidElement;
+import element.AndroidElement;
 
 /**
  * updates xml file with any new elements added 

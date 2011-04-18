@@ -1,10 +1,11 @@
-package draganddroid;
+package editorView;
 
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Image;
 
-class OurCanvas extends Canvas {
+
+public class OurCanvas extends Canvas {
 
 	private static final long serialVersionUID = 1L;
 	Editor e;

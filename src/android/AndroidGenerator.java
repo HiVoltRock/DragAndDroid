@@ -1,7 +1,5 @@
 package android;
 
-import global.Constants;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -10,10 +8,13 @@ import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.Vector;
 
-import draganddroid.AndroidElement;
+import xml.AppElementListGenerator;
+import xml.ElementXMLUpdator;
+import xml.SaxXMLParser;
 import draganddroid.ElementSortX;
 import draganddroid.ElementSortY;
-import draganddroid.SaxXMLParser;
+import element.AndroidElement;
+import global.Constants;
 
 /**
  * 
@@ -119,14 +120,10 @@ public class AndroidGenerator
 			ioe.printStackTrace();
 		}
 		
-		
-		//re-update xml - ANTHONY
+
 		// if any new elements added to elements, update XML
-		if ( elements.size() != originalElementCt ) {
-			for ( int i = originalElementCt-1; i < elements.size(); i++ ) {
-				updator.UpdateXMLFile( elements.elementAt(i) );
-			}
-		}
+		AppElementListGenerator a = new AppElementListGenerator(elements);
+		a.GenerateElementList();
 		
 	}
 	/**

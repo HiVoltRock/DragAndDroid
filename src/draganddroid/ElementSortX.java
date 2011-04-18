@@ -2,6 +2,8 @@ package draganddroid;
 
 import java.util.Comparator;
 
+import element.AndroidElement;
+
 public class ElementSortX implements Comparator<AndroidElement>
 {
 

@@ -1,10 +1,12 @@
 package draganddroid.handlers;
 
+import java.io.IOException;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
-import draganddroid.Editor;
+import editorView.Editor;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -26,7 +28,11 @@ public class SampleHandler extends AbstractHandler {
 	 * from the application context.
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		E.Open();
+		try {
+			E.Open();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		return null;
 	}

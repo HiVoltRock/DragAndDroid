@@ -1,7 +1,11 @@
-package draganddroid;
+package element;
 
 import java.awt.Graphics;
 import java.io.PrintWriter;
+import java.util.Vector;
+
+import editorView.OurCanvas;
+import global.EventType;
 
 /**
  * Represents an android element drawn on 
@@ -16,6 +20,7 @@ public abstract class AndroidElement{
 	int height; 
 	String caption;	
 	String name;
+	Vector<EventType> elementEventList;
 	
 	OurCanvas parent;
 	
@@ -55,9 +60,17 @@ public abstract class AndroidElement{
 	public abstract void setName(String name);
 	public abstract void setHeight(int height);
 	public abstract void setWidth(int width);
-	
+	public abstract void addEvent(EventType e);
+	public abstract Vector<EventType> getEvents();
 	
 	public abstract String getType();
 	public abstract void printAndroidXml(PrintWriter pw);
-	
+
+	public void setCaption(String caption) {
+		this.caption = caption;
+	}
+
+	public String getCaption() {
+		return caption;
+	}	
 }

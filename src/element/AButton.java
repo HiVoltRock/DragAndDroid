@@ -1,10 +1,12 @@
-package draganddroid;
+package element;
 
 import global.Constants;
+import global.EventType;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.io.PrintWriter;
+import java.util.Vector;
 
 public class AButton extends AndroidElement {
 	
@@ -41,7 +43,7 @@ public class AButton extends AndroidElement {
 		output += "y=\"" + this.y + "\" ";
 		output += "height=\"" + this.getHeight() + "\" ";
 		output += "width=\"" + this.getWidth() + "\" ";
-		output += "caption=\"" + this.caption + "\">\n";
+		output += "caption=\"" + this.getCaption() + "\">\n";
 		output += "\t</Element>\n";
 		return output;
 	}
@@ -173,5 +175,15 @@ public class AButton extends AndroidElement {
 
 	public int getWidth() {
 		return width;
+	}
+
+	@Override
+	public void addEvent(EventType e) {
+		this.elementEventList.add(e);
+	}
+
+	@Override
+	public Vector<EventType> getEvents() {
+		return this.elementEventList;
 	}
 }
