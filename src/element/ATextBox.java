@@ -27,8 +27,10 @@ public class ATextBox extends AndroidElement {
 	
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(new Color(217,163,151));
-		g.fillRect(x, y, Constants.ATextBoxWidth, Constants.ATextBoxHeight);
+		//g.setColor(new Color(217,163,151));
+		//g.fillRect(x, y, Constants.ATextBoxWidth, Constants.ATextBoxHeight);
+		Image img = new ImageIcon(this.getClass().getResource("/icons/textBox.png")).getImage();
+		g.drawImage(img, x, y, null);
 		g.setColor(Color.BLACK);
 		g.drawString(getName(), x+10, y+20);
 	}
