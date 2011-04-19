@@ -1,12 +1,15 @@
 package element;
 
-import global.Constants;
-import global.EventType;
-
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.io.PrintWriter;
 import java.util.Vector;
+
+import javax.swing.ImageIcon;
+
+import global.Constants;
+import global.EventType;
 
 public class AButton extends AndroidElement {
 	
@@ -14,6 +17,7 @@ public class AButton extends AndroidElement {
 	public String right = "";
 	public String above = "";
 	public String below = "";
+	public String alignParentRight = "";
 	
 	public AButton(){};
 	
@@ -27,11 +31,12 @@ public class AButton extends AndroidElement {
 	
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(Color.LIGHT_GRAY);
-		g.fillRect(x, y, Constants.AButtonWidth, Constants.AButtonHeight);
+		//g.setColor(Color.LIGHT_GRAY);
+		//g.fillRect(x, y, Constants.AButtonWidth, Constants.AButtonHeight);
+		Image img = new ImageIcon(this.getClass().getResource("/icons/button.png")).getImage();
+		g.drawImage(img, x, y, null);
 		g.setColor(Color.BLACK);
 		g.drawString(getName(), x+10, y+20);
-		
 	}
 
 	@Override
@@ -145,9 +150,18 @@ public class AButton extends AndroidElement {
 		
 		if(!above.equals(""))
 		{
-			pw.println("android:layout_above=\"@id/" + above + "\"");
+			pw.println("\t\tandroid:layout_above=\"@id/" + above + "\"");
 		}
+		
+		if(!alignParentRight.equals(""))
+		{
+			pw.println("\t\tandroid:layout_alignParentRight=\"true\"");
+		}
+		
 		pw.println("\t/>");
+		
+
+		
 	}
 	
 	public String getType() {
@@ -186,4 +200,26 @@ public class AButton extends AndroidElement {
 	public Vector<EventType> getEvents() {
 		return this.elementEventList;
 	}
+
+	@Override
+	public void alignParentRight() 
+	{
+		this.alignParentRight = "true";
+		
+	}
+	
+	@Override
+	public void removeParentRight()
+	{
+		this.alignParentRight = "";
+	}
+
+	@Override
+	public String getParentRight() 
+	{
+		return this.alignParentRight;
+	}
+	
+
+	
 }

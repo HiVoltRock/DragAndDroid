@@ -1,12 +1,15 @@
 package element;
 
-import global.Constants;
-import global.EventType;
-
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.io.PrintWriter;
 import java.util.Vector;
+
+import javax.swing.ImageIcon;
+
+import global.Constants;
+import global.EventType;
 
 public class ALabel extends AndroidElement {
 
@@ -14,6 +17,7 @@ public class ALabel extends AndroidElement {
 	public String right = "";
 	public String above = "";
 	public String below = "";
+	public String alignParentRight = "";
 	
 	public ALabel(){};
 	public ALabel(String name, int x, int y) {
@@ -26,10 +30,12 @@ public class ALabel extends AndroidElement {
 	
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(new Color(157,211,207));
-		g.fillRect(x, y, Constants.ALabelWidth, Constants.ALabelHeight);
-		g.setColor(Color.BLACK);
-		g.drawString(getName(), x+10, y+20);	
+		//g.setColor(new Color(157,211,207));
+		//g.fillRect(x, y, Constants.ALabelWidth, Constants.ALabelHeight);
+		Image img = new ImageIcon(this.getClass().getResource("/icons/label.png")).getImage();
+		g.drawImage(img, x, y, null);
+		g.setColor(Color.WHITE);
+		g.drawString(getName(), x+10, y+20);
 	}
 
 	@Override
@@ -175,6 +181,11 @@ public class ALabel extends AndroidElement {
 			pw.println("android:layout_above=\"@id/" + above + "\"");
 		}
 		
+		if(!alignParentRight.equals(""))
+		{
+			pw.println("\t\tandroid:layout_alignParentRight=\"true\"");
+		}
+		
 		pw.println("\t/>");
 		
 	}
@@ -186,5 +197,24 @@ public class ALabel extends AndroidElement {
 	@Override
 	public Vector<EventType> getEvents() {
 		return this.elementEventList;
+	}
+	
+	@Override
+	public void alignParentRight() 
+	{
+		this.alignParentRight = "true";
+		
+	}
+	
+	@Override
+	public void removeParentRight()
+	{
+		this.alignParentRight = "";
+	}
+	
+	@Override
+	public String getParentRight() 
+	{
+		return this.alignParentRight;
 	}
 }
