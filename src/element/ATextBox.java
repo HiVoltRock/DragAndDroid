@@ -17,6 +17,7 @@ public class ATextBox extends AndroidElement {
 	public String right = "";
 	public String above = "";
 	public String below = "";
+	public String alignParentRight = "";
 	
 	public ATextBox(){};
 	
@@ -181,6 +182,11 @@ public class ATextBox extends AndroidElement {
 			pw.println("android:layout_above=\"@id/" + above + "\"");
 		}
 		
+		if(!alignParentRight.equals(""))
+		{
+			pw.println("\t\tandroid:layout_alignParentRight=\"true\"");
+		}
+		
 		pw.println("\t/>");
 		
 	}
@@ -193,5 +199,12 @@ public class ATextBox extends AndroidElement {
 	@Override
 	public Vector<EventType> getEvents() {
 		return this.elementEventList;
+	}
+	
+	@Override
+	public void alignParentRight() 
+	{
+		this.alignParentRight = "true";
+		
 	}
 }

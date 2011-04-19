@@ -17,6 +17,7 @@ public class AButton extends AndroidElement {
 	public String right = "";
 	public String above = "";
 	public String below = "";
+	public String alignParentRight = "";
 	
 	public AButton(){};
 	
@@ -149,9 +150,15 @@ public class AButton extends AndroidElement {
 		
 		if(!above.equals(""))
 		{
-			pw.println("android:layout_above=\"@id/" + above + "\"");
+			pw.println("\t\tandroid:layout_above=\"@id/" + above + "\"");
 		}
 		pw.println("\t/>");
+		
+		if(!alignParentRight.equals(""))
+		{
+			pw.println("\t\tandroid:layout_alignParentRight=\"true\"");
+		}
+		
 	}
 	
 	public String getType() {
@@ -189,5 +196,12 @@ public class AButton extends AndroidElement {
 	@Override
 	public Vector<EventType> getEvents() {
 		return this.elementEventList;
+	}
+
+	@Override
+	public void alignParentRight() 
+	{
+		this.alignParentRight = "true";
+		
 	}
 }

@@ -17,6 +17,7 @@ public class ALabel extends AndroidElement {
 	public String right = "";
 	public String above = "";
 	public String below = "";
+	public String alignParentRight = "";
 	
 	public ALabel(){};
 	public ALabel(String name, int x, int y) {
@@ -180,6 +181,11 @@ public class ALabel extends AndroidElement {
 			pw.println("android:layout_above=\"@id/" + above + "\"");
 		}
 		
+		if(!alignParentRight.equals(""))
+		{
+			pw.println("\t\tandroid:layout_alignParentRight=\"true\"");
+		}
+		
 		pw.println("\t/>");
 		
 	}
@@ -191,5 +197,12 @@ public class ALabel extends AndroidElement {
 	@Override
 	public Vector<EventType> getEvents() {
 		return this.elementEventList;
+	}
+	
+	@Override
+	public void alignParentRight() 
+	{
+		this.alignParentRight = "true";
+		
 	}
 }
