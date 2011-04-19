@@ -152,12 +152,15 @@ public class AButton extends AndroidElement {
 		{
 			pw.println("\t\tandroid:layout_above=\"@id/" + above + "\"");
 		}
-		pw.println("\t/>");
 		
 		if(!alignParentRight.equals(""))
 		{
 			pw.println("\t\tandroid:layout_alignParentRight=\"true\"");
 		}
+		
+		pw.println("\t/>");
+		
+
 		
 	}
 	
@@ -204,4 +207,19 @@ public class AButton extends AndroidElement {
 		this.alignParentRight = "true";
 		
 	}
+	
+	@Override
+	public void removeParentRight()
+	{
+		this.alignParentRight = "";
+	}
+
+	@Override
+	public String getParentRight() 
+	{
+		return this.alignParentRight;
+	}
+	
+
+	
 }

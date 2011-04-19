@@ -63,6 +63,8 @@ public abstract class AndroidElement{
 	public abstract void addEvent(EventType e);
 	public abstract Vector<EventType> getEvents();
 	public abstract void alignParentRight();
+	public abstract void removeParentRight();
+	public abstract String getParentRight();
 	
 	public abstract String getType();
 	public abstract void printAndroidXml(PrintWriter pw);

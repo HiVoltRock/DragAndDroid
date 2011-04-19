@@ -207,4 +207,17 @@ public class ATextBox extends AndroidElement {
 		this.alignParentRight = "true";
 		
 	}
+	
+	@Override
+	public void removeParentRight()
+	{
+		this.alignParentRight = "";
+	}
+	
+	@Override
+	public String getParentRight() 
+	{
+		return this.alignParentRight;
+	}
+	
 }
