@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 
 import global.Constants;
 
+import testing.test;
 import xml.SaxXMLParser;
 import element.AndroidElement;
 
@@ -88,16 +89,20 @@ public class Editor extends JFrame implements WindowListener {
 		
 		MenuItem New = new MenuItem("New");
 		MenuItem miGenerate = new MenuItem("Generate");
+		/* don't want these yet 
 		MenuItem Button = new MenuItem("Button");
 		MenuItem Label = new MenuItem("Label");
 		MenuItem TextBox = new MenuItem("TextBox");
+		*/
 		MenuItem ElementProperties = new MenuItem("ElementProperties");
 		
 		New.addActionListener(new MenuResponder(this, this, c));
 		miGenerate.addActionListener(new MenuResponder(this, this, c));
+		/* don't want these yet 
 		Button.addActionListener(new MenuResponder(this, this, c));
 		Label.addActionListener(new MenuResponder(this, this, c));
 		TextBox.addActionListener(new MenuResponder(this, this, c));	
+		*/
 		ElementProperties.addActionListener(new MenuResponder(this, this, c));
 		
 		New.setShortcut(new MenuShortcut(KeyEvent.VK_N));
@@ -106,9 +111,11 @@ public class Editor extends JFrame implements WindowListener {
 		
 		file.add(New);
 		file.add(miGenerate);
+		/* don't want these yet 
 		tools.add(Button);
 		tools.add(Label);
 		tools.add(TextBox);	
+		*/
 		tools.add(ElementProperties);
 		
 		//Das Tool Box
@@ -144,21 +151,12 @@ public class Editor extends JFrame implements WindowListener {
 			
 		menu.add(file);
 		menu.add(tools);
-		/*
-		f.setMenuBar(menu);
-		
-		f.add(c);
-			
-		f.pack();
-		f.setVisible(true);		
-		*/
+
 		this.setMenuBar(menu);
 		this.add(c);
 			
 		this.pack();
 		this.setVisible(true);	
-		//test t = new test();
-		//t.testXMLParser(); 
 	}
 
 	/**

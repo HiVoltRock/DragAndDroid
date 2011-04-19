@@ -1,6 +1,9 @@
 package testing;
 
 import android.AndroidGenerator;
+import editorView.EditPropertiesDialog;
+import editorView.Editor;
+import element.AButton;
 
 /**
  * can use this class to test specific classes without having 
@@ -29,5 +32,10 @@ public class test {
 					a.elements.elementAt(i).getHeight() + " " +
 					a.elements.elementAt(i).getWidth());
 		}	
+	}
+	
+	public void testEditPropertiesDialog(Editor e) {
+		EditPropertiesDialog epd = new EditPropertiesDialog(e, true, new AButton("ANTHONYbtn", 100, 100));
+		
 	}
 }
