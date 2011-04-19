@@ -241,6 +241,10 @@ public class AndroidGenerator
 					}
 					
 				}
+				else //elements are not in a line. We can set a "below" feature
+				{
+					elements.elementAt(j).setBelow(elements.elementAt(i).getName());
+				}
 			}
 		}
 		
