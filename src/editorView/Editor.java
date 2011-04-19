@@ -11,7 +11,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Vector;
@@ -21,9 +20,10 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import global.Constants;
+
 import xml.SaxXMLParser;
 import element.AndroidElement;
-import global.Constants;
 
 /**
  * launched when plugin menu button or Launch Editor 
