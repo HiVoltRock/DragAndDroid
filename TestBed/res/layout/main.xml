@@ -3,54 +3,25 @@
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
 	<EditText
-		android:id="@+id/box"
+		android:id="@+id/t"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:background="@android:drawable/editbox_background"
 		android:text=""
 	/>
-	<EditText
-		android:id="@+id/box"
+	<Button
+		android:id="@+id/b"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="b"
+		android:layout_below="@id/t"
+	/>
+	<TextView
+		android:id="@+id/l"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:background="@android:drawable/editbox_background"
-		android:text=""
-		android:layout_below="@id/box"
-	/>
-	<Button
-		android:id="@+id/left"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="left"
-		android:layout_below="@id/box"
-		android:layout_alignParentRight="true"
-	/>
-	<Button
-		android:id="@+id/left"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="left"
-		android:layout_toLeftOf="@id/left"
-		android:layout_below="@id/box"
-		android:layout_alignParentRight="true"
-	/>
-	<Button
-		android:id="@+id/right"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="right"
-		android:layout_toRightOf="@id/left"
-		android:layout_below="@id/box"
-		android:layout_alignParentRight="true"
-	/>
-	<Button
-		android:id="@+id/right"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="right"
-		android:layout_toLeftOf="@id/right"
-		android:layout_toRightOf="@id/left"
-		android:layout_below="@id/box"
+		android:text="l"
+		android:layout_below="@id/b"
 		android:layout_alignParentRight="true"
 	/>
 </RelativeLayout>

@@ -161,10 +161,12 @@ public class AndroidGenerator
 		int lowery;
 		
 		String below = "";
+		String left = "";
 		
 		//we'll need to reference next and previous elements, so we can't use a for each
 		for(int i = 0; i < elements.size(); i++)
 		{
+					
 			//since text boxes fill the whole horizontal line, as long as it's not the first item we can set its "below" feature
 			if(elements.elementAt(i).getType().equals("ATextBox"))
 			{
@@ -184,6 +186,25 @@ public class AndroidGenerator
 			{
 				elements.elementAt(i).alignParentRight();
 			}
+			
+			
+			/*
+			 * Trying to set elements to left but so far comment above holds true. only alignParentRight can equal true and not
+			 * mess things up.
+			 * 
+			else if(elements.elementAt(i).getX() < Constants.EditorWidth / 2)
+			{
+				elements.elementAt(i).setLeft(left);
+			}
+			
+			if(!elements.elementAt(i).getBelow().equals(""))
+			{
+				left = elements.elementAt(i).getLeft();
+			}
+			
+			End of left attempt
+			*/
+			
 			
 			//it shouldn't matter if upper or lower go above or below the screen resolution. We're setting relative positioning anyway
 			// so negative numbers and such shouldn't matter. We'll see how true that is in testing...
@@ -226,7 +247,7 @@ public class AndroidGenerator
 						elements.elementAt(j).setRight(elements.elementAt(i).getName());
 					}
 					//likewise if j has a smaller x than i, j is to the left of i
-					else
+					else if (elements.elementAt(j).getX() < elements.elementAt(i).getX())
 					{
 						elements.elementAt(j).setLeft(elements.elementAt(i).getName());
 						
