@@ -77,7 +77,7 @@ public class AndroidGenerator
 		{
 			System.out.println("XML File exists");
 			PrintWriter pw = new PrintWriter(xml);
-			sortElements("x", elements);
+			sortElements("y", elements);
 			
 			//place appropriate tags for the elements so they display correctly in the AVD or on a phone
 			setAttributes(elements);
@@ -172,7 +172,6 @@ public class AndroidGenerator
 			{
 				elements.elementAt(i+1).setBelow(elements.elementAt(i).getName());
 				
-				
 				//there are no left and right...so move on
 				continue;
 			}
@@ -185,6 +184,7 @@ public class AndroidGenerator
 			if(elements.elementAt(i).getX() > Constants.EditorWidth / 2)
 			{
 				elements.elementAt(i).alignParentRight();
+				System.out.println("Set parent right!");
 			}
 			
 			
@@ -225,7 +225,7 @@ public class AndroidGenerator
 			
 			//after we establish upper and lower bounds (because users will never get the alignment perfect, 
 			//we see if the elements are in a horizontal row. If they are, determine left and right. 
-			for(int j = i+1; j < elements.size(); j++)
+			for(int j = i; j < elements.size(); j++)
 			{
 				
 				
@@ -247,18 +247,11 @@ public class AndroidGenerator
 						elements.elementAt(j).setRight(elements.elementAt(i).getName());
 					}
 					//likewise if j has a smaller x than i, j is to the left of i
-					else if (elements.elementAt(j).getX() < elements.elementAt(i).getX())
+					if (elements.elementAt(j).getX() < elements.elementAt(i).getX())
 					{
 						elements.elementAt(j).setLeft(elements.elementAt(i).getName());
-						
-						//We've officially stated here that the element has something to its right. Therefore, it cannot
-						// be aligned right with the parent. So we remove this if it's set
-						if(!elements.elementAt(j).getParentRight().equals(""))
-						{
-							elements.elementAt(j).removeParentRight();
-						}
-						
-						
+						elements.elementAt(j).removeParentRight();
+						System.out.println("Removed parent right!");						
 					}
 					
 				}
