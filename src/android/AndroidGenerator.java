@@ -79,14 +79,14 @@ public class AndroidGenerator
 			PrintWriter pw = new PrintWriter(xml);
 			sortElements("y", elements);
 			
-			//place appropriate tags for the elements so they display correctly in the AVD or on a phone
-			setAttributes(elements);
-			
 			//erase the contents of the file so far so we can build from scratch
 			FileOutputStream eraser = new FileOutputStream(xml);
 			byte b[] = new byte[0];
 			eraser.write(b);
 			eraser.close();
+			
+			//place appropriate tags for the elements so they display correctly in the AVD or on a phone
+			setAttributes(elements);
 			
 			//print the top non-element related lines of the Android file
 			pw.println("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
