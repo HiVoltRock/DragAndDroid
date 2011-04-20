@@ -238,4 +238,12 @@ public class Editor extends JFrame implements WindowListener {
 		}
 		return names;
 	}
+
+	public AndroidElement FindElement(String s) {
+		for ( int i = 0; i < elements.size(); i++ ) {
+			if ( elements.elementAt(i).getName().equals(s) )
+				return elements.elementAt(i);
+		}
+		return null;
+	}
 }

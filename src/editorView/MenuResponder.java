@@ -58,6 +58,7 @@ public class MenuResponder implements ActionListener {
 			                    "");
 
 			System.out.println(s);
+			EditPropertiesDialog epd = new EditPropertiesDialog( e, true, e.FindElement( s ));
 			
 		}
 	}
