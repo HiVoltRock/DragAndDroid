@@ -170,6 +170,7 @@ public class AndroidGenerator
 			//since text boxes fill the whole horizontal line, as long as it's not the first item we can set its "below" feature
 			if(elements.elementAt(i).getType().equals("ATextBox"))
 			{
+				//if textbox is last element this line causes an out of bounds array error
 				elements.elementAt(i+1).setBelow(elements.elementAt(i).getName());
 				
 				//there are no left and right...so move on
