@@ -171,6 +171,7 @@ public class AndroidGenerator
 			if(elements.elementAt(i).getType().equals("ATextBox"))
 			{
 				//if textbox is last element this line causes an out of bounds array error
+				//TODO check to make sure not last element
 				elements.elementAt(i+1).setBelow(elements.elementAt(i).getName());
 				
 				//there are no left and right...so move on

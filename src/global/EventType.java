@@ -1,5 +1,5 @@
 package global;
 
 public enum EventType {
-	ONCLICK;
+	NONE, ONCLICK, LONGPRESS;  
 }
