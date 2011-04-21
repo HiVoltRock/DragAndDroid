@@ -1,5 +1,6 @@
 package editorView;
 
+import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 
 import javax.swing.GroupLayout;
@@ -79,11 +80,14 @@ public class EditPropertiesDialog extends JDialog {
 
         mainPanel.setName("mainPanel");
         txtName.setName("txtName");
-        txtName.setText("");
+        txtName.setText(element.getName());
+        txtName.setPreferredSize(new Dimension(150, 20));
         txtX.setName("txtX");
-        txtX.setText("");
+        txtX.setText(String.valueOf(element.getX()));
+        txtX.setPreferredSize(new Dimension(150, 20));
         txtY.setName("txtY");
-        txtY.setText("");
+        txtY.setText(String.valueOf(element.getY()));
+        txtY.setPreferredSize(new Dimension(150, 20));
         lblName.setName("lblName");
         lblName.setText("Name: ");
         lblX.setName("lblX");     
@@ -95,8 +99,10 @@ public class EditPropertiesDialog extends JDialog {
         btnOK.addMouseListener(new MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 element.setName( txtName.getText() );
-                element.setX( Integer.parseInt( txtX.getText() ) );
-                element.setY( Integer.parseInt( txtY.getText() ) );
+                if ( !txtX.getText().equals("") )
+                	element.setX( Integer.parseInt( txtX.getText() ) );
+                if ( !txtY.getText().equals("") )
+                	element.setY( Integer.parseInt( txtY.getText() ) );
                 setVisible(false);
             }
         });
