@@ -2,7 +2,6 @@ package element;
 
 import java.awt.Graphics;
 import java.io.PrintWriter;
-import java.util.Vector;
 
 import editorView.OurCanvas;
 import global.EventType;
@@ -20,9 +19,9 @@ public abstract class AndroidElement{
 	int height; 
 	String caption;	
 	String name;
-	Vector<EventType> elementEventList;
 	
 	OurCanvas parent;
+	public EventType event;
 	
 	/**
 	 * draws particular android element on canvas
@@ -60,8 +59,6 @@ public abstract class AndroidElement{
 	public abstract void setName(String name);
 	public abstract void setHeight(int height);
 	public abstract void setWidth(int width);
-	public abstract void addEvent(EventType e);
-	public abstract Vector<EventType> getEvents();
 	public abstract void alignParentRight();
 	public abstract void removeParentRight();
 	public abstract String getParentRight();

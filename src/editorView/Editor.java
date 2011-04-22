@@ -20,11 +20,9 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import global.Constants;
-
-import testing.test;
 import xml.SaxXMLParser;
 import element.AndroidElement;
+import global.Constants;
 
 /**
  * launched when plugin menu button or Launch Editor 
@@ -95,6 +93,7 @@ public class Editor extends JFrame implements WindowListener {
 		MenuItem TextBox = new MenuItem("TextBox");
 		*/
 		MenuItem ElementProperties = new MenuItem("ElementProperties");
+		MenuItem AddEvent = new MenuItem("Add Event");
 		
 		New.addActionListener(new MenuResponder(this, this, c));
 		miGenerate.addActionListener(new MenuResponder(this, this, c));
@@ -104,11 +103,12 @@ public class Editor extends JFrame implements WindowListener {
 		TextBox.addActionListener(new MenuResponder(this, this, c));	
 		*/
 		ElementProperties.addActionListener(new MenuResponder(this, this, c));
+		AddEvent.addActionListener(new MenuResponder(this, this, c));
 		
 		New.setShortcut(new MenuShortcut(KeyEvent.VK_N));
 		miGenerate.setShortcut(new MenuShortcut(KeyEvent.VK_G));
 		ElementProperties.setShortcut(new MenuShortcut(KeyEvent.VK_P));
-		
+		AddEvent.setShortcut(new MenuShortcut(KeyEvent.VK_A));
 		file.add(New);
 		file.add(miGenerate);
 		/* don't want these yet 
@@ -117,7 +117,7 @@ public class Editor extends JFrame implements WindowListener {
 		tools.add(TextBox);	
 		*/
 		tools.add(ElementProperties);
-		
+		tools.add(AddEvent);
 		//Das Tool Box
 		JFrame toolbox = new JFrame("ToolBox");
 		JButton AddButton = new JButton("AddButton");
@@ -245,5 +245,15 @@ public class Editor extends JFrame implements WindowListener {
 				return elements.elementAt(i);
 		}
 		return null;
+	}
+	
+	public String[] getButtonNames() {
+		Vector<String> names = new Vector<String>();
+		for ( int i = 0; i < elements.size(); i++ ) {
+			if ( elements.elementAt(i).getType().equals("AButton") ) {
+				names.add(elements.elementAt(i).getName());
+			}
+		}
+		return (String[]) names.toArray();
 	}
 }

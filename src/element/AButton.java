@@ -1,15 +1,14 @@
 package element;
 
+import global.Constants;
+import global.EventType;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.PrintWriter;
-import java.util.Vector;
 
 import javax.swing.ImageIcon;
-
-import global.Constants;
-import global.EventType;
 
 public class AButton extends AndroidElement {
 	
@@ -27,6 +26,7 @@ public class AButton extends AndroidElement {
 		this.y = y;
 		this.setHeight(Constants.AButtonWidth);
 		this.setWidth(Constants.AButtonHeight);
+		this.event = EventType.NONE;
 	}
 	
 	@Override
@@ -49,6 +49,7 @@ public class AButton extends AndroidElement {
 		output += "height=\"" + this.getHeight() + "\" ";
 		output += "width=\"" + this.getWidth() + "\" ";
 		output += "caption=\"" + this.getCaption() + "\">\n";
+		output += "event=\"" + this.getEvent() + "\">\n";
 		output += "\t</Element>\n";
 		return output;
 	}
@@ -191,14 +192,12 @@ public class AButton extends AndroidElement {
 		return width;
 	}
 
-	@Override
-	public void addEvent(EventType e) {
-		this.elementEventList.add(e);
+	public void setEvent(EventType e) {
+		this.event = e;
 	}
 
-	@Override
-	public Vector<EventType> getEvents() {
-		return this.elementEventList;
+	public EventType getEvent() {
+		return this.event;
 	}
 
 	@Override

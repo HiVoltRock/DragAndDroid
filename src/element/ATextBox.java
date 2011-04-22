@@ -1,15 +1,13 @@
 package element;
 
+import global.Constants;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.PrintWriter;
-import java.util.Vector;
 
 import javax.swing.ImageIcon;
-
-import global.Constants;
-import global.EventType;
 
 public class ATextBox extends AndroidElement {
 
@@ -189,16 +187,6 @@ public class ATextBox extends AndroidElement {
 		
 		pw.println("\t/>");
 		
-	}
-	
-	@Override
-	public void addEvent(EventType e) {
-		this.elementEventList.add(e);
-	}
-	
-	@Override
-	public Vector<EventType> getEvents() {
-		return this.elementEventList;
 	}
 	
 	@Override

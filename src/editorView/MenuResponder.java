@@ -1,5 +1,7 @@
 package editorView;
 
+import global.EventType;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -57,9 +59,44 @@ public class MenuResponder implements ActionListener {
 			                    possibilities,
 			                    "");
 			if ( !s.equals(null) ) {
-				EditPropertiesDialog epd = new EditPropertiesDialog( e, true, e.FindElement( s ));
+				new EditPropertiesDialog( e, true, e.FindElement( s ));
 			}
 			
+		}
+		else if ( ae.getActionCommand() == "Add Event" ) {
+			Object[] possibilities = e.getButtonNames();
+			String s = (String)JOptionPane.showInputDialog(
+			                    parent,
+			                    "Choose the button\n"
+			                    + "that you would like to add an event for",
+			                    "Edit Properties",
+			                    JOptionPane.PLAIN_MESSAGE,
+			                    null,
+			                    possibilities,
+			                    "");
+			if ( !s.equals(null) ) {
+				Object[] events = {"NONE", "ONCLICK", "LONGPRESS" };
+				String t = (String)JOptionPane.showInputDialog(
+	                    parent,
+	                    "Which event would you like\n"
+	                    + "add an event to " + s + "?",
+	                    "Choose Event",
+	                    JOptionPane.PLAIN_MESSAGE,
+	                    null,
+	                    events,
+	                    "");
+				if ( !t.equals(null) ) {
+					if ( t.equals("ONCLICK") ) {
+						e.FindElement( s ).event = EventType.ONCLICK;
+	            	}
+	            	else if ( t.equals("LONGPRESS") ) {
+	            		e.FindElement( s ).event = EventType.LONGPRESS;
+	            	}
+	            	else {
+	            		e.FindElement( s ).event = EventType.NONE;
+	            	}
+				}
+			}
 		}
 	}
 

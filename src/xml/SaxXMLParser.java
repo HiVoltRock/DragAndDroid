@@ -68,6 +68,15 @@ String filename;
         if (qName.equalsIgnoreCase("Element")) {
             if ( attributes.getValue("type").equals("AButton") ) {
             	tempElement = new AButton();
+            	if ( attributes.getValue("event").equals("ONCLICK") ) {
+            		tempElement.event = EventType.ONCLICK;
+            	}
+            	else if ( attributes.getValue("event").equals("LONGPRESS") ) {
+            		tempElement.event = EventType.LONGPRESS;
+            	}
+            	else {
+            		tempElement.event = EventType.NONE;
+            	}
             }
             else if ( attributes.getValue("type").equals("ALabel") ) {
             	tempElement = new ALabel();
