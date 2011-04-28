@@ -1,10 +1,15 @@
 package android;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.RandomAccessFile;
 import java.util.Collections;
 import java.util.Vector;
 
@@ -104,7 +109,7 @@ public class AndroidGenerator
 				
 				if(!e.event.equals(EventType.NONE))
 				{
-					generateMethodStub();
+					generateMethodStub(e);
 				}
 			}
 			
@@ -277,16 +282,56 @@ public class AndroidGenerator
 	/**
 	 * Generates the onClick method stub in the main java file
 	 */
-	public void generateMethodStub()
+	public void generateMethodStub(AndroidElement ae)
 	{
 		String srcDir = this.rootDir + "/src";
-		//String fileName = getFileName(this.rootDir);
 		
 		//we need to actually find the file we're going to edit...
 		File directory = new File(srcDir);
 		File src = findFile(directory, getFileName(this.rootDir));
 		
-		System.out.println("The file to be opened is: " + src.getAbsolutePath());
+		try 
+		{
+			RandomAccessFile editedFile = new RandomAccessFile(src, "rw");
+			long length = editedFile.length();
+			System.out.println("File length before truncation: " + length);
+			//assuming that the last line is only one closing brace. Chop that brace off
+			editedFile.setLength(length-1);
+			System.out.println("File length after truncation: " + editedFile.length());
+			editedFile.writeUTF("\n\tpublic void " + ae.getName() + "_onClick(View view)");
+			editedFile.close();
+		} 
+		catch (FileNotFoundException e) 
+		{
+			System.out.println("Cannot find random access file");
+			e.printStackTrace();
+		}
+		catch(IOException e)
+		{
+			System.out.println("I/O problem with random access file");
+			e.printStackTrace();
+		}
+		
+//		//now that we've chopped the brace off, add our code
+//		try 
+//		{
+//			PrintWriter pw = new PrintWriter(src);
+//			pw.println("\tpublic void " + ae.getName() + "_onClick(View view)");
+//			pw.println("\t{\n\n\t}\n}");
+//			//pw.println("\n");
+//			//pw.println("}");
+//			//pw.println("}");
+//			
+//			pw.close();
+//		} 
+//		catch (FileNotFoundException e) 
+//		{
+//			System.out.println("File Not Found after deleting last line. Oops...");
+//			e.printStackTrace();
+//		}
+
+		
+		
 		
 	}
 	
