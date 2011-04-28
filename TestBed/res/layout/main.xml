@@ -3,10 +3,10 @@
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
 	<Button
-		android:id="@+id/asdfasf"
+		android:id="@+id/sasd"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="asdfasf"
-		android:onClick="asdfasf_onClick"
+		android:text="sasd"
+		android:onClick="sasd_onClick"
 	/>
 </RelativeLayout>

@@ -298,8 +298,12 @@ public class AndroidGenerator
 			//assuming that the last line is only one closing brace. Chop that brace off
 			editedFile.setLength(length-1);
 			System.out.println("File length after truncation: " + editedFile.length());
-			editedFile.writeUTF("\n\tpublic void " + ae.getName() + "_onClick(View view)");
+			
+			editedFile.seek(length);
+			
+			editedFile.writeBytes("\n\n\tpublic void " + ae.getName() + "_onClick(View view)\n\t{\n\n\t}\n}");			
 			editedFile.close();
+			
 		} 
 		catch (FileNotFoundException e) 
 		{
