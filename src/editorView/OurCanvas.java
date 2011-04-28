@@ -4,7 +4,10 @@ import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Image;
 
-
+/**
+ * canvas that eliminates any flickering
+ *
+ */
 public class OurCanvas extends Canvas {
 
 	private static final long serialVersionUID = 1L;

@@ -28,6 +28,11 @@ public class AppElementListGenerator {
         this.elements = elements;
     }
 
+    /**
+     * generates xml file containing all of
+     * the elements in the vector of AndroidElements
+     * passed to the constrctor
+     */
     public void GenerateElementList() 
     {
         try {

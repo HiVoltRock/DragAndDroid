@@ -15,6 +15,13 @@ import element.ALabel;
 import element.ATextBox;
 import element.AndroidElement;
 
+/**
+ * Dialog box that allows the user to edit various
+ * properties of a particular android element
+ * 
+ * @author Anthony
+ *
+ */
 public class EditPropertiesDialog extends JDialog {
 	
 	private static final long serialVersionUID = 1L;

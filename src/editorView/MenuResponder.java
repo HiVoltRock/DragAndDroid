@@ -11,6 +11,13 @@ import javax.swing.JOptionPane;
 import xml.AppElementListGenerator;
 import android.AndroidGenerator;
 
+/**
+ * handles click events for all menu items
+ * in the editor
+ * 
+ * @author Anthony
+ *
+ */
 public class MenuResponder implements ActionListener {
 
 	Editor e;

@@ -15,6 +15,12 @@ import element.ALabel;
 import element.ATextBox;
 import android.AndroidGenerator;
 
+/**
+ * ButtonListener handles events like mouse clicks
+ * and button presses on the editor as well
+ * as the toolbox
+ *
+ */
 public class ButtonListener extends MouseAdapter implements ActionListener{
 
 	Editor editor;
@@ -96,7 +102,7 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
             task = 0;
         }	       
     }
-	 /*..
+	 /**
 	  * The mouse gets pressed anywhere on the screen this function then loops
 	  * through our list of elements to find a match. It stores the x and y
 	  * relative to the mouse click in the x and y coordinates and stores the
@@ -114,7 +120,7 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 		 }
 	 }
 	 
-	 /*..
+	 /**
 	  * This function gets called when the mouse is pressed and dragged. It uses
 	  * the currentItemDragged index to simply move the coordinates of the said index.
 	  * I added the setX and setY functions to our AndroidElement class for this
@@ -133,7 +139,7 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 		 }catch(NullPointerException e){}
 	 }
 	 
-	 /*..
+	 /**
 	  * We set the currentItemDragged to -1, this way if the user presses
 	  * and clicks off the button it doesn't spontaneously move the previously
 	  * dragged button. Repaint is also needed to be safe.

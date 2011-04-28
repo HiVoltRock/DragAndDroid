@@ -10,7 +10,6 @@ import java.util.Collections;
 import java.util.Vector;
 
 import xml.AppElementListGenerator;
-import xml.ElementXMLUpdator;
 import xml.SaxXMLParser;
 import draganddroid.ElementSortX;
 import draganddroid.ElementSortY;
@@ -37,12 +36,9 @@ public class AndroidGenerator
 	
 	public int originalElementCt;
 	
-	ElementXMLUpdator updator;
-	
 	public AndroidGenerator(String rootDir) {
 		elements = new Vector<AndroidElement>();
 		parser = new SaxXMLParser(Constants.filename, elements);
-		updator = new ElementXMLUpdator();
 		this.rootDir = rootDir;
 	}
 	

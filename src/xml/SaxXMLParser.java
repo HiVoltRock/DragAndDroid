@@ -41,6 +41,10 @@ String filename;
         this.eventsList = new Vector<AEvent>();
     }
     
+    /**
+     * iterates through xml document and 
+     * populates a list of ANdroid Elements
+     */
     public void parseDocument() {
         //get a factory
         SAXParserFactory spf = SAXParserFactory.newInstance();

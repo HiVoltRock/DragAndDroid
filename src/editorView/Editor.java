@@ -34,13 +34,9 @@ import global.Constants;
  */
 public class Editor extends JFrame implements WindowListener {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	Vector<AndroidElement> elements;
-	//JFrame f;
 	boolean firstOpen;
 	String rootDir; //root directory of the desired Android app
 	String xmlDir;  //directory of main.xml in the Android app
@@ -76,7 +72,6 @@ public class Editor extends JFrame implements WindowListener {
 			}
 		}
 		
-		//f = new JFrame("Drag And Droid Editor");
 		this.setTitle("Drag And Droid Editor");
 		OurCanvas c = new OurCanvas(this);
 		c.setBackground(Color.BLACK);
@@ -184,9 +179,6 @@ public class Editor extends JFrame implements WindowListener {
 				this.rootDir = fc.getSelectedFile().toString();
 				System.out.println("Directory: " + rootDir);
 				firstOpen = false;
-				
-				//checking to make sure we're in the right directory!
-				File xmlFile = new File(rootDir + "/res/layout/main.xml");
 			}
 			while(!xmlExists(rootDir)); //making sure the user selected a valid directory and we can find any necessary files
 										//and re-prompting if they should select again
@@ -234,6 +226,11 @@ public class Editor extends JFrame implements WindowListener {
 	@Override
 	public void windowOpened(WindowEvent e) {}
 
+	/**
+	 * returns a list of Strings containing the names
+	 * of all of the AndroidElements in elements
+	 * 
+	 */
 	public String[] getElementNames() {
 		String[] names = new String[elements.size()];
 		for ( int i = 0; i < elements.size(); i++ ) {
@@ -242,6 +239,11 @@ public class Editor extends JFrame implements WindowListener {
 		return names;
 	}
 
+	/**
+	 * returns the Android element whose name 
+	 * is s
+	 * 
+	 */
 	public AndroidElement FindElement(String s) {
 		for ( int i = 0; i < elements.size(); i++ ) {
 			if ( elements.elementAt(i).getName().equals(s) )
@@ -250,6 +252,11 @@ public class Editor extends JFrame implements WindowListener {
 		return null;
 	}
 	
+	/**
+	 * returns a list of Strings containing the names
+	 * of all of the AButtons in elements
+	 * 
+	 */
 	public Object[] getButtonNames() {
 		Vector<Object> names = new Vector<Object>();
 		for ( int i = 0; i < elements.size(); i++ ) {
