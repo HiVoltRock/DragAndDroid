@@ -87,21 +87,13 @@ public class Editor extends JFrame implements WindowListener {
 		
 		MenuItem New = new MenuItem("New");
 		MenuItem miGenerate = new MenuItem("Generate");
-		/* don't want these yet 
-		MenuItem Button = new MenuItem("Button");
-		MenuItem Label = new MenuItem("Label");
-		MenuItem TextBox = new MenuItem("TextBox");
-		*/
+
 		MenuItem ElementProperties = new MenuItem("ElementProperties");
 		MenuItem AddEvent = new MenuItem("Add Event");
 		
 		New.addActionListener(new MenuResponder(this, this, c));
 		miGenerate.addActionListener(new MenuResponder(this, this, c));
-		/* don't want these yet 
-		Button.addActionListener(new MenuResponder(this, this, c));
-		Label.addActionListener(new MenuResponder(this, this, c));
-		TextBox.addActionListener(new MenuResponder(this, this, c));	
-		*/
+
 		ElementProperties.addActionListener(new MenuResponder(this, this, c));
 		AddEvent.addActionListener(new MenuResponder(this, this, c));
 		
@@ -111,11 +103,7 @@ public class Editor extends JFrame implements WindowListener {
 		AddEvent.setShortcut(new MenuShortcut(KeyEvent.VK_A));
 		file.add(New);
 		file.add(miGenerate);
-		/* don't want these yet 
-		tools.add(Button);
-		tools.add(Label);
-		tools.add(TextBox);	
-		*/
+
 		tools.add(ElementProperties);
 		tools.add(AddEvent);
 		//Das Tool Box
