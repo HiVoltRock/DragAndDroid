@@ -159,6 +159,20 @@ public class AButton extends AndroidElement {
 			pw.println("\t\tandroid:layout_alignParentRight=\"true\"");
 		}
 		
+		if(!this.event.equals(EventType.NONE))
+		{
+			if(this.event.equals(EventType.ONCLICK))
+			{
+				pw.println("\t\tandroid:onClick=\"" + getName() + "_onClick" + "\"");
+			}
+			
+			if(this.event.equals(EventType.LONGPRESS))
+			{
+				//TODO: Handle long-press events
+				System.out.println("No handle for long press events. Work on that...");
+			}
+		}
+		
 		pw.println("\t/>");
 		
 
