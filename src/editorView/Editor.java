@@ -169,25 +169,40 @@ public class Editor extends JFrame implements WindowListener {
 	}
 	
 	private void CheckForAndroidApp() {
-		do
-		{
-			//create file chooser to get root directory of Android app
-			final JFileChooser fc = new JFileChooser();
-			fc.setDialogTitle("Please Select root directory of Android project");
-			fc.setCurrentDirectory(new java.io.File("."));
-			fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); //we only want the user to select a directory
-			fc.setAcceptAllFileFilterUsed(false); //we don't want to accept any file
-			fc.showOpenDialog(null);
+		Object[] choices = { "New", "Open" };
+		String t = (String)JOptionPane.showInputDialog(
+                this,
+                "Would you like to open an already\n"
+                + "existing android project or create a new one?",
+                "Locate Project",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                choices,
+                "");
+		if ( t.equals("New") ) {
 			
-			this.rootDir = fc.getSelectedFile().toString();
-			System.out.println("Directory: " + rootDir);
-			firstOpen = false;
-			
-			//checking to make sure we're in the right directory!
-			File xmlFile = new File(rootDir + "/res/layout/main.xml");
 		}
-		while(!xmlExists(rootDir)); //making sure the user selected a valid directory and we can find any necessary files
-									//and re-prompting if they should select again
+		else if ( t.equals("Open") ) {
+			do
+			{
+				//create file chooser to get root directory of Android app
+				final JFileChooser fc = new JFileChooser();
+				fc.setDialogTitle("Please Select root directory of Android project");
+				fc.setCurrentDirectory(new java.io.File("."));
+				fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); //we only want the user to select a directory
+				fc.setAcceptAllFileFilterUsed(false); //we don't want to accept any file
+				fc.showOpenDialog(null);
+				
+				this.rootDir = fc.getSelectedFile().toString();
+				System.out.println("Directory: " + rootDir);
+				firstOpen = false;
+				
+				//checking to make sure we're in the right directory!
+				File xmlFile = new File(rootDir + "/res/layout/main.xml");
+			}
+			while(!xmlExists(rootDir)); //making sure the user selected a valid directory and we can find any necessary files
+										//and re-prompting if they should select again
+		}
 	}
 	
 	private boolean xmlExists(String root)
