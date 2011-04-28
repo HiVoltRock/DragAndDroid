@@ -24,7 +24,7 @@ public class MenuResponder implements ActionListener {
 		this.parent = parent;
 		this.oc = oc;
 		generator = new AppElementListGenerator(this.e.elements);
-		andGen = new AndroidGenerator();
+		andGen = new AndroidGenerator(e.rootDir);
 	}
 	@Override
 	public void actionPerformed(ActionEvent ae) {

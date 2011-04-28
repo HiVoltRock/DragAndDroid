@@ -2,20 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
-	<EditText
-		android:id="@+id/box1"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:background="@android:drawable/editbox_background"
-		android:text=""
-	/>
 	<Button
-		android:id="@+id/but1"
+		android:id="@+id/daf"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="but1"
-		android:layout_below="@id/box1"
-		android:layout_alignParentRight="true"
-		android:onClick="but1_onClick"
+		android:text="daf"
+		android:onClick="daf_onClick"
 	/>
 </RelativeLayout>

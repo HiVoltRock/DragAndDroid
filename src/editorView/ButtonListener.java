@@ -39,7 +39,7 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 	public ButtonListener(Editor e){
 		this.editor = e;
 		generator = new AppElementListGenerator(this.editor.elements);
-		andGen = new AndroidGenerator();
+		andGen = new AndroidGenerator(e.rootDir);
 		currentItemDragged = -1;
 	}
 	

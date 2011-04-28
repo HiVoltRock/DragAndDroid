@@ -21,7 +21,7 @@ public class test {
 	}
 	
 	public void testXMLParser() {
-		AndroidGenerator a = new AndroidGenerator();
+		AndroidGenerator a = new AndroidGenerator("test.java has a malformed String input");
 		a.GenerateAndroidCode(xml);
 		for ( int i = 0; i < a.elements.size(); i++ )
 		{

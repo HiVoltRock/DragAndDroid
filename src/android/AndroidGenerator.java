@@ -15,6 +15,7 @@ import draganddroid.ElementSortX;
 import draganddroid.ElementSortY;
 import element.AndroidElement;
 import global.Constants;
+import global.EventType;
 
 /**
  * 
@@ -26,6 +27,8 @@ import global.Constants;
  */
 public class AndroidGenerator 
 {
+	String rootDir; //root directory of Android project (for method stub generation)
+	
 	//renamed "applicationElements" to "elements" because it's WAY shorter
 	public Vector<AndroidElement> elements;
 	SaxXMLParser parser;
@@ -35,10 +38,11 @@ public class AndroidGenerator
 	
 	ElementXMLUpdator updator;
 	
-	public AndroidGenerator() {
+	public AndroidGenerator(String rootDir) {
 		elements = new Vector<AndroidElement>();
 		parser = new SaxXMLParser(Constants.filename, elements);
 		updator = new ElementXMLUpdator();
+		this.rootDir = rootDir;
 	}
 	
 	public void GenerateAndroidCode(String xmlDir) 
@@ -97,6 +101,11 @@ public class AndroidGenerator
 			for(AndroidElement e : elements)
 			{
 				e.printAndroidXml(pw);
+				
+				if(!e.event.equals(EventType.NONE))
+				{
+					generateMethodStub();
+				}
 			}
 			
 			
@@ -263,6 +272,38 @@ public class AndroidGenerator
 		}
 		
 		return elements;
+	}
+	
+	/**
+	 * Generates the onClick method stub in the main java file
+	 */
+	public void generateMethodStub()
+	{
+		String srcDir = this.rootDir + "/src";
+		String fileName = getFileName(this.rootDir);
+		
+	}
+	
+	/**
+	 * Because Android names the main java file the same as the project, we find the file whose name matches the
+	 * project name. I have the feeling this method breaks cross-platform compatibility because Windows does use forward slashes.
+	 * Could probably hack it back together
+	 * 
+	 * TODO: make sure this works in Windows
+	 */
+	public String getFileName(String dir)
+	{
+		for(int i = dir.length()-1; i >= 0; --i)
+		{
+			if(dir.charAt(i) == '/')
+			{
+				dir = dir.substring(i+1, dir.length()) + ".java";
+				break;
+			}
+		}
+		
+		System.out.println("Project source file: " + dir);
+		return dir;
 	}
 	
 }
