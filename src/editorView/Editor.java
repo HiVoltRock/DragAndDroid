@@ -247,13 +247,13 @@ public class Editor extends JFrame implements WindowListener {
 		return null;
 	}
 	
-	public String[] getButtonNames() {
-		Vector<String> names = new Vector<String>();
+	public Object[] getButtonNames() {
+		Vector<Object> names = new Vector<Object>();
 		for ( int i = 0; i < elements.size(); i++ ) {
 			if ( elements.elementAt(i).getType().equals("AButton") ) {
 				names.add(elements.elementAt(i).getName());
 			}
 		}
-		return (String[]) names.toArray();
+		return names.toArray();
 	}
 }

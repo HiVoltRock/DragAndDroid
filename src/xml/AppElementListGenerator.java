@@ -47,7 +47,7 @@ public class AppElementListGenerator {
             for (int i = 0; i < elements.size(); i++) {
                 out.write(elements.elementAt(i).outputElementXML());
             }            
-            
+            out.write("</ElementList>\n");
             out.close();
             System.out.println("file loc -> " + file.getAbsolutePath());
             

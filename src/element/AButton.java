@@ -48,7 +48,7 @@ public class AButton extends AndroidElement {
 		output += "y=\"" + this.y + "\" ";
 		output += "height=\"" + this.getHeight() + "\" ";
 		output += "width=\"" + this.getWidth() + "\" ";
-		output += "caption=\"" + this.getCaption() + "\">\n";
+		output += "caption=\"" + this.getCaption() + "\" ";
 		output += "event=\"" + this.getEvent() + "\">\n";
 		output += "\t</Element>\n";
 		return output;
