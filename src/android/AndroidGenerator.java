@@ -107,7 +107,7 @@ public class AndroidGenerator
 			{
 				e.printAndroidXml(pw);
 				
-				if(!e.event.equals(EventType.NONE))
+				if(e.getType().equals("AButton") && !e.event.equals(EventType.NONE))
 				{
 					generateMethodStub(e);
 				}
