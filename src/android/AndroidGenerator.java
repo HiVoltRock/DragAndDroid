@@ -79,7 +79,7 @@ public class AndroidGenerator
 		 */
 		try 
 		{
-			System.out.println("XML File exists");
+			//System.out.println("XML File exists");
 			PrintWriter pw = new PrintWriter(xml);
 			sortElements("y", elements);
 			
@@ -193,7 +193,7 @@ public class AndroidGenerator
 			if(elements.elementAt(i).getX() > Constants.EditorWidth / 2)
 			{
 				elements.elementAt(i).alignParentRight();
-				System.out.println("Set parent right!");
+				//System.out.println("Set parent right!");
 			}
 			
 			
@@ -260,7 +260,7 @@ public class AndroidGenerator
 					{
 						elements.elementAt(j).setLeft(elements.elementAt(i).getName());
 						elements.elementAt(j).removeParentRight();
-						System.out.println("Removed parent right!");						
+						//System.out.println("Removed parent right!");						
 					}
 					
 				}
@@ -280,7 +280,13 @@ public class AndroidGenerator
 	public void generateMethodStub()
 	{
 		String srcDir = this.rootDir + "/src";
-		String fileName = getFileName(this.rootDir);
+		//String fileName = getFileName(this.rootDir);
+		
+		//we need to actually find the file we're going to edit...
+		File directory = new File(srcDir);
+		File src = findFile(directory, getFileName(this.rootDir));
+		
+		System.out.println("The file to be opened is: " + src.getAbsolutePath());
 		
 	}
 	
@@ -302,8 +308,36 @@ public class AndroidGenerator
 			}
 		}
 		
-		System.out.println("Project source file: " + dir);
+		//System.out.println("Project source file: " + dir);
 		return dir;
 	}
+	
+	/**
+	 * This method takes in a directory (type File), and a string for what file it should find, then returns 
+	 * the file it found. Super necessary to generate the method stub. that is to say, without the name, what
+	 * exactly are we supposed to use to generate the code automatically? We can't, that's how
+	 */
+	public File findFile(File dir, String name) 
+	{
+		  File result = null; // no need to store result as String, we're returning File anyway
+		  File[] dirlist  = dir.listFiles(); //list files in directory as array
+
+		  for(int i = 0; i < dirlist.length; i++) 
+		  { 
+		    if(dirlist[i].isDirectory()) 
+		    {
+		      result = findFile(dirlist[i], name); //recursive call
+		      if (result!=null) 
+		      {
+		    	  break; // recursive call found the file; terminate the loop
+		      }
+		    } 
+		    else if(dirlist[i].getName().matches(name)) 
+		    {
+		      return dirlist[i]; // found the file...return
+		    }
+		  }
+		  return result; // returns null if not found. Might cause problems if the user didn't do exactly what we assumed
+		}
 	
 }
