@@ -81,6 +81,12 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 			
 			//generates the main.xml file in /res/layout
         	andGen.GenerateAndroidCode(editor.xmlDir);
+        	
+        	editor.dispose();
+        	editor.setVisible(false);
+        	
+        	editor.toolbox.dispose();
+        	editor.toolbox.setVisible(false);
 		}
 		if ( currentElementName == null) {
 			task = 0;

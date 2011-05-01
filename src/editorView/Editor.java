@@ -40,6 +40,7 @@ public class Editor extends JFrame implements WindowListener {
 	boolean firstOpen;
 	String rootDir; //root directory of the desired Android app
 	String xmlDir;  //directory of main.xml in the Android app
+	JFrame toolbox; 
 	
 	public Editor() {
 		elements = new Vector<AndroidElement>();
@@ -102,7 +103,7 @@ public class Editor extends JFrame implements WindowListener {
 		tools.add(ElementProperties);
 		tools.add(AddEvent);
 		//Das Tool Box
-		JFrame toolbox = new JFrame("ToolBox");
+		toolbox = new JFrame("ToolBox");
 		JButton AddButton = new JButton("AddButton");
 		JButton AddTextbox = new JButton("AddTextbox");
 		JButton AddLabel = new JButton("AddLabel");
