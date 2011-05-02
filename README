@@ -1,0 +1,35 @@
+README now is documentation for using DragAndDroid:
+
+	The DragAndDroid Program - Overview:
+
+		The DragAndDroid program is designed to personally create and edit your own GUI (Graphical User Interface) for the Andriod environment. This guide will explain how to run this program, as well as how to upload the results of this program to the Android Phone. This is a developer tool and should be treated as such.
+
+
+
+	How to Run DragAndDroid:
+
+		After downloading the DragAndDroid program you must compile and run the program as a standard Java program. Using Eclispe is highly recommended. After launching the DragAndDroid application a home directory will be required to store the generated Andriod xml file. A prompt will appear asking you to "Please Select root directory of Android project". Choose the folder labeled "TestBed" as this directory (select the TestBed folder and click Open). Once you've done this you can begin editing your own personal Android GUI.
+
+
+
+	How to use the GUI EDITOR interface:
+
+		The "File" panel option contains the "Generate" and "New" options. "New" will clear any existing work done to the editor, while "Generate" will create the xml file with your custom changes to the GUI environment. In order to make these changes there are various tools you can use to edit your own personal interface. To add these element to your draggable editor click the corresponding name of the element you wish to add then click the location on the black screen where you wish to put this element. 
+
+	The following describes the elements you can add to the draggable editor environment:
+
+		- AddButton: Creates a button in the Android environment. It's properties can be edited via the Tools panel option. Buttons can be given various properties and can interact via an OnClick interaction or a LongPress interaction (more on this is be under the "Editing Buttons" section). All elements can be dragged to a relative location on screen which will correspond to their relative location in the Android environment. However under the Tools panel option you can fine tune the location of the button/element via the X and Y coordinates as well as change the name of the button under this Tools "Element Properties" option.
+
+		- AddTextBox: Creates a text area in which the user can interactively add his or her text. Again, it's name and location can be edited under the Tools -> Element Properties panel option.
+
+		- AddLabel: Creates non-editable text within the Android environment. Again, it can be edited in the Drag And Droid Editor under the Tools -> Element Properties panel option. It is important to note that once the xml file is generated the properties CANNOT be edited in the Android environment unless a new xml is generated from the Drag And Droid Editor.
+
+		- Generate: Clicking generate (whether under File -> Generate or clicking "Generate" in the "Toolbox" Window Pane) will create the physical xml file that you can use in the Android environment.
+
+
+	Upon completetion of the program a generated xml file for the android environment will be created in the folder: TestBed -> Res -> layout. It should be label under "main.xml".
+
+	Sending this xml (via e-mail, ftp transfer, etc.) and opening it in the Android environment will create the Android application.
+
+
+	Editing Buttons:
