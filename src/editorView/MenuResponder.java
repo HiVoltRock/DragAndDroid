@@ -44,7 +44,13 @@ public class MenuResponder implements ActionListener {
 			
 			//generates the main.xml file in /res/layout
 			// as well as any element event handler functions
-        	andGen.GenerateAndroidCode(e.xmlDir);		
+        	andGen.GenerateAndroidCode(e.xmlDir);	
+        	
+        	e.dispose();
+        	e.setVisible(false);
+        	
+        	e.toolbox.dispose();
+        	e.toolbox.setVisible(false);
 		}
 		else if ( ae.getActionCommand() == "Button" ) {
 			

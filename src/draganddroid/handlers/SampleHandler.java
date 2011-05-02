@@ -1,5 +1,6 @@
 package draganddroid.handlers;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -30,6 +31,12 @@ public class SampleHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		try {
 			E.Open();
+			
+			FileOutputStream eraser = new FileOutputStream(E.xmlDir);
+			byte b[] = new byte[0];
+			eraser.write(b);
+			eraser.close();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

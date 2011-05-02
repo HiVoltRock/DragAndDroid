@@ -39,7 +39,7 @@ public class Editor extends JFrame implements WindowListener {
 	Vector<AndroidElement> elements;
 	boolean firstOpen;
 	String rootDir; //root directory of the desired Android app
-	String xmlDir;  //directory of main.xml in the Android app
+	public String xmlDir;  //directory of main.xml in the Android app
 	JFrame toolbox; 
 	
 	public Editor() {
