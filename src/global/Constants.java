@@ -20,6 +20,9 @@ public class Constants {
 	public static final int ATextBoxWidth = 100;
 	public static final int ATextBoxHeight = 50;
 	
+	public static final int ASeekBarWidth = 480;
+	public static final int ASeekBarHeight = 50;
+	
 	public static final int EditorWidth = 480;
 	public static final int EditorHeight = 800;
 }

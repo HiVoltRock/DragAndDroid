@@ -12,6 +12,7 @@ import xml.AppElementListGenerator;
 
 import element.AButton;
 import element.ALabel;
+import element.ASeekBar;
 import element.ATextBox;
 import android.AndroidGenerator;
 
@@ -38,6 +39,7 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 	int addlabel = 2;
 	int addtextbox = 3;
 	int generate = 4;
+	int addseekbar = 5;
 	
 	String currentElementName;
 	
@@ -73,6 +75,13 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
         			  "Enter the name of the text box",
         			  JOptionPane.QUESTION_MESSAGE);
 		}
+		else if(e.getActionCommand().equals("AddSeekBar")){
+			task = addseekbar;
+        	currentElementName = JOptionPane.showInputDialog(null,
+        			  "What is the name of the seek bar?",
+        			  "Enter the name of the seek bar",
+        			  JOptionPane.QUESTION_MESSAGE);
+		}
 		else if(e.getActionCommand().equals("Generate")){
 			task = generate;
 		
@@ -106,7 +115,11 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
         else if(task == addtextbox){
             editor.elements.add(new ATextBox(currentElementName,k.getX(),k.getY()));
             task = 0;
-        }	       
+        }	
+        else if(task == addseekbar) {
+        	editor.elements.add(new ASeekBar(currentElementName,k.getX(),k.getY()));
+            task = 0;
+        }
     }
 	 /**
 	  * The mouse gets pressed anywhere on the screen this function then loops
