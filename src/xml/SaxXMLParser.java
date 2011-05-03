@@ -17,6 +17,7 @@ import element.AEvent;
 import element.ALabel;
 import element.ASeekBar;
 import element.ATextBox;
+import element.AUserField;
 import element.AndroidElement;
 import global.EventType;
 
@@ -76,9 +77,6 @@ String filename;
             	if ( attributes.getValue("event").equals("ONCLICK") ) {
             		tempElement.event = EventType.ONCLICK;
             	}
-            	else if ( attributes.getValue("event").equals("LONGPRESS") ) {
-            		tempElement.event = EventType.LONGPRESS;
-            	}
             	else {
             		tempElement.event = EventType.NONE;
             	}
@@ -98,6 +96,11 @@ String filename;
             	else {
             		tempElement.event = EventType.NONE;
             	}
+            }
+            else if ( attributes.getValue("type").equals("AUserField") ) {
+            	tempElement = new AUserField();
+            	tempElement.setWidth(Integer.parseInt(attributes.getValue("width")));
+                tempElement.setHeight(Integer.parseInt(attributes.getValue("height")));
             }
             tempElement.setName(attributes.getValue("name"));
             tempElement.setX(Integer.parseInt(attributes.getValue("x")));

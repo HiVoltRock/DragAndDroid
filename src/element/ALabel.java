@@ -9,6 +9,12 @@ import java.io.PrintWriter;
 
 import javax.swing.ImageIcon;
 
+/**
+ * a type of android element that represents a label
+ * 
+ * @author Anthony
+ *
+ */
 public class ALabel extends AndroidElement {
 
 	public String left = "";

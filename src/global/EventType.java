@@ -8,5 +8,5 @@ package global;
  *
  */
 public enum EventType {
-	NONE, ONCLICK, LONGPRESS, VALUE_CHANGED;  
+	NONE, ONCLICK, VALUE_CHANGED;  
 }

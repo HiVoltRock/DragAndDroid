@@ -9,6 +9,12 @@ import java.io.PrintWriter;
 
 import javax.swing.ImageIcon;
 
+/**
+ * a type of android element that represents a text field
+ * 
+ * @author Anthony
+ *
+ */
 public class ATextBox extends AndroidElement {
 
 	public String left = "";

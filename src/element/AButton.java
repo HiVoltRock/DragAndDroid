@@ -2,14 +2,18 @@ package element;
 
 import global.Constants;
 import global.EventType;
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.PrintWriter;
-
 import javax.swing.ImageIcon;
 
+/**
+ * a type of android element that represents a button
+ * 
+ * @author Anthony
+ *
+ */
 public class AButton extends AndroidElement {
 	
 	public String left = "";
@@ -164,12 +168,6 @@ public class AButton extends AndroidElement {
 			if(this.event.equals(EventType.ONCLICK))
 			{
 				pw.println("\t\tandroid:onClick=\"" + getName() + "_onClick" + "\"");
-			}
-			
-			if(this.event.equals(EventType.LONGPRESS))
-			{
-				//TODO: Handle long-press events
-				System.out.println("No handle for long press events. Work on that...");
 			}
 		}
 		

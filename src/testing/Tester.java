@@ -9,7 +9,7 @@ public class Tester extends TestCase {
 	Tester() {}
 	
 	void TestEditProps() {
-		EditPropertiesDialog epd = new EditPropertiesDialog(new Editor(), true, new AButton("ANTHONYbtn", 100, 100));
+		new EditPropertiesDialog(new Editor(), true, new AButton("ANTHONYbtn", 100, 100));
 	}
 	
 }

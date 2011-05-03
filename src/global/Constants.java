@@ -25,4 +25,8 @@ public class Constants {
 	
 	public static final int EditorWidth = 480;
 	public static final int EditorHeight = 800;
+
+	public static final int AUserFieldWidth = 100;
+
+	public static final int AUserFieldHeight = 100;
 }

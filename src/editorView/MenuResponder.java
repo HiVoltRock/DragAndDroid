@@ -118,9 +118,6 @@ public class MenuResponder implements ActionListener {
 					if ( t.equals("ONCLICK") ) {
 						e.FindElement( s ).event = EventType.ONCLICK;
 	            	}
-	            	else if ( t.equals("LONGPRESS") ) {
-	            		e.FindElement( s ).event = EventType.LONGPRESS;
-	            	}
 	            	else {
 	            		e.FindElement( s ).event = EventType.NONE;
 	            	}

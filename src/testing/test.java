@@ -35,7 +35,7 @@ public class test {
 	}
 	
 	public void testEditPropertiesDialog(Editor e) {
-		EditPropertiesDialog epd = new EditPropertiesDialog(e, true, new AButton("ANTHONYbtn", 100, 100));
+		new EditPropertiesDialog(e, true, new AButton("ANTHONYbtn", 100, 100));
 		
 	}
 }

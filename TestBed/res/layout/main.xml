@@ -2,18 +2,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
-	<Button
-		android:id="@+id/btn"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="btn"
-	/>
-	<EditText
-		android:id="@+id/t"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:background="@android:drawable/editbox_background"
-		android:text=""
-		android:layout_below="@id/btn"
-	/>
 </RelativeLayout>

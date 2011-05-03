@@ -16,6 +16,7 @@ import element.AButton;
 import element.ALabel;
 import element.ASeekBar;
 import element.ATextBox;
+import element.AUserField;
 
 /**
  * ButtonListener handles events like mouse clicks
@@ -41,6 +42,7 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 	int addtextbox = 3;
 	int generate = 4;
 	int addseekbar = 5;
+	int adduserfield = 6;
 	
 	String currentElementName;
 	
@@ -83,6 +85,13 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
         			  "Enter the name of the seek bar",
         			  JOptionPane.QUESTION_MESSAGE);
 		}
+		else if(e.getActionCommand().equals("AddUserField")){
+			task = adduserfield;
+        	currentElementName = JOptionPane.showInputDialog(null,
+        			  "What is the name of the user field?",
+        			  "Enter the name of the user field",
+        			  JOptionPane.QUESTION_MESSAGE);
+		}
 		else if(e.getActionCommand().equals("Generate")){
 			task = generate;
 		
@@ -104,6 +113,7 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 			//generates the main.xml file in /res/layout
         	andGen.GenerateAndroidCode(editor.xmlDir);
         	
+        	editor.elements.clear();
         	editor.dispose();
         	editor.setVisible(false);
         	
@@ -131,6 +141,10 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
         }	
         else if(task == addseekbar) {
         	editor.elements.add(new ASeekBar(currentElementName,k.getX(),k.getY()));
+            task = 0;
+        }
+        else if(task == adduserfield) {
+        	editor.elements.add(new AUserField(currentElementName,k.getX(),k.getY()));
             task = 0;
         }
     }

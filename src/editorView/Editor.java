@@ -108,15 +108,17 @@ public class Editor extends JFrame implements WindowListener {
 		JButton AddTextbox = new JButton("AddTextbox");
 		JButton AddLabel = new JButton("AddLabel");
 		JButton AddSeekBar = new JButton("AddSeekBar");
+		JButton AddUserField = new JButton("AddUserField");
 		JButton Generate = new JButton("Generate");	
 		
 		//Das Tool Box Container
 		Container contentpane = toolbox.getContentPane();
-		contentpane.setLayout(new GridLayout(5,2));
+		contentpane.setLayout(new GridLayout(6,2));
 		contentpane.add(AddButton);
 		contentpane.add(AddTextbox);
 		contentpane.add(AddLabel);
 		contentpane.add(AddSeekBar);
+		contentpane.add(AddUserField);
 		contentpane.add(Generate);
 		
 		//Das Button Listeners
@@ -126,13 +128,14 @@ public class Editor extends JFrame implements WindowListener {
 		AddLabel.addActionListener(bclicked);
 		Generate.addActionListener(bclicked);
 		AddSeekBar.addActionListener(bclicked);
+		AddUserField.addActionListener(bclicked);
 		
 		//Das Mouse Listeners
 		c.addMouseListener(bclicked);
 	    c.addMouseMotionListener(bclicked);
 		
 		//Das Tool Box Properties
-		toolbox.setSize(200,200);
+		toolbox.setSize(200,300);
 		toolbox.setLocation(500, 0);
 		toolbox.setVisible(true);
 			
