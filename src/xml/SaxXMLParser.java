@@ -15,6 +15,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import element.AButton;
 import element.AEvent;
 import element.ALabel;
+import element.ASeekBar;
 import element.ATextBox;
 import element.AndroidElement;
 import global.EventType;
@@ -87,6 +88,16 @@ String filename;
             }
             else if ( attributes.getValue("type").equals("ATextBox") ) {
             	tempElement = new ATextBox();
+            }
+            else if ( attributes.getValue("type").equals("ASeekBar") ) {
+            	tempElement = new ASeekBar();
+            	
+            	if ( attributes.getValue("event").equals("VALUE_CHANGED") ) {
+            		tempElement.event = EventType.VALUE_CHANGED;
+            	}
+            	else {
+            		tempElement.event = EventType.NONE;
+            	}
             }
             tempElement.setName(attributes.getValue("name"));
             tempElement.setX(Integer.parseInt(attributes.getValue("x")));

@@ -45,7 +45,8 @@ public class ASeekBar extends AndroidElement {
 		output += "y=\"" + this.y + "\" ";
 		output += "height=\"" + this.getHeight() + "\" ";
 		output += "width=\"" + this.getWidth() + "\" ";
-		output += "caption=\"" + this.getCaption() + "\">\n";
+		output += "caption=\"" + this.getCaption() + "\" ";
+		output += "event=\"" + this.getEvent() + "\">\n";
 		output += "\t</Element>\n";
 		return output;
 	}
@@ -90,6 +91,14 @@ public class ASeekBar extends AndroidElement {
 	public String getLeft()
 	{
 		return left;
+	}
+	
+	public void setEvent(EventType e) {
+		this.event = e;
+	}
+
+	public EventType getEvent() {
+		return this.event;
 	}
 	
 	public void setRight(String right)
