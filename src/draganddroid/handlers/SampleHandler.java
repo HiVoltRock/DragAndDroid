@@ -30,13 +30,7 @@ public class SampleHandler extends AbstractHandler {
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		try {
-			E.Open();
-			
-			FileOutputStream eraser = new FileOutputStream(E.xmlDir);
-			byte b[] = new byte[0];
-			eraser.write(b);
-			eraser.close();
-			
+			E.Open();			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

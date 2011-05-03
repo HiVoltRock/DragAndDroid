@@ -4,17 +4,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
 import xml.AppElementListGenerator;
-
-
+import android.AndroidGenerator;
 import element.AButton;
 import element.ALabel;
 import element.ASeekBar;
 import element.ATextBox;
-import android.AndroidGenerator;
 
 /**
  * ButtonListener handles events like mouse clicks
@@ -85,6 +86,18 @@ public class ButtonListener extends MouseAdapter implements ActionListener{
 		else if(e.getActionCommand().equals("Generate")){
 			task = generate;
 		
+			FileOutputStream eraser;
+			try {
+				eraser = new FileOutputStream(editor.xmlDir);
+				byte b[] = new byte[0];
+				eraser.write(b);
+				eraser.close();
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			} catch (IOException e2) {
+				e2.printStackTrace();
+			}
+			
 			//generates the temp xml file
 			generator.GenerateElementList();
 			

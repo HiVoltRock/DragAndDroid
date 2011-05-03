@@ -4,6 +4,9 @@ import global.EventType;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -39,6 +42,18 @@ public class MenuResponder implements ActionListener {
 			e.elements.clear();
 		}
 		else if ( ae.getActionCommand() == "Generate" ) {
+			FileOutputStream eraser;
+			try {
+				eraser = new FileOutputStream(e.xmlDir);
+				byte b[] = new byte[0];
+				eraser.write(b);
+				eraser.close();
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			} catch (IOException e2) {
+				e2.printStackTrace();
+			}
+			
 			//generates the temp xml file
 			generator.GenerateElementList();
 			
