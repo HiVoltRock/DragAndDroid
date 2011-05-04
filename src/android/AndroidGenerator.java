@@ -103,6 +103,11 @@ public class AndroidGenerator
 				{
 					generateMethodStub(e);
 				}
+				if(e.getType().equals("ASeekBar") && !e.event.equals(EventType.VALUE_CHANGED))
+				{
+					generateMethodStub(e);
+				}
+				
 			}
 			
 			
@@ -307,26 +312,65 @@ public class AndroidGenerator
 			System.out.println("I/O problem with random access file");
 			e.printStackTrace();
 		}
+				
 		
-//		//now that we've chopped the brace off, add our code
-//		try 
-//		{
-//			PrintWriter pw = new PrintWriter(src);
-//			pw.println("\tpublic void " + ae.getName() + "_onClick(View view)");
-//			pw.println("\t{\n\n\t}\n}");
-//			//pw.println("\n");
-//			//pw.println("}");
-//			//pw.println("}");
-//			
-//			pw.close();
-//		} 
-//		catch (FileNotFoundException e) 
-//		{
-//			System.out.println("File Not Found after deleting last line. Oops...");
-//			e.printStackTrace();
-//		}
-
+	}
+	
+	public void seekBarMethods(AndroidElement ae)
+	{
+		String srcDir = this.rootDir + "/src";
 		
+		//we need to actually find the file we're going to edit...
+		File directory = new File(srcDir);
+		File src = findFile(directory, getFileName(this.rootDir));
+		
+		try 
+		{
+			RandomAccessFile editedFile = new RandomAccessFile(src, "rw");
+			long length = editedFile.length();
+			//System.out.println("File length before truncation: " + length);
+			
+			//assuming that the last line is only one closing brace. Chop that brace off
+			editedFile.setLength(length-1);
+			//System.out.println("File length after truncation: " + editedFile.length());
+			
+			editedFile.seek(length);
+			
+			editedFile.writeBytes("\n\n\tprivate SeekBar.OnSeekBarChangeListener seekBarChangeListener =  "
+					+"new SeekBar.OnSeekBarChangeListener()\n"
+					+"\t{\n\n"
+					+"\t\t@Override\n"
+					+"\t\tpublic void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser)\n"
+					+"\t\t{\n"
+					+"\t\t//TODO: Your Code Here\n"
+					+"\t\t}\n\n"
+					+"\t\t@Override\n"
+					+"\t\tpublic void onStartTrackingTouch(SeekBar seekBar) \n"
+					+"\t\t{\n"
+					+"\t\t//TODO: Your Code Here\n"
+					+"\t\t}\n\n"
+					+"\t\t@Override\n"
+					+"\t\tpublic void onStopTrackingTouch(SeekBar seekBar) \n"
+					+"\t\t{\n"
+					+"\t\t//TODO: Your Code Here\n"
+					+"\t\t}\n\n"
+					+"\t};\n\n"
+					+"}"
+					
+			);			
+			editedFile.close();
+			
+		} 
+		catch (FileNotFoundException e) 
+		{
+			System.out.println("Cannot find random access file");
+			e.printStackTrace();
+		}
+		catch(IOException e)
+		{
+			System.out.println("I/O problem with random access file");
+			e.printStackTrace();
+		}
 		
 		
 	}

@@ -24,6 +24,7 @@ public class ASeekBar extends AndroidElement {
 	public String above = "";
 	public String below = "";
 	public String alignParentRight = "";
+	public boolean fillHoriz = true;
 
 	public ASeekBar(String name, int x, int y){
 		this.setName(name);
@@ -139,7 +140,64 @@ public class ASeekBar extends AndroidElement {
 	
 	public void printAndroidXml(PrintWriter pw)
 	{
-		//TODO cory		
+		pw.println("\t<SeekBar");
+		pw.println("\t\tandroid:id=\"@+id/" + getName() + "\"");
+		
+		if(!fillHoriz)
+		{
+			pw.println("\t\tandroid:layout_width=\"wrap_content\"");
+		}
+		else
+		{
+			pw.println("\t\tandroid:layout_width=\"fill_parent\"");
+		}
+
+		pw.println("\t\tandroid:layout_height=\"wrap_content\"");
+		
+		if(!left.equals(""))
+		{
+			pw.println("\t\tandroid:layout_toLeftOf=\"@id/" + left + "\"");
+		}
+		
+		if(!right.equals(""))
+		{
+			pw.println("\t\tandroid:layout_toRightOf=\"@id/" + right + "\"");
+		}
+		
+		if(!below.equals(""))
+		{
+			pw.println("\t\tandroid:layout_below=\"@id/" + below + "\"");
+		}
+		
+		if(!above.equals(""))
+		{
+			pw.println("\t\tandroid:layout_above=\"@id/" + above + "\"");
+		}
+		
+		if(!alignParentRight.equals(""))
+		{
+			pw.println("\t\tandroid:layout_alignParentRight=\"true\"");
+		}
+		
+		if(!this.event.equals(EventType.NONE))
+		{
+			//there shouldn't be an onClick for a seekbar, but i'm leaving it here just in case
+//			if(this.event.equals(EventType.ONCLICK))
+//			{
+//				pw.println("\t\tandroid:onClick=\"" + getName() + "_onClick" + "\"");
+//			}
+		}
+		//by default we're setting te maximum value of the scroll on a 1 to 100 scale, but this number can be changed by the user
+		//to be any number. 
+		//pw.println("\t\t<!-- This is the max value of your seek bar. The number '100' can be any number that suits your needs -->");
+		pw.println("\t\tandroid:max=\"100\"");
+		//pw.println("\t\t<!-- This is the starting point for the \"thumb\" indicator. '0' is the default, but anything can be -->");
+		pw.println("\t\tandroid:progress=\"0\"");
+		
+		pw.println("\t/>");
+		
+
+		
 	}
 	
 	public String getType() {
