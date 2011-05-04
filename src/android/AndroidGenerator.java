@@ -105,7 +105,7 @@ public class AndroidGenerator
 				}
 				if(e.getType().equals("ASeekBar") && !e.event.equals(EventType.VALUE_CHANGED))
 				{
-					generateMethodStub(e);
+					seekBarMethods(e);
 				}
 				
 			}
