@@ -246,13 +246,14 @@ public class Editor extends JFrame implements WindowListener {
 	
 	/**
 	 * returns a list of Strings containing the names
-	 * of all of the AButtons in elements
+	 * of all of the elements that can have events
 	 * 
 	 */
-	public Object[] getButtonNames() {
+	public Object[] getEventElementNames() {
 		Vector<Object> names = new Vector<Object>();
 		for ( int i = 0; i < elements.size(); i++ ) {
-			if ( elements.elementAt(i).getType().equals("AButton") ) {
+			if ( elements.elementAt(i).getType().equals("AButton") 
+					|| elements.elementAt(i).getType().equals("ASeekBar") ) {
 				names.add(elements.elementAt(i).getName());
 			}
 		}

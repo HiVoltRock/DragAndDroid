@@ -93,10 +93,11 @@ public class MenuResponder implements ActionListener {
 			
 		}
 		else if ( ae.getActionCommand() == "Add Event" ) {
-			Object[] possibilities = e.getButtonNames();
+			String t = null;
+			Object[] possibilities = e.getEventElementNames();
 			String s = (String)JOptionPane.showInputDialog(
 			                    parent,
-			                    "Choose the button\n"
+			                    "Choose the element\n"
 			                    + "that you would like to add an event for",
 			                    "Edit Properties",
 			                    JOptionPane.PLAIN_MESSAGE,
@@ -104,20 +105,39 @@ public class MenuResponder implements ActionListener {
 			                    possibilities,
 			                    "");
 			if ( !s.equals(null) ) {
-				Object[] events = {"NONE", "ONCLICK", "LONGPRESS" };
-				String t = (String)JOptionPane.showInputDialog(
-	                    parent,
-	                    "Which event would you like\n"
-	                    + "add an event to " + s + "?",
-	                    "Choose Event",
-	                    JOptionPane.PLAIN_MESSAGE,
-	                    null,
-	                    events,
-	                    "");
+				
+				if ( e.FindElement(s).getType().equals("AButton")) {
+					Object[] events = {"NONE", "ONCLICK" };	
+					t = (String)JOptionPane.showInputDialog(
+		                    parent,
+		                    "Which event would you like\n"
+		                    + "add an event to " + s + "?",
+		                    "Choose Event",
+		                    JOptionPane.PLAIN_MESSAGE,
+		                    null,
+		                    events,
+		                    "");
+				}
+				else if ( e.FindElement(s).getType().equals("ASeekBar")) {
+					Object[] events = {"NONE", "VALUE_CHANGED" };
+					t = (String)JOptionPane.showInputDialog(
+		                    parent,
+		                    "Which event would you like\n"
+		                    + "add an event to " + s + "?",
+		                    "Choose Event",
+		                    JOptionPane.PLAIN_MESSAGE,
+		                    null,
+		                    events,
+		                    "");
+				}
+				
 				if ( !t.equals(null) ) {
 					if ( t.equals("ONCLICK") ) {
 						e.FindElement( s ).event = EventType.ONCLICK;
 	            	}
+					else if (t.equals("VALUE_CHANGED") ) {
+						e.FindElement( s ).event = EventType.VALUE_CHANGED;
+					}
 	            	else {
 	            		e.FindElement( s ).event = EventType.NONE;
 	            	}
