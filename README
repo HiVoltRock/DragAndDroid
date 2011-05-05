@@ -11,10 +11,7 @@ to the Android Phone. This is a developer tool and should be treated as such.
 	How to Run DragAndDroid:
 
 		After downloading the DragAndDroid program you must compile and run the program as a standard Java program. 
-Using Eclispe is highly recommended. After launching the DragAndDroid application a home directory will be required to store the 
-generated Andriod xml file. A prompt will appear asking you to "Please Select root directory of Android project". Choose the 
-folder labeled "TestBed" as this directory (select the TestBed folder and click Open). Once you've done this you can begin 
-editing your own personal Android GUI.
+Using Eclispe is highly recommended.
 
 
 
