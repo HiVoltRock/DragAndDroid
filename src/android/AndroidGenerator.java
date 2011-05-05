@@ -93,7 +93,8 @@ public class AndroidGenerator
 			pw.println("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
 			pw.println("<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"");
 			pw.println("\tandroid:layout_width=\"fill_parent\"");
-			pw.println("\tandroid:layout_height=\"fill_parent\">");
+			pw.println("\tandroid:layout_height=\"fill_parent\"" +
+					"\tandroid:id=\"@+id/myLayout\">");
 			
 			for(AndroidElement e : elements)
 			{
@@ -324,7 +325,7 @@ public class AndroidGenerator
 		File directory = new File(srcDir);
 		File src = findFile(directory, getFileName(this.rootDir));
 		
-		try 
+		try t
 		{
 			RandomAccessFile editedFile = new RandomAccessFile(src, "rw");
 			long length = editedFile.length();
