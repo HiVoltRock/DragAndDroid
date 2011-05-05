@@ -1,6 +1,5 @@
 package draganddroid.handlers;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.eclipse.core.commands.AbstractHandler;
