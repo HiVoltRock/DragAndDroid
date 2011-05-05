@@ -96,6 +96,11 @@ public class AndroidGenerator
 			pw.println("\tandroid:layout_height=\"fill_parent\"" +
 					"\tandroid:id=\"@+id/myLayout\">");
 			
+			//TODO create events regrardless of whether user chooses to or not
+			//TODO only need one listener for all scroll bars
+			//TODO in TestBed.java file, should print new stuff after original code, 
+			// label it, and then put a comment that tells the user that they must either
+			//must get rid of old code or delete new code
 			for(AndroidElement e : elements)
 			{
 				e.printAndroidXml(pw);
@@ -325,7 +330,7 @@ public class AndroidGenerator
 		File directory = new File(srcDir);
 		File src = findFile(directory, getFileName(this.rootDir));
 		
-		try t
+		try 
 		{
 			RandomAccessFile editedFile = new RandomAccessFile(src, "rw");
 			long length = editedFile.length();
