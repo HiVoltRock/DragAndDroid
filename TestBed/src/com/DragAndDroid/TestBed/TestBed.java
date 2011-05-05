@@ -62,5 +62,4 @@ public class TestBed extends Activity {
 		rl.setBackgroundColor( Color.rgb(val, val, val) );
 	}
 	
-	
 }

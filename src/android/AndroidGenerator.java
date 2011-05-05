@@ -101,6 +101,7 @@ public class AndroidGenerator
 			//TODO in TestBed.java file, should print new stuff after original code, 
 			// label it, and then put a comment that tells the user that they must either
 			//must get rid of old code or delete new code
+			//TODO Investigate byte string UTF
 			for(AndroidElement e : elements)
 			{
 				e.printAndroidXml(pw);
