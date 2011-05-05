@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"	android:id="@+id/myLayout">
+	<TextView
+		android:id="@+id/label:"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="label:"
+	/>
+	<EditText
+		android:id="@+id/text"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:background="@android:drawable/editbox_background"
+		android:text=""
+		android:layout_below="@id/label:"
+	/>
+	<SeekBar
+		android:id="@+id/slider"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/text"
+		android:max="100"
+		android:progress="0"
+	/>
+	<Button
+		android:id="@+id/Btn"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Btn"
+		android:layout_below="@id/slider"
+		android:onClick="Btn_onClick"
+	/>
+</RelativeLayout>
