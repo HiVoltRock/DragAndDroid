@@ -109,7 +109,8 @@ public class AndroidGenerator
 				{
 					generateMethodStub(e);
 				}
-				if(e.getType().equals("ASeekBar") && e.event.equals(EventType.VALUE_CHANGED) && !seekGenerated)
+				//only want to generate one set of listeners for all seekBars
+				if(e.getType().equals("ASeekBar") && !seekGenerated)
 				{
 					seekBarMethods(e);
 					seekGenerated = true;
@@ -379,6 +380,11 @@ public class AndroidGenerator
 			e.printStackTrace();
 		}
 		
+		
+	}
+	
+	public void seekBarCreate()
+	{
 		
 	}
 	
