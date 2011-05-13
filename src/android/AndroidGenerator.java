@@ -28,6 +28,7 @@ import global.EventType;
 public class AndroidGenerator 
 {
 	String rootDir; //root directory of Android project (for method stub generation)
+	boolean seekGenerated = false; //so we know if there has been a seekBar generated or not
 	
 	//renamed "applicationElements" to "elements" because it's WAY shorter
 	public Vector<AndroidElement> elements;
@@ -36,7 +37,8 @@ public class AndroidGenerator
 	
 	public int originalElementCt;
 	
-	public AndroidGenerator(String rootDir) {
+	public AndroidGenerator(String rootDir) 
+	{
 		elements = new Vector<AndroidElement>();
 		parser = new SaxXMLParser(Constants.filename, elements);
 		this.rootDir = rootDir;
@@ -62,7 +64,6 @@ public class AndroidGenerator
 		// generate appropriate android code
 		xml = new File(xmlDir);
 		/** (more for my not losing my place if I have to start and pickup later than for anyone else)
-		 * Use a duplicate list so we can delete once placed to make any future sorts needed faster
 		 * Basic layout algorithm:
 		 * 1) Sort by y-coordinate
 		 * 2) Place smallest y at the top
@@ -96,23 +97,22 @@ public class AndroidGenerator
 			pw.println("\tandroid:layout_height=\"fill_parent\"" +
 					"\tandroid:id=\"@+id/myLayout\">");
 			
-			//TODO create events regrardless of whether user chooses to or not
-			//TODO only need one listener for all scroll bars
 			//TODO in TestBed.java file, should print new stuff after original code, 
 			// label it, and then put a comment that tells the user that they must either
 			//must get rid of old code or delete new code
-			//TODO Investigate byte string UTF
 			for(AndroidElement e : elements)
 			{
 				e.printAndroidXml(pw);
 				
-				if(e.getType().equals("AButton") && !e.event.equals(EventType.NONE))
+				//generates button listeners for every button. We assume if there's a button they want a listener
+				if(e.getType().equals("AButton"))
 				{
 					generateMethodStub(e);
 				}
-				if(e.getType().equals("ASeekBar") && e.event.equals(EventType.VALUE_CHANGED))
+				if(e.getType().equals("ASeekBar") && e.event.equals(EventType.VALUE_CHANGED) && !seekGenerated)
 				{
 					seekBarMethods(e);
+					seekGenerated = true;
 				}
 				
 			}
@@ -305,7 +305,7 @@ public class AndroidGenerator
 			
 			editedFile.seek(length);
 			
-			editedFile.writeBytes("\n\n\tpublic void " + ae.getName() + "_onClick(View view)\n\t{\n\n\t}\n}");			
+			editedFile.writeUTF("\n\n\tpublic void " + ae.getName() + "_onClick(View view)\n\t{\n\n\t}\n}");			
 			editedFile.close();
 			
 		} 
@@ -343,7 +343,7 @@ public class AndroidGenerator
 			
 			editedFile.seek(length);
 			
-			editedFile.writeBytes("\n\n\tprivate SeekBar.OnSeekBarChangeListener seekBarChangeListener =  "
+			editedFile.writeUTF("\n\n\tprivate SeekBar.OnSeekBarChangeListener seekBarChangeListener =  "
 					+"new SeekBar.OnSeekBarChangeListener()\n"
 					+"\t{\n\n"
 					+"\t\t@Override\n"
